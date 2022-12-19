@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "3IT9aonzZJTGO2imA0Rr4JbxKnP8m3o5mg5rCkuSqDKsIjhtzyAWE2U4zvwwnIUJsZttmAjiQW9mRcUqRlF7mA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\diman\\Documents\\Third course\\КПиЯП\\labs\\OlympicStudents\\OlympicStudents.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\diman\\.nuget\\packages\\dotnetcore.npoi\\1.2.3\\dotnetcore.npoi.1.2.3.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\dotnetcore.npoi.core\\1.2.3\\dotnetcore.npoi.core.1.2.3.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\dotnetcore.npoi.openxml4net\\1.2.3\\dotnetcore.npoi.openxml4net.1.2.3.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\dotnetcore.npoi.openxmlformats\\1.2.3\\dotnetcore.npoi.openxmlformats.1.2.3.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\microsoft.data.sqlite\\7.0.1\\microsoft.data.sqlite.7.0.1.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.1\\microsoft.data.sqlite.core.7.0.1.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1001\\microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\microsoft.win32.systemevents\\4.5.0\\microsoft.win32.systemevents.4.5.0.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\sharpziplib\\1.2.0\\sharpziplib.1.2.0.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.2\\sqlitepclraw.bundle_e_sqlite3.2.1.2.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\sqlitepclraw.core\\2.1.2\\sqlitepclraw.core.2.1.2.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.2\\sqlitepclraw.lib.e_sqlite3.2.1.2.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.2\\sqlitepclraw.provider.e_sqlite3.2.1.2.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\system.drawing.common\\4.5.0\\system.drawing.common.4.5.0.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.0\\system.runtime.compilerservices.unsafe.4.5.0.nupkg.sha512",
+    "C:\\Users\\diman\\.nuget\\packages\\system.text.encoding.codepages\\4.5.0\\system.text.encoding.codepages.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

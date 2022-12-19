@@ -1,0 +1,123 @@
+﻿using Microsoft.Data.Sqlite;
+using System.Data;
+using System.Text;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+namespace StudentInfo
+{
+    internal class DataBase
+    {
+        public static string? GetID(string table, string column, string where, string result)
+        {
+            string? id = null;
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+
+                SqliteCommand command = new SqliteCommand($"SELECT {column} FROM {table} WHERE {where} = '{result}'", connection);
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows) // если есть данные
+                    {
+                        while (reader.Read())   // построчно считываем данные
+                        {
+                            try
+                            {
+                                id = reader.GetString(0);
+                            }
+                            catch (Exception) { }
+                        }
+                    }
+                }
+            }
+            return id;
+        }
+        public static string Read(string table, string column, string where, string result)
+        {
+            string value = "1";
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+
+                SqliteCommand comm = new SqliteCommand($"SELECT {column} FROM {table} WHERE {where}='{result}'", connection);
+                using (SqliteDataReader reader = comm.ExecuteReader())
+                {
+                    if (reader.HasRows) // если есть данные
+                    {
+                        while (reader.Read())   // построчно считываем данные
+                        {
+                            value = reader.GetString(column);// + 1;
+                        }
+                    }
+
+                }
+            }
+            return value;
+        }
+        public static void Update(string table, string colums, string value_to_update, string where, string result)
+        {
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+
+                SqliteCommand command = new SqliteCommand($"UPDATE {table} SET {colums}='{value_to_update}' WHERE {where}='{result}'", connection);
+
+                command.ExecuteNonQuery();
+            }
+        }
+        public static void Delete(string table, string row, string where, string result)
+        {
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+
+                SqliteCommand command = new SqliteCommand($"DELETE {row} FROM {table} WHERE {where}='{result}'", connection);
+                try
+                {
+                    int number = command.ExecuteNonQuery();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            }
+        }
+        public static IEnumerable<List<string>> Search(string table, string key)
+        {
+            string key_word = key;
+            string result;
+
+            List<string> results = new List<string>();
+
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+
+                SqliteCommand command = new SqliteCommand($"SELECT * FROM {table}", connection);
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows) // если есть данные
+                    {
+                        while (reader.Read())   // построчно считываем данные
+                        {
+                            for (int i = 0; i < 9; i++)
+                            {
+                                result = reader.GetString(i);
+                                if (result.Contains(key_word))
+                                {
+                                    results.Clear();
+                                    for (int j = 1; j < 9; j++)
+                                    {
+                                        results.Add(reader.GetString(j));
+                                    }
+                                    //dataGridView1.Rows.Add(results.ToArray());
+                                    yield return results;
+                                }
+                            }
+                        }
+                    }
+                }
+                //return results;
+            }
+        }
+    }
+}
