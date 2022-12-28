@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "3IT9aonzZJTGO2imA0Rr4JbxKnP8m3o5mg5rCkuSqDKsIjhtzyAWE2U4zvwwnIUJsZttmAjiQW9mRcUqRlF7mA==",
+  "dgSpecHash": "3iq6zQFCYM6NFbMo2cbGhczXbzcOra5IzeFlscMgDR2Ayy9+SsWjAfyen4q2sj1TInuIIpn+5CHaz2x8x9GUBw==",
   "success": true,
   "projectFilePath": "C:\\Users\\diman\\Documents\\Third course\\КПиЯП\\labs\\OlympicStudents\\OlympicStudents.csproj",
   "expectedPackageFiles": [
@@ -11,7 +11,6 @@
     "C:\\Users\\diman\\.nuget\\packages\\microsoft.data.sqlite\\7.0.1\\microsoft.data.sqlite.7.0.1.nupkg.sha512",
     "C:\\Users\\diman\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.1\\microsoft.data.sqlite.core.7.0.1.nupkg.sha512",
     "C:\\Users\\diman\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
-    "C:\\Users\\diman\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1001\\microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512",
     "C:\\Users\\diman\\.nuget\\packages\\microsoft.win32.systemevents\\4.5.0\\microsoft.win32.systemevents.4.5.0.nupkg.sha512",
     "C:\\Users\\diman\\.nuget\\packages\\sharpziplib\\1.2.0\\sharpziplib.1.2.0.nupkg.sha512",
     "C:\\Users\\diman\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.2\\sqlitepclraw.bundle_e_sqlite3.2.1.2.nupkg.sha512",

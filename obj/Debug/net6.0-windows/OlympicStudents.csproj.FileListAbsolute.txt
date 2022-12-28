@@ -4,7 +4,6 @@ C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\bin\Debug\
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\bin\Debug\net6.0-windows\OlympicStudents.dll
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\bin\Debug\net6.0-windows\OlympicStudents.pdb
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.csproj.AssemblyReference.cache
-C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.Form1.resources
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.csproj.GenerateResource.cache
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.AssemblyInfoInputs.cache
@@ -44,10 +43,10 @@ C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\bin\Debug\
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.csproj.CopyComplete
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.NewOlympiad.resources
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.NewStudent.resources
-C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\bin\Debug\net6.0-windows\Microsoft.Office.Interop.Excel.dll
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\bin\Debug\net6.0-windows\NOTICE.TXT
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\bin\Debug\net6.0-windows\NPOI.OOXML.dll
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\bin\Debug\net6.0-windows\NPOI.dll
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\bin\Debug\net6.0-windows\NPOI.OpenXml4Net.dll
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\bin\Debug\net6.0-windows\NPOI.OpenXmlFormats.dll
 C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\bin\Debug\net6.0-windows\ICSharpCode.SharpZipLib.dll
+C:\Users\diman\Documents\Third course\КПиЯП\labs\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.MainForm.resources

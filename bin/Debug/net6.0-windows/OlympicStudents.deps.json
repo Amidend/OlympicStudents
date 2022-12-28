@@ -9,8 +9,7 @@
       "OlympicStudents/1.0.0": {
         "dependencies": {
           "DotNetCore.NPOI": "1.2.3",
-          "Microsoft.Data.Sqlite": "7.0.1",
-          "Microsoft.Office.Interop.Excel": "15.0.4795.1001"
+          "Microsoft.Data.Sqlite": "7.0.1"
         },
         "runtime": {
           "OlympicStudents.dll": {}
@@ -82,14 +81,6 @@
         }
       },
       "Microsoft.NETCore.Platforms/2.0.0": {},
-      "Microsoft.Office.Interop.Excel/15.0.4795.1001": {
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Office.Interop.Excel.dll": {
-            "assemblyVersion": "15.0.0.0",
-            "fileVersion": "15.0.4795.1000"
-          }
-        }
-      },
       "Microsoft.Win32.SystemEvents/4.5.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.0.0"
@@ -321,13 +312,6 @@
       "sha512": "sha512-VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
       "path": "microsoft.netcore.platforms/2.0.0",
       "hashPath": "microsoft.netcore.platforms.2.0.0.nupkg.sha512"
-    },
-    "Microsoft.Office.Interop.Excel/15.0.4795.1001": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-cuvqi/U5MYSM0gvR2l90q0m/urRgmg69EiwP5VWp1RcaJ0YT5G26Va5LaOZ3KJFc22FNihS5CUjeePUp2YpGQA==",
-      "path": "microsoft.office.interop.excel/15.0.4795.1001",
-      "hashPath": "microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512"
     },
     "Microsoft.Win32.SystemEvents/4.5.0": {
       "type": "package",

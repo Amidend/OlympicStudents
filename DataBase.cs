@@ -81,9 +81,8 @@ namespace StudentInfo
 
             }
         }
-        public static IEnumerable<List<string>> Search(string table, string key)
+        public static IEnumerable<List<string>> Search(string table, string where, string key)
         {
-            string key_word = key;
             string result;
 
             List<string> results = new List<string>();
@@ -92,31 +91,22 @@ namespace StudentInfo
             {
                 connection.Open();
 
-                SqliteCommand command = new SqliteCommand($"SELECT * FROM {table}", connection);
+                SqliteCommand command = new SqliteCommand($"SELECT * FROM {table} WHERE {where} LIKE '%{key}%'", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows) // если есть данные
                     {
                         while (reader.Read())   // построчно считываем данные
                         {
+                            results.Clear();
                             for (int i = 0; i < 9; i++)
                             {
-                                result = reader.GetString(i);
-                                if (result.Contains(key_word))
-                                {
-                                    results.Clear();
-                                    for (int j = 1; j < 9; j++)
-                                    {
-                                        results.Add(reader.GetString(j));
-                                    }
-                                    //dataGridView1.Rows.Add(results.ToArray());
-                                    yield return results;
-                                }
+                                results.Add(reader.GetString(i));
                             }
+                            yield return results;
                         }
                     }
                 }
-                //return results;
             }
         }
     }
