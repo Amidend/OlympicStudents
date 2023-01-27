@@ -28,45 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
-            this.addStudent = new System.Windows.Forms.Button();
-            this.delete = new System.Windows.Forms.Button();
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
+            this.buttonAddStudent = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.listViewStudent = new System.Windows.Forms.ListView();
             this.addOlimp = new System.Windows.Forms.Button();
             this.UpdateStudent = new System.Windows.Forms.Button();
             this.listViewOlimp = new System.Windows.Forms.ListView();
-            this.displayOlimp = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.buttonDisplayOlimp = new System.Windows.Forms.Button();
+            this.excel = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.search = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // addStudent
+            // buttonAddStudent
             // 
-            this.addStudent.Location = new System.Drawing.Point(12, 27);
-            this.addStudent.Name = "addStudent";
-            this.addStudent.Size = new System.Drawing.Size(94, 29);
-            this.addStudent.TabIndex = 1;
-            this.addStudent.Text = "+";
-            this.addStudent.UseVisualStyleBackColor = true;
-            this.addStudent.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAddStudent.Location = new System.Drawing.Point(12, 27);
+            this.buttonAddStudent.Name = "buttonAddStudent";
+            this.buttonAddStudent.Size = new System.Drawing.Size(94, 29);
+            this.buttonAddStudent.TabIndex = 1;
+            this.buttonAddStudent.Text = "+";
+            this.buttonAddStudent.UseVisualStyleBackColor = true;
+            this.buttonAddStudent.Click += new System.EventHandler(this.buttonAddStudent_Click);
             // 
-            // delete
+            // buttonDelete
             // 
-            this.delete.Location = new System.Drawing.Point(129, 27);
-            this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(94, 29);
-            this.delete.TabIndex = 1;
-            this.delete.Text = "delete";
-            this.delete.UseVisualStyleBackColor = true;
-            this.delete.Click += new System.EventHandler(this.button2_Click);
+            this.buttonDelete.Location = new System.Drawing.Point(129, 27);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(94, 29);
+            this.buttonDelete.TabIndex = 1;
+            this.buttonDelete.Text = "-";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // listViewStudent
             // 
             this.listViewStudent.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem3});
             this.listViewStudent.Location = new System.Drawing.Point(12, 66);
             this.listViewStudent.MultiSelect = false;
             this.listViewStudent.Name = "listViewStudent";
@@ -83,7 +83,7 @@
             this.addOlimp.TabIndex = 3;
             this.addOlimp.Text = "Добавить олимпиады";
             this.addOlimp.UseVisualStyleBackColor = true;
-            this.addOlimp.Click += new System.EventHandler(this.button3_Click);
+            this.addOlimp.Click += new System.EventHandler(this.addOlimp_Click);
             // 
             // UpdateStudent
             // 
@@ -93,13 +93,13 @@
             this.UpdateStudent.TabIndex = 4;
             this.UpdateStudent.Text = "Обновить";
             this.UpdateStudent.UseVisualStyleBackColor = true;
-            this.UpdateStudent.Click += new System.EventHandler(this.button4_Click);
+            this.UpdateStudent.Click += new System.EventHandler(this.UpdateDataStudent_Click);
             // 
             // listViewOlimp
             // 
             this.listViewOlimp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewOlimp.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem4});
             this.listViewOlimp.Location = new System.Drawing.Point(792, 62);
             this.listViewOlimp.MultiSelect = false;
             this.listViewOlimp.Name = "listViewOlimp";
@@ -107,25 +107,25 @@
             this.listViewOlimp.TabIndex = 2;
             this.listViewOlimp.UseCompatibleStateImageBehavior = false;
             // 
-            // displayOlimp
+            // buttonDisplayOlimp
             // 
-            this.displayOlimp.Location = new System.Drawing.Point(240, 31);
-            this.displayOlimp.Name = "displayOlimp";
-            this.displayOlimp.Size = new System.Drawing.Size(177, 29);
-            this.displayOlimp.TabIndex = 5;
-            this.displayOlimp.Text = "Показать олимпиады";
-            this.displayOlimp.UseVisualStyleBackColor = true;
-            this.displayOlimp.Click += new System.EventHandler(this.button5_Click);
+            this.buttonDisplayOlimp.Location = new System.Drawing.Point(240, 31);
+            this.buttonDisplayOlimp.Name = "buttonDisplayOlimp";
+            this.buttonDisplayOlimp.Size = new System.Drawing.Size(177, 29);
+            this.buttonDisplayOlimp.TabIndex = 5;
+            this.buttonDisplayOlimp.Text = "Показать олимпиады";
+            this.buttonDisplayOlimp.UseVisualStyleBackColor = true;
+            this.buttonDisplayOlimp.Click += new System.EventHandler(this.buttonDisplayOlimp_Click);
             // 
-            // button6
+            // excel
             // 
-            this.button6.Location = new System.Drawing.Point(1173, 26);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(151, 29);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "excel отчет";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.excel.Location = new System.Drawing.Point(1173, 26);
+            this.excel.Name = "excel";
+            this.excel.Size = new System.Drawing.Size(151, 29);
+            this.excel.TabIndex = 6;
+            this.excel.Text = "excel отчет";
+            this.excel.UseVisualStyleBackColor = true;
+            this.excel.Click += new System.EventHandler(this.excel_Click);
             // 
             // dateTimePicker1
             // 
@@ -163,14 +163,14 @@
             this.Controls.Add(this.search);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.displayOlimp);
+            this.Controls.Add(this.excel);
+            this.Controls.Add(this.buttonDisplayOlimp);
             this.Controls.Add(this.UpdateStudent);
             this.Controls.Add(this.addOlimp);
             this.Controls.Add(this.listViewOlimp);
             this.Controls.Add(this.listViewStudent);
-            this.Controls.Add(this.delete);
-            this.Controls.Add(this.addStudent);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonAddStudent);
             this.HelpButton = true;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -181,14 +181,14 @@
         }
 
         #endregion
-        private Button addStudent;
-        private Button delete;
+        private Button buttonAddStudent;
+        private Button buttonDelete;
         private ListView listViewStudent;
         private Button addOlimp;
         private Button UpdateStudent;
         private ListView listViewOlimp;
-        private Button displayOlimp;
-        private Button button6;
+        private Button buttonDisplayOlimp;
+        private Button excel;
         private DateTimePicker dateTimePicker1;
         private TextBox textBoxSearch;
         private Button search;

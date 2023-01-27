@@ -1,9 +1,9 @@
 ﻿using Microsoft.Data.Sqlite;
 namespace OlympicStudents
 {
-    public partial class NewStudent : Form
+    public partial class NewStudentForm : Form
     {
-        public NewStudent()
+        public NewStudentForm()
         {
             InitializeComponent();
         }

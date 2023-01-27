@@ -2,26 +2,31 @@ using NPOI.XSSF.UserModel;
 using Microsoft.Data.Sqlite;
 using NPOI.SS.UserModel;
 using StudentInfo;
+using NPOI.SS.Formula.Functions;
 
 namespace OlympicStudents
 {
     public partial class MainForm : Form
     {
-        private void UpdateDataStudent()
+        private void CreateDateInListView(ListView listView) 
         {
-            listViewStudent.Clear();
-            listViewStudent.View = View.Details;
-            listViewStudent.GridLines = true;
-            listViewStudent.FullRowSelect = true;
-            listViewStudent.Columns.Add("ФИО");
-            listViewStudent.Columns.Add("Дата рождения");
-            listViewStudent.Columns.Add("Адрес");
-            listViewStudent.Columns.Add("Номер телефона");
-            listViewStudent.Columns.Add("Группа");
-            listViewStudent.Columns.Add("Дата поступления");
-            listViewStudent.Columns.Add("Дата выпуска");
-            listViewStudent.Columns.Add("Курс");
-            listViewStudent.Columns.Add("Сециализация");
+            listView.Clear();
+            listView.View = View.Details;
+            listView.GridLines = true;
+            listView.FullRowSelect = true;
+            listView.Columns.Add("ФИО");
+            listView.Columns.Add("Дата рождения");
+            listView.Columns.Add("Адрес");
+            listView.Columns.Add("Номер телефона");
+            listView.Columns.Add("Группа");
+            listView.Columns.Add("Дата поступления");
+            listView.Columns.Add("Дата выпуска");
+            listView.Columns.Add("Курс");
+            listView.Columns.Add("Сециализация");
+        }
+        public void UpdateDataStudent()
+        {
+            CreateDateInListView(listViewStudent);
             string[] arr = new string[10];
             using (var connection = new SqliteConnection("Data Source=data.db"))
             {
@@ -53,42 +58,21 @@ namespace OlympicStudents
             dateTimePicker1.CustomFormat = "yyyy-MM-dd";
             addOlimp.Enabled = false;
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAddStudent_Click(object sender, EventArgs e)
         {
-            NewStudent ns = new NewStudent();
+            NewStudentForm ns = new NewStudentForm();
             ns.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void addOlimp_Click(object sender, EventArgs e)
         {
-            NewOlympiad ns = new NewOlympiad(FindStudentById());
+            NewOlympiadForm ns = new NewOlympiadForm(DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()));
             ns.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void UpdateDataStudent_Click(object sender, EventArgs e)
         {
             UpdateDataStudent();
-        }
-        private int FindStudentById()
-        {
-            using (var connection = new SqliteConnection("Data Source=data.db"))
-            {
-                connection.Open();
-                int res = -1;
-                SqliteCommand command = new SqliteCommand($"SELECT student_id FROM student WHERE fio LIKE '{listViewStudent.SelectedItems[0].Text.ToString()}%'", connection);
-                using (SqliteDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            res = reader.GetInt32(0);
-                        }
-                    }
-                }
-                command.Cancel(); command.Cancel();
-                return res;
-            }
         }
         private void addOlimpiads(int id)
         {
@@ -155,20 +139,15 @@ namespace OlympicStudents
                 }
             }
         }
-        private void button5_Click(object sender, EventArgs e)
+        private void buttonDisplayOlimp_Click(object sender, EventArgs e)
         {
             listViewOlimp.Clear();
             listViewOlimp.View = View.Details;
             listViewOlimp.GridLines = true;
             listViewOlimp.FullRowSelect = true;
-            /*this.listView1.Dock = DockStyle.Right;
-           this.listView1.Location = new System.Drawing.Point(0, 0);
-           this.listView1.Size = new System.Drawing.Size(292, 130);
-           this.listView1.View = View.Details;
-           this.listView1.FullRowSelect = true;*/
-            addOlimpiads(FindStudentById());
+            addOlimpiads(DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()));
         }
-        private void button6_Click(object sender, EventArgs e)
+        private void excel_Click(object sender, EventArgs e)
         {
             IWorkbook workbook = new XSSFWorkbook();
             ISheet sheet1 = workbook.CreateSheet("Отчет");
@@ -206,33 +185,7 @@ namespace OlympicStudents
                     }
                     command.Cancel(); command.Cancel();
                 }
-                /*using (var connection = new SqliteConnection("Data Source=data.db"))
-                {
-                    connection.Open();
-
-                    SqliteCommand command = new SqliteCommand($"SELECT * FROM olympiad WHERE olympiad_id='{size[k].ToString()}'", connection);
-                    using (SqliteDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                IRow row = sheet1.CreateRow(k + 1);
-                                for (int i = 0; i < 9; i++)
-                                {
-                                    row.CreateCell(i).SetCellValue(reader.GetString(i));
-                                }
-                            }
-                        }
-                    }
-                    command.Cancel(); command.Cancel();
-                }*/
-
             }
-
-
-
-
             FileStream sw = File.Create("test.xlsx");
             workbook.Write(sw);
             sw.Close();
@@ -258,7 +211,7 @@ namespace OlympicStudents
                 connection.Open();
                 List<int> res = new List<int>();
                 int k = 9;
-
+                MessageBox.Show($"'{start.ToString("yyyy-MM-dd")}''{end.ToString("yyyy-MM-dd")}'");
                 SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM olympiad WHERE dates BETWEEN '{start.ToString("yyyy-MM-dd")}' AND '{end.ToString("yyyy-MM-dd")}'", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
@@ -275,22 +228,17 @@ namespace OlympicStudents
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
-
-            //MessageBox.Show((listView1.SelectedItems.Count>0).ToString() + (listView2.SelectedItems.Count > 0).ToString());
             if ((listViewStudent.SelectedItems.Count > 0) && !(listViewOlimp.SelectedItems.Count > 0))
             {
-                //MessageBox.Show(StudentInfo.DataBase.GetID("student", "student_id", "fio", $"{findByid().ToString()}"));
-
-
                 List<int?> res = new List<int?>();
                 using (var connection = new SqliteConnection("Data Source=data.db"))
                 {
                     connection.Open();
                     int k = 9;
 
-                    SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM result WHERE student_id='{FindStudentById().ToString()}'", connection);
+                    SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM result WHERE student_id='{DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString()}'", connection);
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -308,19 +256,17 @@ namespace OlympicStudents
                 {
                     DataBase.Delete("olympiad", "", "olympiad_id", res[i].ToString());
 
-                    DataBase.Delete("result", "", "student_id", FindStudentById().ToString());
+                    DataBase.Delete("result", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
                 }
-                DataBase.Delete("student", "", "student_id", FindStudentById().ToString());
+                DataBase.Delete("student", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
             }
             if ((listViewStudent.SelectedItems.Count > 0) && (listViewOlimp.SelectedItems.Count > 0))
             {
                 listViewStudent.SelectedItems[0].Text.ToString();
-
-                //MessageBox.Show($"{listView2.SelectedItems[0].SubItems[9].Text.ToString()}");
                 DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
-                //MessageBox.Show(StudentInfo.DataBase.GetID("olympiad", "olympiad_id", "olympiad_id", $"{listView2.SelectedItems[0].SubItems[9].Text.ToString()}"));
                 DataBase.Delete("result", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
             }
+            UpdateDataStudent();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -354,44 +300,6 @@ namespace OlympicStudents
                 item = new ListViewItem(i.ToArray());
                 listViewStudent.Items.Add(item);
             }
-            /*if (res != null)
-            {
-                listView1.Clear();
-                listView1.View = View.Details;
-                listView1.GridLines = true;
-                listView1.FullRowSelect = true;
-                listView1.Columns.Add("ФИО", 100);
-                listView1.Columns.Add("Дата рождения");
-                listView1.Columns.Add("Адрес");
-                listView1.Columns.Add("Номер телефона");
-                listView1.Columns.Add("Группа");
-                listView1.Columns.Add("Дата поступления");
-                listView1.Columns.Add("Дата выпуска");
-                listView1.Columns.Add("Курс");
-                listView1.Columns.Add("Сециализация");
-                string[] arr = new string[10];
-                using (var connection = new SqliteConnection("Data Source=data.db"))
-                {
-                    connection.Open();
-                    ListViewItem item;
-                    SqliteCommand command = new SqliteCommand("SELECT * FROM student", connection);
-                    using (SqliteDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                for (int i = 0; i < 9; i++)
-                                {
-                                    arr[i] = reader.GetString(i);
-                                }
-                                item = new ListViewItem(arr);
-                                listView1.Items.Add(item);
-                            }
-                        }
-                    }
-                }
-            }*/
         }
     }
 }

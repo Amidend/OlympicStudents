@@ -1,6 +1,6 @@
 ﻿namespace OlympicStudents
 {
-    partial class NewOlympiad
+    partial class NewOlympiadForm
     {
         /// <summary>
         /// Required designer variable.

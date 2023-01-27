@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace OlympicStudents
 {
-    public partial class NewOlympiad : Form
+    public partial class NewOlympiadForm : Form
     {
         private int id=-1;
-        public NewOlympiad(int i)
+        public NewOlympiadForm(int i)
         {
             id = i;
             InitializeComponent();

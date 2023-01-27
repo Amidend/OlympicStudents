@@ -8,6 +8,27 @@ namespace StudentInfo
 {
     internal class DataBase
     {
+        public static int FindStudentById(string s)
+        {
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+                int res = -1;
+                SqliteCommand command = new SqliteCommand($"SELECT student_id FROM student WHERE fio LIKE '{s}%'", connection);
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            res = reader.GetInt32(0);
+                        }
+                    }
+                }
+                command.Cancel(); command.Cancel();
+                return res;
+            }
+        }
         public static string? GetID(string table, string column, string where, string result)
         {
             string? id = null;
