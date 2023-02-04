@@ -2,153 +2,80 @@ using NPOI.XSSF.UserModel;
 using Microsoft.Data.Sqlite;
 using NPOI.SS.UserModel;
 using StudentInfo;
-using NPOI.SS.Formula.Functions;
+using System.Collections;
+using System.Windows.Forms;
 
 namespace OlympicStudents
 {
     public partial class MainForm : Form
     {
-        private void CreateDateInListView(ListView listView) 
+        private void listViewStudents_MouseOneClick(object sender, MouseEventArgs e)
         {
-            listView.Clear();
-            listView.View = View.Details;
-            listView.GridLines = true;
-            listView.FullRowSelect = true;
-            listView.Columns.Add("ФИО");
-            listView.Columns.Add("Дата рождения");
-            listView.Columns.Add("Адрес");
-            listView.Columns.Add("Номер телефона");
-            listView.Columns.Add("Группа");
-            listView.Columns.Add("Дата поступления");
-            listView.Columns.Add("Дата выпуска");
-            listView.Columns.Add("Курс");
-            listView.Columns.Add("Сециализация");
+            int index = listViewStudent.SelectedIndices[0];
+            string studentId = (listViewStudent.Items[index].SubItems[0].Text);
+            int id = DataBase.FindStudentById(studentId);
+            Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
+            Adapter.StudentOlympiadsAsync(listViewOlympiadsOfStudent,id);
         }
-        public void UpdateDataStudent()
+        private async void UpdateDataStudentAsync()
         {
-            CreateDateInListView(listViewStudent);
-            string[] arr = new string[10];
-            using (var connection = new SqliteConnection("Data Source=data.db"))
-            {
-                connection.Open();
-                ListViewItem item;
-                SqliteCommand command = new SqliteCommand("SELECT * FROM student", connection);
-                using (SqliteDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            for (int i = 0; i < 9; i++)
-                            {
-                                arr[i] = reader.GetString(i);
-                            }
-                            item = new ListViewItem(arr);
-                            listViewStudent.Items.Add(item);
-                        }
-                    }
-                }
-            }
+            Adapter.InitializeListViewSudent(listViewStudent);
+            Adapter.FillStudentListVewAsync(listViewStudent);
         }
         public MainForm()
         {
             InitializeComponent();
-            UpdateDataStudent();
+            panelMenuStudents.Width = 315;
+            panelMenuStudents.Dock= DockStyle.Right;
+
+            splitContainer1.Width -= 300;
+            Panel upPanel = new Panel();
+            upPanel.Dock = DockStyle.Fill;
+            listViewStudent.Dock = DockStyle.Fill;
+            upPanel.Controls.Add(listViewStudent);
+            splitContainer1.Panel1.Controls.Add(upPanel);
+            Panel bottomPanel = new Panel();
+            bottomPanel.Dock = DockStyle.Fill;
+
+            listViewOlympiadsOfStudent.Dock = DockStyle.Fill;
+            bottomPanel.Controls.Add(listViewOlympiadsOfStudent);
+
+            splitContainer1.Panel2.Controls.Add(bottomPanel);
+
+            UpdateDataStudentAsync();
+            AddOlimpiads();
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            addOlimp.Enabled = false;
+
         }
+
         private void buttonAddStudent_Click(object sender, EventArgs e)
         {
-            NewStudentForm ns = new NewStudentForm();
-            ns.Show();
-        }
-
-        private void addOlimp_Click(object sender, EventArgs e)
-        {
-            NewOlympiadForm ns = new NewOlympiadForm(DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()));
-            ns.Show();
-        }
-
-        private void UpdateDataStudent_Click(object sender, EventArgs e)
-        {
-            UpdateDataStudent();
-        }
-        private void addOlimpiads(int id)
-        {
-            listViewOlimp.Columns.Add("Дата", 100);
-            listViewOlimp.Columns.Add("Уровень");
-            listViewOlimp.Columns.Add("Вид");
-            listViewOlimp.Columns.Add("Награда");
-            listViewOlimp.Columns.Add("Поощерение");
-            listViewOlimp.Columns.Add("Номинации");
-            listViewOlimp.Columns.Add("продалжительность");
-            listViewOlimp.Columns.Add("Название ");
-            listViewOlimp.Columns.Add("место проведения");
-            listViewOlimp.Columns.Add("id", 0);
-            string[] arr = new string[11];
-            string sqlExpressionmain = $"SELECT olympiad_id FROM result WHERE student_id='{id.ToString()}'";
-
-            List<int> l = new List<int>();
-            using (var connection = new SqliteConnection("Data Source=data.db"))
+            using (NewStudentForm ns = new NewStudentForm())
             {
-                connection.Open();
-                ListViewItem item;
-                SqliteCommand commandmain = new SqliteCommand(sqlExpressionmain, connection);
-                commandmain.ExecuteNonQuery();
-                using (SqliteDataReader reader = commandmain.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        int i = 0;
-                        while (reader.Read())
-                        {
-                            if (!reader.IsDBNull(reader.GetOrdinal("olympiad_id")))
-                            {
-                                l.Add(reader.GetInt32(i));
-                            }
-
-                        }
-                    }
-                }
-                commandmain.Cancel();
-                commandmain.Connection = connection;
-                string sqlExpression = "SELECT * FROM olympiad";
-                SqliteCommand command = new SqliteCommand(sqlExpression, connection);
-                using (SqliteDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            for (int j = 0; j < l.Count; j++)
-                            {
-                                if (l[j] == reader.GetInt32(9))
-                                {
-                                    for (int i = 0; i < 10; i++)
-                                    {
-                                        arr[i] = reader.GetString(i);
-                                    }
-                                    item = new ListViewItem(arr);
-                                    listViewOlimp.Items.Add(item);
-                                }
-                            }
-
-                        }
-                    }
-                }
+                ns.ShowDialog();
             }
         }
-        private void buttonDisplayOlimp_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            listViewOlimp.Clear();
-            listViewOlimp.View = View.Details;
-            listViewOlimp.GridLines = true;
-            listViewOlimp.FullRowSelect = true;
-            addOlimpiads(DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()));
+            using (NewOlympiadForm ns = new NewOlympiadForm())
+            {
+                ns.ShowDialog();
+            }
         }
+
+        private void AddOlimpiads()
+        {
+            Adapter.InitializeListViewOlimpiads(listViewOlimp);
+            Adapter.FillOlimpiadsListVewAsync(listViewOlimp);
+        }
+      
         private void excel_Click(object sender, EventArgs e)
         {
+
+           
+
             IWorkbook workbook = new XSSFWorkbook();
             ISheet sheet1 = workbook.CreateSheet("Отчет");
             IRow row1 = sheet1.CreateRow(0);
@@ -266,40 +193,59 @@ namespace OlympicStudents
                 DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
                 DataBase.Delete("result", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
             }
-            UpdateDataStudent();
+            UpdateDataStudentAsync();
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (addOlimp.Enabled) { addOlimp.Enabled = false; }
-            else { addOlimp.Enabled = true; }
 
-        }
-
-        private void search_Click(object sender, EventArgs e)
+        private void search_Click_1(object sender, EventArgs e)
         {
 
             var res = DataBase.Search("student", "(fio || dateOfBirth || address || phone || groups || yearApplying || yearOfRelease || course || specialization )", $"{textBoxSearch.Text}");
             listViewStudent.Clear();
             ListViewItem item;
-            listViewStudent.Clear();
-            listViewStudent.View = View.Details;
-            listViewStudent.GridLines = true;
-            listViewStudent.FullRowSelect = true;
-            listViewStudent.Columns.Add("ФИО", 100);
-            listViewStudent.Columns.Add("Дата рождения");
-            listViewStudent.Columns.Add("Адрес");
-            listViewStudent.Columns.Add("Номер телефона");
-            listViewStudent.Columns.Add("Группа");
-            listViewStudent.Columns.Add("Дата поступления");
-            listViewStudent.Columns.Add("Дата выпуска");
-            listViewStudent.Columns.Add("Курс");
-            listViewStudent.Columns.Add("Сециализация");
+            Adapter.InitializeListViewSudent(listViewStudent);
             foreach (var i in res)
             {
                 item = new ListViewItem(i.ToArray());
                 listViewStudent.Items.Add(item);
             }
         }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var res = new List<List<string>>();
+            foreach (var selectedItem in checkedListBox1.CheckedItems)
+            {
+                res.AddRange(DataBase.Search("student", "specialization", selectedItem.ToString()));
+            }
+            listViewStudent.Clear();
+            ListViewItem item;
+            Adapter.InitializeListViewSudent(listViewStudent);
+            foreach (var i in res)
+            {
+                item = new ListViewItem(i.ToArray());
+                listViewStudent.Items.Add(item);
+            }
+
+        }
+
+        private void checkedListBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var res = new List<List<string>>();
+            foreach (var selectedItem in checkedListBox2.CheckedItems)
+            {
+                res.AddRange(DataBase.Search("student", "course", selectedItem.ToString()));
+            }
+            listViewStudent.Clear();
+            ListViewItem item;
+            Adapter.InitializeListViewSudent(listViewStudent);
+            foreach (var i in res)
+            {
+                item = new ListViewItem(i.ToArray());
+                listViewStudent.Items.Add(item);
+            }
+        }
+
+       
     }
 }

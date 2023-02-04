@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3iq6zQFCYM6NFbMo2cbGhczXbzcOra5IzeFlscMgDR2Ayy9+SsWjAfyen4q2sj1TInuIIpn+5CHaz2x8x9GUBw==",
+  "dgSpecHash": "YT3D9JUjtDe3VPGMdWwRghEYaGjTDH1IR1Yoo0TMMf5vJNq3e0jkRlD/5+luEsYvHuy7UaCUA2KqLi1ijbWkoQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\diman\\Documents\\Third course\\КПиЯП\\labs\\OlympicStudents\\OlympicStudents.csproj",
+  "projectFilePath": "C:\\Olympic\\OlympicStudents\\OlympicStudents.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\diman\\.nuget\\packages\\dotnetcore.npoi\\1.2.3\\dotnetcore.npoi.1.2.3.nupkg.sha512",
     "C:\\Users\\diman\\.nuget\\packages\\dotnetcore.npoi.core\\1.2.3\\dotnetcore.npoi.core.1.2.3.nupkg.sha512",
