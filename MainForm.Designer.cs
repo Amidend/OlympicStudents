@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
             this.buttonAddStudent = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.listViewStudent = new System.Windows.Forms.ListView();
             this.listViewOlimp = new System.Windows.Forms.ListView();
             this.excel = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tabMain = new System.Windows.Forms.TabControl();
             this.tabPageStudent = new System.Windows.Forms.TabPage();
             this.panelMenuStudents = new System.Windows.Forms.Panel();
@@ -89,6 +88,9 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPageExcel = new System.Windows.Forms.TabPage();
+            this.checkedListBoxCriteriaExcel = new System.Windows.Forms.CheckedListBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.tabMain.SuspendLayout();
             this.tabPageStudent.SuspendLayout();
             this.panelMenuStudents.SuspendLayout();
@@ -98,6 +100,7 @@
             this.splitContainer1.SuspendLayout();
             this.tabPageOlimpiad.SuspendLayout();
             this.tabPageExcel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAddStudent
@@ -130,9 +133,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewStudent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listViewStudent.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            listViewItem1.StateImageIndex = 0;
+            listViewItem3.StateImageIndex = 0;
             this.listViewStudent.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem3});
             this.listViewStudent.Location = new System.Drawing.Point(379, -3);
             this.listViewStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewStudent.MultiSelect = false;
@@ -146,7 +149,7 @@
             // listViewOlimp
             // 
             this.listViewOlimp.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem4});
             this.listViewOlimp.Location = new System.Drawing.Point(3, 3);
             this.listViewOlimp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewOlimp.MultiSelect = false;
@@ -158,22 +161,14 @@
             // 
             // excel
             // 
-            this.excel.Location = new System.Drawing.Point(32, 80);
+            this.excel.Location = new System.Drawing.Point(8, 201);
             this.excel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.excel.Name = "excel";
             this.excel.Size = new System.Drawing.Size(132, 22);
             this.excel.TabIndex = 6;
             this.excel.Text = "excel отчет";
             this.excel.UseVisualStyleBackColor = true;
-            this.excel.Click += new System.EventHandler(this.excel_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(6, 5);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(149, 23);
-            this.dateTimePicker1.TabIndex = 7;
+            this.excel.Click += new System.EventHandler(this.excel_ClickAsync);
             // 
             // tabMain
             // 
@@ -804,8 +799,10 @@
             // 
             // tabPageExcel
             // 
+            this.tabPageExcel.Controls.Add(this.checkedListBoxCriteriaExcel);
+            this.tabPageExcel.Controls.Add(this.label19);
+            this.tabPageExcel.Controls.Add(this.numericUpDown1);
             this.tabPageExcel.Controls.Add(this.excel);
-            this.tabPageExcel.Controls.Add(this.dateTimePicker1);
             this.tabPageExcel.Location = new System.Drawing.Point(4, 24);
             this.tabPageExcel.Name = "tabPageExcel";
             this.tabPageExcel.Padding = new System.Windows.Forms.Padding(3);
@@ -813,6 +810,50 @@
             this.tabPageExcel.TabIndex = 2;
             this.tabPageExcel.Text = "Отчёт";
             this.tabPageExcel.UseVisualStyleBackColor = true;
+            // 
+            // checkedListBoxCriteriaExcel
+            // 
+            this.checkedListBoxCriteriaExcel.FormattingEnabled = true;
+            this.checkedListBoxCriteriaExcel.Items.AddRange(new object[] {
+            "Правоведение",
+            "Коммерческая деятельность",
+            "Банковское дело",
+            "Бухгалтерский учет, анализ и контроль",
+            "Операционная логистика",
+            "Экономика и организация производства",
+            "Программное обеспечение информационных технологий"});
+            this.checkedListBoxCriteriaExcel.Location = new System.Drawing.Point(8, 48);
+            this.checkedListBoxCriteriaExcel.MultiColumn = true;
+            this.checkedListBoxCriteriaExcel.Name = "checkedListBoxCriteriaExcel";
+            this.checkedListBoxCriteriaExcel.Size = new System.Drawing.Size(143, 148);
+            this.checkedListBoxCriteriaExcel.TabIndex = 10;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(8, 14);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(102, 21);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "Учебный год";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(164, 17);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 23);
+            this.numericUpDown1.TabIndex = 8;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            2023,
+            0,
+            0,
+            0});
             // 
             // MainForm
             // 
@@ -840,6 +881,8 @@
             this.tabPageOlimpiad.ResumeLayout(false);
             this.tabPageOlimpiad.PerformLayout();
             this.tabPageExcel.ResumeLayout(false);
+            this.tabPageExcel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -850,7 +893,6 @@
         private ListView listViewStudent;
         private ListView listViewOlimp;
         private Button excel;
-        private DateTimePicker dateTimePicker1;
         private TabControl tabMain;
         private TabPage tabPageStudent;
         private TabPage tabPageOlimpiad;
@@ -904,5 +946,8 @@
         private CheckedListBox checkedListBoxAvards;
         private Label label18;
         private Label label17;
+        private NumericUpDown numericUpDown1;
+        private CheckedListBox checkedListBoxCriteriaExcel;
+        private Label label19;
     }
 }

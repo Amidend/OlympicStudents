@@ -37,8 +37,6 @@ namespace OlympicStudents
 
             UpdateDataStudentAsync();
             UpdateDataOlimpiadsAsync();
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.CustomFormat = "yyyy-MM-dd";
         }
 
         private void buttonAddStudent_Click(object sender, EventArgs e)
@@ -47,6 +45,7 @@ namespace OlympicStudents
             {
                 ns.ShowDialog();
             }
+            UpdateDataStudentAsync();
         }
 
         private void AddOlimpiads_Click(object sender, EventArgs e)
@@ -55,6 +54,7 @@ namespace OlympicStudents
             {
                 ns.ShowDialog();
             }
+            UpdateDataOlimpiadsAsync();
         }
 
         private void UpdateDataOlimpiadsAsync()
@@ -62,8 +62,6 @@ namespace OlympicStudents
             Adapter.InitializeListViewOlimpiads(listViewOlimp);
             Adapter.FillOlimpiadsListVewAsync(listViewOlimp);
         }
-
-
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
@@ -310,88 +308,77 @@ namespace OlympicStudents
             }
             UpdateDataOlimpiadsAsync();
         }
-        private void excel_Click(object sender, EventArgs e)
+        private void excel_ClickAsync(object sender, EventArgs e)
         {
-
-
+            List<string> criteriaList = new List<string>();
+            foreach (var SearchItem in checkedListBoxSearch.CheckedItems)
+            {
+                switch (SearchItem.ToString())
+                {
+                    case "Правоведение":
+                        criteriaList.Add("Правоведение");
+                        break;
+                    case "Коммерческая деятельность":
+                        criteriaList.Add("Коммерческая деятельность");
+                        break;
+                    case "Банковское дело":
+                        criteriaList.Add("Банковское дело");
+                        break;
+                    case "Бухгалтерский учет, анализ и контроль":
+                        criteriaList.Add("Бухгалтерский учет, анализ и контроль");
+                        break;
+                    case "Операционная логистика":
+                        criteriaList.Add("Операционная логистика");
+                        break;
+                    case "Экономика и организация производства":
+                        criteriaList.Add("Экономика и организация производства");
+                        break;
+                    case "Программное обеспечение информационных технологий":
+                        criteriaList.Add("Программное обеспечение информационных технологий");
+                        break;
+                }
+            }
+            string searchCriteria;
+            if (criteriaList.Count == 0)
+            {
+                searchCriteria = "Правоведение||Коммерческая деятельность||Банковское дело||Бухгалтерский учет, анализ и контроль||Операционная логистика||Экономика и организация производства||Программное обеспечение информационных технологий";
+            }
+            else
+            {
+                searchCriteria = string.Join(" || ", criteriaList);
+            }
+          
 
             IWorkbook workbook = new XSSFWorkbook();
             ISheet sheet1 = workbook.CreateSheet("Отчет");
             IRow row1 = sheet1.CreateRow(0);
-            row1.CreateCell(0).SetCellValue("Дата проведения");
-            row1.CreateCell(1).SetCellValue("Уровень");
-            row1.CreateCell(2).SetCellValue("Вид");
+            row1.CreateCell(0).SetCellValue("ФИО");
+            row1.CreateCell(1).SetCellValue("Название Оимпиады");
+            row1.CreateCell(2).SetCellValue("Дата проведения");
             row1.CreateCell(3).SetCellValue("Награды");
             row1.CreateCell(4).SetCellValue("Поощерение");
-            row1.CreateCell(5).SetCellValue("Номинации");
-            row1.CreateCell(6).SetCellValue("Продолжительность");
-            row1.CreateCell(7).SetCellValue("Название Оимпиады");
-            row1.CreateCell(8).SetCellValue("Местопроведения");
-            List<int> size = findByids();
+            List<int> size = DataBase.findByids(numericUpDown1);
+
             for (int k = 0; k < size.Count; k++)
             {
-                using (var connection = new SqliteConnection("Data Source=data.db"))
+                var student_id = DataBase.FindStudentByOlimpyad(size[k].ToString());
+                List<string> Olympyad =  DataBase.FindOlimpyadById(size[k].ToString());
+                List<string> Student =  DataBase.GetStuentInfofrmationAndSp(student_id.ToString(), searchCriteria);
+                
+                if (Student.Count > 0)
                 {
-                    connection.Open();
-
-                    SqliteCommand command = new SqliteCommand($"SELECT * FROM olympiad WHERE olympiad_id='{size[k].ToString()}'", connection);
-                    using (SqliteDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                IRow row = sheet1.CreateRow(k + 1);
-                                for (int i = 0; i < 9; i++)
-                                {
-                                    row.CreateCell(i).SetCellValue(reader.GetString(i));
-                                }
-                            }
-                        }
-                    }
-                    command.Cancel(); command.Cancel();
+                    IRow row = sheet1.CreateRow(k + 1);
+                    row.CreateCell(0).SetCellValue(Student[0]);
+                    row.CreateCell(1).SetCellValue(Olympyad[7]);
+                    row.CreateCell(2).SetCellValue(Olympyad[0]);
+                    row.CreateCell(3).SetCellValue(Olympyad[3]);
+                    row.CreateCell(4).SetCellValue(Olympyad[4]);
                 }
             }
             FileStream sw = File.Create("test.xlsx");
             workbook.Write(sw);
             sw.Close();
         }
-        private List<int> findByids()
-        {
-            DateTime date = dateTimePicker1.Value.AddMonths(-8);
-            DateTime start, end;
-            var month = date.Month;
-            var year = date.Year;
-            if (month <= 8)
-            {
-                start = new DateTime(year, 9, 1);
-                end = new DateTime(year + 1, 8, 30);
-            }
-            else
-            {
-                start = new DateTime(year, 9, 1);
-                end = new DateTime(year + 1, 8, 31);
-            }
-            using (var connection = new SqliteConnection("Data Source=data.db"))
-            {
-                connection.Open();
-                List<int> res = new List<int>();
-                int k = 9;
-                MessageBox.Show($"'{start.ToString("yyyy-MM-dd")}''{end.ToString("yyyy-MM-dd")}'");
-                SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM olympiad WHERE dates BETWEEN '{start.ToString("yyyy-MM-dd")}' AND '{end.ToString("yyyy-MM-dd")}'", connection);
-                using (SqliteDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            res.Add(reader.GetInt32(0));
-                        }
-                    }
-                }
-                command.Cancel(); command.Cancel();
-                return res;
-            }
-        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
@@ -89,6 +90,30 @@ namespace StudentInfo
             }
             return items;
         }
+        public static List<string> FindOlimpyadById(string id)
+        {
+            List<string> list = new List<string>();
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+                SqliteCommand command = new SqliteCommand($"SELECT * FROM olympiad WHERE olympiad_id='{id.ToString()}'", connection);
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            for (int i = 0; i < 9; i++)
+                            {
+                                list.Add(reader.GetString(i));
+                            }
+                        }
+                    }
+                }
+                command.Cancel(); command.Cancel();
+                return list;
+            }
+        }
         public static int FindStudentById(string s)
         {
             using (var connection = new SqliteConnection("Data Source=data.db"))
@@ -131,13 +156,13 @@ namespace StudentInfo
                 return res;
             }
         }
+
         public static async Task<List<string>> GetStuentInformation(string id)
         {
             List<string> list = new List<string>();
             using (var connection = new SqliteConnection("Data Source=data.db"))
             {
                 connection.Open();
-                int res = -1;
                 SqliteCommand command = new SqliteCommand($"SELECT * FROM student WHERE student_id = '{id}'", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
@@ -155,6 +180,35 @@ namespace StudentInfo
                 command.Cancel(); command.Cancel();
                 return list;
             }
+        }
+        public static List<string> GetStuentInfofrmationAndSp(string id,string searchCriteria)
+        {
+            List<string> list = new List<string>();
+            string[] searchCriterias = searchCriteria.Split("||");
+
+            foreach (var criteria in searchCriterias)
+            {
+                using (var connection = new SqliteConnection("Data Source=data.db"))
+                {
+                    connection.Open();
+                    SqliteCommand command = new SqliteCommand($"SELECT * FROM student WHERE student_id = '{id}' AND specialization = '{criteria}'", connection);
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                for (int i = 0; i < 9; i++)
+                                {
+                                    list.Add(reader.GetString(i));
+                                }
+                            }
+                        }
+                    }
+                    command.Cancel();
+                }
+            }
+            return list;
         }
         public static void Delete(string table, string row, string where, string result)
         {
@@ -197,6 +251,32 @@ namespace StudentInfo
                         }
                     }
                 }
+            }
+        }
+        public static List<int> findByids(NumericUpDown numericUpDown1)
+        {
+            int academicYear = (int)numericUpDown1.Value;
+            DateTime start = new DateTime(academicYear, 9, 1);
+            DateTime end = new DateTime(academicYear+1, 8, 31);
+
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+                List<int> res = new List<int>();
+
+                SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM olympiad WHERE dates BETWEEN '{start.ToString("yyyy-MM-dd")}' AND '{end.ToString("yyyy-MM-dd")}'", connection);
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            res.Add(reader.GetInt32(0));
+                        }
+                    }
+                }
+                command.Cancel(); command.Cancel();
+                return res;
             }
         }
     }
