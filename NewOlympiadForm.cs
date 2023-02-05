@@ -60,7 +60,6 @@ namespace OlympicStudents
                             while (reader.Read())
                             {
                                 res = reader.GetInt32(0);
-                                MessageBox.Show(res.ToString());
                             }
                         }
                     }

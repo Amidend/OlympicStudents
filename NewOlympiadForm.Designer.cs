@@ -190,15 +190,10 @@
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
             "Диплом I степени",
-            "",
             "Диплом II степени",
-            "",
             "Диплом III степени",
-            "",
             "Грамота",
-            "",
             "Сертификат",
-            "",
             "Без награды"});
             this.comboBox3.Location = new System.Drawing.Point(119, 282);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -211,12 +206,9 @@
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
             "Благодарность",
-            "",
             "Доска почета",
             "Именная стипендия",
-            "",
             "Скидка в оплате за обучение",
-            "",
             "Без поощрения"});
             this.comboBox4.Location = new System.Drawing.Point(119, 312);
             this.comboBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

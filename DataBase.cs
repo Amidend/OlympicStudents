@@ -95,7 +95,7 @@ namespace StudentInfo
             {
                 connection.Open();
                 int res = -1;
-                SqliteCommand command = new SqliteCommand($"SELECT student_id FROM student WHERE fio LIKE '{s}%'", connection);
+                SqliteCommand command = new SqliteCommand($"SELECT student_id FROM student WHERE fio LIKE '{s}'", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)
@@ -110,62 +110,50 @@ namespace StudentInfo
                 return res;
             }
         }
-        public static string? GetID(string table, string column, string where, string result)
+        public static int FindStudentByOlimpyad(string id)
         {
-            string? id = null;
             using (var connection = new SqliteConnection("Data Source=data.db"))
             {
                 connection.Open();
-
-                SqliteCommand command = new SqliteCommand($"SELECT {column} FROM {table} WHERE {where} = '{result}'", connection);
+                int res = -1;
+                SqliteCommand command = new SqliteCommand($"SELECT student_id FROM result WHERE olympiad_id = '{id}'", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
-                    if (reader.HasRows) // если есть данные
+                    if (reader.HasRows)
                     {
-                        while (reader.Read())   // построчно считываем данные
+                        while (reader.Read())
                         {
-                            try
-                            {
-                                id = reader.GetString(0);
-                            }
-                            catch (Exception) { }
+                            res = reader.GetInt32(0);
                         }
                     }
                 }
+                command.Cancel(); command.Cancel();
+                return res;
             }
-            return id;
         }
-        public static string Read(string table, string column, string where, string result)
+        public static async Task<List<string>> GetStuentInformation(string id)
         {
-            string value = "1";
+            List<string> list = new List<string>();
             using (var connection = new SqliteConnection("Data Source=data.db"))
             {
                 connection.Open();
-
-                SqliteCommand comm = new SqliteCommand($"SELECT {column} FROM {table} WHERE {where}='{result}'", connection);
-                using (SqliteDataReader reader = comm.ExecuteReader())
+                int res = -1;
+                SqliteCommand command = new SqliteCommand($"SELECT * FROM student WHERE student_id = '{id}'", connection);
+                using (SqliteDataReader reader = command.ExecuteReader())
                 {
-                    if (reader.HasRows) // если есть данные
+                    if (reader.HasRows)
                     {
-                        while (reader.Read())   // построчно считываем данные
+                        while (await reader.ReadAsync())
                         {
-                            value = reader.GetString(column);// + 1;
+                            for (int i = 0; i < 9; i++)
+                            {
+                                list.Add(reader.GetString(i));
+                            }
                         }
                     }
-
                 }
-            }
-            return value;
-        }
-        public static void Update(string table, string colums, string value_to_update, string where, string result)
-        {
-            using (var connection = new SqliteConnection("Data Source=data.db"))
-            {
-                connection.Open();
-
-                SqliteCommand command = new SqliteCommand($"UPDATE {table} SET {colums}='{value_to_update}' WHERE {where}='{result}'", connection);
-
-                command.ExecuteNonQuery();
+                command.Cancel(); command.Cancel();
+                return list;
             }
         }
         public static void Delete(string table, string row, string where, string result)

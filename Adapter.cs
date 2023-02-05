@@ -87,7 +87,7 @@ namespace OlympicStudents
                 listViewStudent.Items.Add(item);
             }
         }
-        public static async Task StudentOlympiadsAsync(ListView listViewStudent,int id)
+        public static async Task FillStudentOlympiadsAsync(ListView listViewStudent, int id)
         {
             var items = await DataBase.GetAllOlympiadsByStudentIdAsync(id);
             foreach (var item in items)
@@ -95,11 +95,28 @@ namespace OlympicStudents
                 listViewStudent.Items.Add(item);
             }
         }
-        public static async Task SearchByStudetsCategories() 
-        { 
-        
-        
+        public static async Task FillStudentInformationAsync(int id, List<Label> labels)
+        {
+            var items = await DataBase.GetStuentInformation(id.ToString());
+            if (items.Count == 9)
+            {
+                labels[0].Text = items[0];
+                labels[1].Text = items[1];
+                labels[2].Text = items[2];
+
+                string[] phoneNumbers = items[3].Split('|');
+                labels[3].Text = phoneNumbers.Length >= 1 ? phoneNumbers[0] : "";
+                labels[4].Text = phoneNumbers.Length >= 2 ? phoneNumbers[1] : "";
+                labels[5].Text = phoneNumbers.Length >= 3 ? phoneNumbers[2] : "";
+
+                labels[6].Text = items[4];
+                labels[7].Text = items[5];
+                labels[8].Text = items[6];
+                labels[9].Text = items[7];
+                labels[10].Text = items[8];
+            }
         }
+
     }
     class ListViewItemComparer : IComparer
     {
