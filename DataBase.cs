@@ -258,13 +258,12 @@ namespace StudentInfo
             int academicYear = (int)numericUpDown1.Value;
             DateTime start = new DateTime(academicYear, 9, 1);
             DateTime end = new DateTime(academicYear+1, 8, 31);
-
             using (var connection = new SqliteConnection("Data Source=data.db"))
             {
                 connection.Open();
                 List<int> res = new List<int>();
 
-                SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM olympiad WHERE dates BETWEEN '{start.ToString("yyyy-MM-dd")}' AND '{end.ToString("yyyy-MM-dd")}'", connection);
+                SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM olympiad WHERE dates BETWEEN '{start.ToString("yyyy.MM.dd")}' AND '{end.ToString("yyyy.MM.dd")}'", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)

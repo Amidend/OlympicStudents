@@ -311,7 +311,7 @@ namespace OlympicStudents
         private void excel_ClickAsync(object sender, EventArgs e)
         {
             List<string> criteriaList = new List<string>();
-            foreach (var SearchItem in checkedListBoxSearch.CheckedItems)
+            foreach (var SearchItem in checkedListBoxCriteriaExcel.CheckedItems)
             {
                 switch (SearchItem.ToString())
                 {
@@ -345,7 +345,7 @@ namespace OlympicStudents
             }
             else
             {
-                searchCriteria = string.Join(" || ", criteriaList);
+                searchCriteria = string.Join("||", criteriaList);
             }
           
 
@@ -358,7 +358,7 @@ namespace OlympicStudents
             row1.CreateCell(3).SetCellValue("Награды");
             row1.CreateCell(4).SetCellValue("Поощерение");
             List<int> size = DataBase.findByids(numericUpDown1);
-
+            int i = 0;
             for (int k = 0; k < size.Count; k++)
             {
                 var student_id = DataBase.FindStudentByOlimpyad(size[k].ToString());
@@ -367,12 +367,13 @@ namespace OlympicStudents
                 
                 if (Student.Count > 0)
                 {
-                    IRow row = sheet1.CreateRow(k + 1);
+                    IRow row = sheet1.CreateRow(i + 1);
                     row.CreateCell(0).SetCellValue(Student[0]);
                     row.CreateCell(1).SetCellValue(Olympyad[7]);
                     row.CreateCell(2).SetCellValue(Olympyad[0]);
                     row.CreateCell(3).SetCellValue(Olympyad[3]);
                     row.CreateCell(4).SetCellValue(Olympyad[4]);
+                    i++;
                 }
             }
             FileStream sw = File.Create("test.xlsx");
