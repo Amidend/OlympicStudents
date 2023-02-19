@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.Sqlite;
+using OlympicStudents;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
@@ -9,7 +10,7 @@ namespace StudentInfo
 {
     internal abstract class DataBase
     {
-        public static async Task<List<ListViewItem>> GetAllFromTableAsync(string table,int n)
+        public static async Task<List<ListViewItem>> GetAllFromTableAsync(string table, int n)
         {
             List<ListViewItem> items = new List<ListViewItem>();
             using (var connection = new SqliteConnection("Data Source=data.db"))
@@ -181,7 +182,7 @@ namespace StudentInfo
                 return list;
             }
         }
-        public static List<string> GetStuentInfofrmationAndSp(string id,string searchCriteria)
+        public static List<string> GetStuentInfofrmationAndSp(string id, string searchCriteria)
         {
             List<string> list = new List<string>();
             string[] searchCriterias = searchCriteria.Split("||");
@@ -238,9 +239,9 @@ namespace StudentInfo
                 SqliteCommand command = new SqliteCommand($"SELECT * FROM {table} WHERE {where} LIKE '%{key}%'", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
-                    if (reader.HasRows) 
+                    if (reader.HasRows)
                     {
-                        while (reader.Read())   
+                        while (reader.Read())
                         {
                             results.Clear();
                             for (int i = 0; i < 9; i++)
@@ -257,7 +258,7 @@ namespace StudentInfo
         {
             int academicYear = (int)numericUpDown1.Value;
             DateTime start = new DateTime(academicYear, 9, 1);
-            DateTime end = new DateTime(academicYear+1, 8, 31);
+            DateTime end = new DateTime(academicYear + 1, 8, 31);
             using (var connection = new SqliteConnection("Data Source=data.db"))
             {
                 connection.Open();
@@ -278,5 +279,75 @@ namespace StudentInfo
                 return res;
             }
         }
+        public static List<Dictionary<string, string>> MultiSearch(string tableName, List<string> searchFields, List<string> searchValues)
+        {
+            // Get the data source from the table name
+            List<Dictionary<string, string>> dataSource = GetData(tableName);
+
+            // Create a list to store the search results
+            List<Dictionary<string, string>> searchResults = new List<Dictionary<string, string>>();
+
+            // Perform the search
+            foreach (var row in dataSource)
+            {
+                bool matchesAllFields = true;
+
+                // Check each search field against the corresponding value in the row
+                for (int i = 0; i < searchFields.Count; i++)
+                {
+                    if (!row[searchFields[i]].Contains(searchValues[i]))
+                    {
+                        matchesAllFields = false;
+                        break;
+                    }
+                }
+
+                // If all search fields match, add the row to the search results
+                if (matchesAllFields)
+                {
+                    searchResults.Add(row);
+                }
+            }
+
+            return searchResults;
+        }
+
+
+
+        public static List<Dictionary<string, string>> GetData(string tableName)
+        {
+            List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();
+
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = $"SELECT * FROM {tableName}";
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Dictionary<string, string> row = new Dictionary<string, string>();
+
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                string fieldName = reader.GetName(i);
+                                string value = reader.IsDBNull(i) ? null : reader.GetString(i);
+                                row.Add(fieldName, value);
+                            }
+
+                            data.Add(row);
+                        }
+                    }
+                }
+            }
+
+            return data;
+        }
+
     }
 }
+

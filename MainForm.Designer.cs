@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.buttonAddStudent = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.listViewStudent = new System.Windows.Forms.ListView();
@@ -85,7 +85,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.DeleteOlimp = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPageExcel = new System.Windows.Forms.TabPage();
             this.checkedListBoxCriteriaExcel = new System.Windows.Forms.CheckedListBox();
@@ -123,7 +123,7 @@
             this.buttonDelete.TabIndex = 1;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            this.buttonDelete.Click += new System.EventHandler(this.deleteStudents_Click);
             // 
             // listViewStudent
             // 
@@ -133,9 +133,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewStudent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listViewStudent.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            listViewItem3.StateImageIndex = 0;
+            listViewItem1.StateImageIndex = 0;
             this.listViewStudent.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem1});
             this.listViewStudent.Location = new System.Drawing.Point(379, -3);
             this.listViewStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewStudent.MultiSelect = false;
@@ -149,7 +149,7 @@
             // listViewOlimp
             // 
             this.listViewOlimp.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4});
+            listViewItem2});
             this.listViewOlimp.Location = new System.Drawing.Point(3, 3);
             this.listViewOlimp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewOlimp.MultiSelect = false;
@@ -168,7 +168,7 @@
             this.excel.TabIndex = 6;
             this.excel.Text = "excel отчет";
             this.excel.UseVisualStyleBackColor = true;
-            this.excel.Click += new System.EventHandler(this.excel_ClickAsync);
+            this.excel.Click += new System.EventHandler(this.excelReport_ClickAsync);
             // 
             // tabMain
             // 
@@ -225,7 +225,7 @@
             this.buttonDumping.TabIndex = 18;
             this.buttonDumping.Text = "Сборс";
             this.buttonDumping.UseVisualStyleBackColor = true;
-            this.buttonDumping.Click += new System.EventHandler(this.buttonDumping_Click);
+            this.buttonDumping.Click += new System.EventHandler(this.buttonDumpingStudents_Click);
             // 
             // checkedListBoxSearch
             // 
@@ -260,7 +260,7 @@
             this.checkedListBoxCourse.Name = "checkedListBoxCourse";
             this.checkedListBoxCourse.Size = new System.Drawing.Size(304, 76);
             this.checkedListBoxCourse.TabIndex = 16;
-            this.checkedListBoxCourse.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxCourse_SelectedIndexChanged);
+            this.checkedListBoxCourse.SelectedIndexChanged += new System.EventHandler(this.checkBoxesStudents_CheckedChanged);
             // 
             // checkedListBoxSpecialization
             // 
@@ -278,7 +278,7 @@
             this.checkedListBoxSpecialization.Name = "checkedListBoxSpecialization";
             this.checkedListBoxSpecialization.Size = new System.Drawing.Size(304, 130);
             this.checkedListBoxSpecialization.TabIndex = 16;
-            this.checkedListBoxSpecialization.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxSpecialization_SelectedIndexChanged);
+            this.checkedListBoxSpecialization.SelectedIndexChanged += new System.EventHandler(this.checkBoxesStudents_CheckedChanged);
             // 
             // label11
             // 
@@ -317,7 +317,7 @@
             this.search.TabIndex = 10;
             this.search.Text = "Поиск";
             this.search.UseVisualStyleBackColor = true;
-            this.search.Click += new System.EventHandler(this.buttonSearch_Click);
+            this.search.Click += new System.EventHandler(this.buttonSearchStudents_Click);
             // 
             // splitContainer1
             // 
@@ -387,7 +387,7 @@
             this.tabPageOlimpiad.Controls.Add(this.label14);
             this.tabPageOlimpiad.Controls.Add(this.label21);
             this.tabPageOlimpiad.Controls.Add(this.label2);
-            this.tabPageOlimpiad.Controls.Add(this.button2);
+            this.tabPageOlimpiad.Controls.Add(this.DeleteOlimp);
             this.tabPageOlimpiad.Controls.Add(this.button1);
             this.tabPageOlimpiad.Controls.Add(this.listViewOlimp);
             this.tabPageOlimpiad.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -441,6 +441,7 @@
             this.checkedListBoxEnco.Name = "checkedListBoxEnco";
             this.checkedListBoxEnco.Size = new System.Drawing.Size(378, 58);
             this.checkedListBoxEnco.TabIndex = 6;
+            this.checkedListBoxEnco.SelectedIndexChanged += new System.EventHandler(this.checkBoxesOlimp_CheckedChanged);
             // 
             // checkedListBoxAvards
             // 
@@ -458,6 +459,7 @@
             this.checkedListBoxAvards.Name = "checkedListBoxAvards";
             this.checkedListBoxAvards.Size = new System.Drawing.Size(378, 58);
             this.checkedListBoxAvards.TabIndex = 6;
+            this.checkedListBoxAvards.SelectedIndexChanged += new System.EventHandler(this.checkBoxesOlimp_CheckedChanged);
             // 
             // checkedListBoxType
             // 
@@ -471,6 +473,7 @@
             this.checkedListBoxType.Name = "checkedListBoxType";
             this.checkedListBoxType.Size = new System.Drawing.Size(378, 22);
             this.checkedListBoxType.TabIndex = 6;
+            this.checkedListBoxType.SelectedIndexChanged += new System.EventHandler(this.checkBoxesOlimp_CheckedChanged);
             // 
             // checkedListBoxLevel
             // 
@@ -487,6 +490,7 @@
             this.checkedListBoxLevel.Name = "checkedListBoxLevel";
             this.checkedListBoxLevel.Size = new System.Drawing.Size(378, 40);
             this.checkedListBoxLevel.TabIndex = 6;
+            this.checkedListBoxLevel.SelectedIndexChanged += new System.EventHandler(this.checkBoxesOlimp_CheckedChanged);
             // 
             // checkedListBoxSearchOlipyad
             // 
@@ -777,15 +781,15 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "ФИО";
             // 
-            // button2
+            // DeleteOlimp
             // 
-            this.button2.Location = new System.Drawing.Point(1510, 940);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(175, 30);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Удалить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.DeleteOlimp.Location = new System.Drawing.Point(1510, 940);
+            this.DeleteOlimp.Name = "DeleteOlimp";
+            this.DeleteOlimp.Size = new System.Drawing.Size(175, 30);
+            this.DeleteOlimp.TabIndex = 4;
+            this.DeleteOlimp.Text = "Удалить";
+            this.DeleteOlimp.UseVisualStyleBackColor = true;
+            this.DeleteOlimp.Click += new System.EventHandler(this.deleteOlimpyad_Click);
             // 
             // button1
             // 
@@ -795,7 +799,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Добавить олимпиаду";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.AddOlimpiads_Click);
+            this.button1.Click += new System.EventHandler(this.addOlimpiads_Click);
             // 
             // tabPageExcel
             // 
@@ -909,7 +913,7 @@
         private Button button1;
         private CheckedListBox checkedListBoxSearch;
         private Button buttonDumping;
-        private Button button2;
+        private Button DeleteOlimp;
         private Label labelph3;
         private Label label10;
         private Label labeldob;

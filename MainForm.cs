@@ -2,19 +2,13 @@ using NPOI.XSSF.UserModel;
 using Microsoft.Data.Sqlite;
 using NPOI.SS.UserModel;
 using StudentInfo;
-using System.Collections;
-using System.Windows.Forms;
 
 namespace OlympicStudents
 {
     public partial class MainForm : Form
     {
 
-        private async void UpdateDataStudentAsync()
-        {
-            Adapter.InitializeListViewSudent(listViewStudent);
-            Adapter.FillStudentListVewAsync(listViewStudent);
-        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -35,75 +29,163 @@ namespace OlympicStudents
 
             splitContainer1.Panel2.Controls.Add(bottomPanel);
 
-            UpdateDataStudentAsync();
-            UpdateDataOlimpiadsAsync();
+            updateDataStudentAsync();
+            updateDataOlimpiadsAsync();
+        }
+        //Чек боксики
+        private void checkBoxesStudents_CheckedChanged(object sender, EventArgs e)
+        {
+            var selectedSpecializations = checkedListBoxSpecialization.CheckedItems.Cast<string>().ToList();
+            var selectedCourses = checkedListBoxCourse.CheckedItems.Cast<string>().ToList();
+
+            var res = new List<List<string>>();
+            if (selectedSpecializations.Any() && selectedCourses.Any())
+            {
+                // Both checkboxes have selected items, so we search the database
+                foreach (var selectedSpec in selectedSpecializations)
+                {
+                    foreach (var selectedCourse in selectedCourses)
+                    {
+                        res.AddRange(DataBase.Search("student", "specialization", selectedSpec)
+                            .Where(s => s.Contains(selectedCourse) && !res.Any(r => r[0] == s[0])));
+                    }
+                }
+            }
+            else if (selectedSpecializations.Any())
+            {
+                // Only the specializations checkbox has selected items
+                foreach (var selectedSpec in selectedSpecializations)
+                {
+                    res.AddRange(DataBase.Search("student", "specialization", selectedSpec));
+                }
+            }
+            else if (selectedCourses.Any())
+            {
+                // Only the courses checkbox has selected items
+                foreach (var selectedCourse in selectedCourses)
+                {
+                    res.AddRange(DataBase.Search("student", "course", selectedCourse)
+                        .Where(s => !res.Any(r => r[0] == s[0])));
+                }
+            }
+
+
+            ListViewItem item;
+            Adapter.InitializeListViewSudent(listViewStudent);
+            foreach (var i in res)
+            {
+                item = new ListViewItem(i.ToArray());
+                listViewStudent.Items.Add(item);
+            }
+            if (selectedCourses.Count == 0 && selectedSpecializations.Count == 0)
+            {
+                updateDataStudentAsync();
+            }
+        }
+        private void checkBoxesOlimp_CheckedChanged(object sender, EventArgs e)
+        {
+
+            var selectedAvards = checkedListBoxAvards.CheckedItems.Cast<string>().ToList();
+            var selectedEnco = checkedListBoxEnco.CheckedItems.Cast<string>().ToList();
+            var selectedLevel = checkedListBoxLevel.CheckedItems.Cast<string>().ToList();
+            var selectedType = checkedListBoxType.CheckedItems.Cast<string>().ToList();
+
+            var searchFields = new List<string>();
+            var searchValues = new List<string>();
+            var searchResults = new List<List<string>>();
+
+            if (selectedAvards.Any())
+            {
+                searchFields.Add("awards");
+                searchValues.AddRange(selectedAvards);
+            }
+
+            if (selectedEnco.Any())
+            {
+                searchFields.Add("encouragement");
+                searchValues.AddRange(selectedEnco);
+            }
+
+            if (selectedLevel.Any())
+            {
+                searchFields.Add("level");
+                searchValues.AddRange(selectedLevel);
+            }
+
+            if (selectedType.Any())
+            {
+                searchFields.Add("type");
+                searchValues.AddRange(selectedType);
+            }
+
+            if (searchFields.Any())
+            {
+                searchResults = DataBase.MultiSearch("olympiad", searchFields, searchValues)
+     .Select(dict => dict.Values.ToList())
+     .ToList();
+            }
+
+            // Add the items to the list view
+            ListViewItem item;
+            Adapter.InitializeListViewOlimpiads(listViewOlimp);
+            foreach (var i in searchResults)
+            {
+                item = new ListViewItem(i.ToArray());
+                listViewOlimp.Items.Add(item);
+            }
+
+
+            // If no checkboxes are selected, update the data asynchronously
+            if (selectedAvards.Count == 0 && selectedEnco.Count == 0 && selectedLevel.Count == 0 && selectedType.Count == 0)
+            {
+                updateDataOlimpiadsAsync();
+            }
         }
 
+        //Добавление(новые формочки)
         private void buttonAddStudent_Click(object sender, EventArgs e)
         {
             using (NewStudentForm ns = new NewStudentForm())
             {
                 ns.ShowDialog();
             }
-            UpdateDataStudentAsync();
+            updateDataStudentAsync();
         }
-
-        private void AddOlimpiads_Click(object sender, EventArgs e)
+        private void addOlimpiads_Click(object sender, EventArgs e)
         {
             using (NewOlympiadForm ns = new NewOlympiadForm())
             {
                 ns.ShowDialog();
             }
-            UpdateDataOlimpiadsAsync();
+            updateDataOlimpiadsAsync();
         }
-
-        private void UpdateDataOlimpiadsAsync()
+        //Когда нажал на табличку
+        private void listViewStudents_MouseOneClick(object sender, MouseEventArgs e)
         {
-            Adapter.InitializeListViewOlimpiads(listViewOlimp);
-            Adapter.FillOlimpiadsListVewAsync(listViewOlimp);
+            try
+            {
+                int index = listViewStudent.SelectedIndices[0];
+                string studentId = (listViewStudent.Items[index].SubItems[0].Text);
+                int id = DataBase.FindStudentById(studentId);
+                Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
+                Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id);
+            }
+            catch (Exception ex) { }
         }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
+        private void listViewOlimp_MouseOneClick(object sender, MouseEventArgs e)
         {
-            if ((listViewStudent.SelectedItems.Count > 0) && !(listViewOlympiadsOfStudent.SelectedItems.Count > 0))
+            try
             {
-                List<int?> res = new List<int?>();
-                using (var connection = new SqliteConnection("Data Source=data.db"))
-                {
-                    connection.Open();
-                    int k = 9;
-
-                    SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM result WHERE student_id='{DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString()}'", connection);
-                    using (SqliteDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                if (reader.IsDBNull(0)) continue;
-                                else res?.Add(reader?.GetInt32(0));
-                            }
-                        }
-                    }
-                    command.Cancel(); command.Cancel();
-                }
-                for (int i = 0; i < res.Count; i++)
-                {
-                    DataBase.Delete("olympiad", "", "olympiad_id", res[i].ToString());
-
-                    DataBase.Delete("result", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
-                }
-                DataBase.Delete("student", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
+                int index = listViewOlimp.SelectedIndices[0];
+                string studentId = (listViewOlimp.Items[index].SubItems[9].Text);
+                int id = DataBase.FindStudentByOlimpyad(studentId);
+                List<Label> labels = new List<Label>() { labelfio, labeldob, labeladd, labelph1, labelph2, labelph3, labelgro, labelyap, labelyor, labelcou, labelspe };
+                Adapter.FillStudentInformationAsync(id, labels);
             }
-            if ((listViewStudent.SelectedItems.Count > 0) && (listViewOlympiadsOfStudent.SelectedItems.Count > 0))
-            {
-                DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlympiadsOfStudent.SelectedItems[0].SubItems[9].Text.ToString()}");
-                DataBase.Delete("result", "", "olympiad_id", $"{listViewOlympiadsOfStudent.SelectedItems[0].SubItems[9].Text.ToString()}");
-            }
-            listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
+            catch (Exception ex) { }
         }
-
-        private void buttonSearch_Click(object sender, EventArgs e)
+        //Поиск
+        private void buttonSearchStudents_Click(object sender, EventArgs e)
         {
             List<string> criteriaList = new List<string>();
             foreach (var SearchItem in checkedListBoxSearch.CheckedItems)
@@ -157,91 +239,6 @@ namespace OlympicStudents
                 listViewStudent.Items.Add(item);
             }
         }
-
-        private void checkedListBoxSpecialization_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var res = new List<List<string>>();
-            foreach (var selectedItem in checkedListBoxSpecialization.CheckedItems)
-            {
-                res.AddRange(DataBase.Search("student", "specialization", selectedItem.ToString()));
-            }
-            listViewStudent.Clear();
-            ListViewItem item;
-            Adapter.InitializeListViewSudent(listViewStudent);
-            foreach (var i in res)
-            {
-                item = new ListViewItem(i.ToArray());
-                listViewStudent.Items.Add(item);
-            }
-
-        }
-
-        private void checkedListBoxCourse_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var res = new List<List<string>>();
-            foreach (var selectedItem in checkedListBoxCourse.CheckedItems)
-            {
-                res.AddRange(DataBase.Search("student", "course", selectedItem.ToString()));
-            }
-            listViewStudent.Clear();
-            ListViewItem item;
-            Adapter.InitializeListViewSudent(listViewStudent);
-            foreach (var i in res)
-            {
-                item = new ListViewItem(i.ToArray());
-                listViewStudent.Items.Add(item);
-            }
-        }
-
-        private void buttonDumping_Click(object sender, EventArgs e)
-        {
-            foreach (CheckedListBox clb in new List<CheckedListBox> { checkedListBoxSpecialization, checkedListBoxCourse, checkedListBoxSearch })
-            {
-                foreach (int i in clb.CheckedIndices)
-                {
-                    clb.SetItemCheckState(i, CheckState.Unchecked);
-                }
-            }
-            UpdateDataStudentAsync();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (listViewOlimp.SelectedItems.Count > 0)
-            {
-                DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
-                DataBase.Delete("result", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
-            }
-            UpdateDataOlimpiadsAsync();
-        }
-        private void listViewStudents_MouseOneClick(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                int index = listViewStudent.SelectedIndices[0];
-                string studentId = (listViewStudent.Items[index].SubItems[0].Text);
-                int id = DataBase.FindStudentById(studentId);
-                Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
-                Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id);
-            }
-            catch (Exception ex) { }
-        }
-
-        private void listViewOlimp_MouseOneClick(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                int index = listViewOlimp.SelectedIndices[0];
-                string studentId = (listViewOlimp.Items[index].SubItems[9].Text);
-                int id = DataBase.FindStudentByOlimpyad(studentId);
-                List<Label> labels = new List<Label>() { labelfio, labeldob, labeladd, labelph1, labelph2, labelph3, labelgro, labelyap, labelyor, labelcou, labelspe };
-                Adapter.FillStudentInformationAsync(id, labels);
-
-
-            }
-            catch (Exception ex) { }
-        }
-
         private void buttonSearchOlympyad_Click(object sender, EventArgs e)
         {
             List<string> criteriaList = new List<string>();
@@ -296,7 +293,67 @@ namespace OlympicStudents
                 listViewOlimp.Items.Add(item);
             }
         }
+        //Удаление
+        private void deleteStudents_Click(object sender, EventArgs e)
+        {
+            if ((listViewStudent.SelectedItems.Count > 0) && !(listViewOlympiadsOfStudent.SelectedItems.Count > 0))
+            {
+                List<int?> res = new List<int?>();
+                using (var connection = new SqliteConnection("Data Source=data.db"))
+                {
+                    connection.Open();
+                    int k = 9;
 
+                    SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM result WHERE student_id='{DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString()}'", connection);
+                    using (SqliteDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                if (reader.IsDBNull(0)) continue;
+                                else res?.Add(reader?.GetInt32(0));
+                            }
+                        }
+                    }
+                    command.Cancel(); command.Cancel();
+                }
+                for (int i = 0; i < res.Count; i++)
+                {
+                    DataBase.Delete("olympiad", "", "olympiad_id", res[i].ToString());
+
+                    DataBase.Delete("result", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
+                }
+                DataBase.Delete("student", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
+            }
+            if ((listViewStudent.SelectedItems.Count > 0) && (listViewOlympiadsOfStudent.SelectedItems.Count > 0))
+            {
+                DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlympiadsOfStudent.SelectedItems[0].SubItems[9].Text.ToString()}");
+                DataBase.Delete("result", "", "olympiad_id", $"{listViewOlympiadsOfStudent.SelectedItems[0].SubItems[9].Text.ToString()}");
+            }
+            listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
+        }
+        private void deleteOlimpyad_Click(object sender, EventArgs e)
+        {
+            if (listViewOlimp.SelectedItems.Count > 0)
+            {
+                DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
+                DataBase.Delete("result", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
+            }
+            updateDataOlimpiadsAsync();
+        }
+        //Сброс
+        private void buttonDumpingStudents_Click(object sender, EventArgs e)
+        {
+            foreach (CheckedListBox clb in new List<CheckedListBox> { checkedListBoxSpecialization, checkedListBoxCourse, checkedListBoxSearch })
+            {
+                foreach (int i in clb.CheckedIndices)
+                {
+                    clb.SetItemCheckState(i, CheckState.Unchecked);
+                }
+            }
+            updateDataStudentAsync();
+        }
         private void buttonDumpingOlimpyad_Click(object sender, EventArgs e)
         {
             foreach (CheckedListBox clb in new List<CheckedListBox> { checkedListBoxLevel, checkedListBoxType, checkedListBoxAvards, checkedListBoxEnco })
@@ -306,9 +363,10 @@ namespace OlympicStudents
                     clb.SetItemCheckState(i, CheckState.Unchecked);
                 }
             }
-            UpdateDataOlimpiadsAsync();
+            updateDataOlimpiadsAsync();
         }
-        private void excel_ClickAsync(object sender, EventArgs e)
+        //Отчёт
+        private void excelReport_ClickAsync(object sender, EventArgs e)
         {
             List<string> criteriaList = new List<string>();
             foreach (var SearchItem in checkedListBoxCriteriaExcel.CheckedItems)
@@ -347,7 +405,7 @@ namespace OlympicStudents
             {
                 searchCriteria = string.Join("||", criteriaList);
             }
-          
+
 
             IWorkbook workbook = new XSSFWorkbook();
             ISheet sheet1 = workbook.CreateSheet("Отчет");
@@ -362,9 +420,9 @@ namespace OlympicStudents
             for (int k = 0; k < size.Count; k++)
             {
                 var student_id = DataBase.FindStudentByOlimpyad(size[k].ToString());
-                List<string> Olympyad =  DataBase.FindOlimpyadById(size[k].ToString());
-                List<string> Student =  DataBase.GetStuentInfofrmationAndSp(student_id.ToString(), searchCriteria);
-                
+                List<string> Olympyad = DataBase.FindOlimpyadById(size[k].ToString());
+                List<string> Student = DataBase.GetStuentInfofrmationAndSp(student_id.ToString(), searchCriteria);
+
                 if (Student.Count > 0)
                 {
                     IRow row = sheet1.CreateRow(i + 1);
@@ -380,6 +438,16 @@ namespace OlympicStudents
             workbook.Write(sw);
             sw.Close();
         }
-
+        //Обнуление таблички
+        private async void updateDataStudentAsync()
+        {
+            Adapter.InitializeListViewSudent(listViewStudent);
+            Adapter.FillStudentListVewAsync(listViewStudent);
+        }
+        private void updateDataOlimpiadsAsync()
+        {
+            Adapter.InitializeListViewOlimpiads(listViewOlimp);
+            Adapter.FillOlimpiadsListVewAsync(listViewOlimp);
+        }
     }
 }
