@@ -12,6 +12,7 @@ namespace OlympicStudents
         public MainForm()
         {
             InitializeComponent();
+
             panelMenuStudents.Width = 315;
             panelMenuStudents.Dock = DockStyle.Right;
 
@@ -38,41 +39,32 @@ namespace OlympicStudents
             var selectedSpecializations = checkedListBoxSpecialization.CheckedItems.Cast<string>().ToList();
             var selectedCourses = checkedListBoxCourse.CheckedItems.Cast<string>().ToList();
 
-            var res = new List<List<string>>();
-            if (selectedSpecializations.Any() && selectedCourses.Any())
+            var searchFields = new List<string>();
+            var searchValues = new List<string>();
+            var searchResults = new List<List<string>>();
+
+            if (selectedSpecializations.Any())
             {
-                // Both checkboxes have selected items, so we search the database
-                foreach (var selectedSpec in selectedSpecializations)
-                {
-                    foreach (var selectedCourse in selectedCourses)
-                    {
-                        res.AddRange(DataBase.Search("student", "specialization", selectedSpec)
-                            .Where(s => s.Contains(selectedCourse) && !res.Any(r => r[0] == s[0])));
-                    }
-                }
-            }
-            else if (selectedSpecializations.Any())
-            {
-                // Only the specializations checkbox has selected items
-                foreach (var selectedSpec in selectedSpecializations)
-                {
-                    res.AddRange(DataBase.Search("student", "specialization", selectedSpec));
-                }
-            }
-            else if (selectedCourses.Any())
-            {
-                // Only the courses checkbox has selected items
-                foreach (var selectedCourse in selectedCourses)
-                {
-                    res.AddRange(DataBase.Search("student", "course", selectedCourse)
-                        .Where(s => !res.Any(r => r[0] == s[0])));
-                }
+                searchFields.Add("specialization");
+                searchValues.AddRange(selectedSpecializations);
             }
 
+            if (selectedCourses.Any())
+            {
+                searchFields.Add("course");
+                searchValues.AddRange(selectedCourses);
+            }
+            if (searchFields.Any())
+            {
+               searchResults = DataBase.MultiSearch("student", searchFields, searchValues)
+              .Select(dict => dict.Values.ToList())
+              .ToList();
+            }
+           
 
             ListViewItem item;
             Adapter.InitializeListViewSudent(listViewStudent);
-            foreach (var i in res)
+            foreach (var i in searchResults)
             {
                 item = new ListViewItem(i.ToArray());
                 listViewStudent.Items.Add(item);
@@ -121,11 +113,10 @@ namespace OlympicStudents
             if (searchFields.Any())
             {
                 searchResults = DataBase.MultiSearch("olympiad", searchFields, searchValues)
-     .Select(dict => dict.Values.ToList())
-     .ToList();
+                .Select(dict => dict.Values.ToList())
+                .ToList();
             }
 
-            // Add the items to the list view
             ListViewItem item;
             Adapter.InitializeListViewOlimpiads(listViewOlimp);
             foreach (var i in searchResults)
@@ -134,8 +125,6 @@ namespace OlympicStudents
                 listViewOlimp.Items.Add(item);
             }
 
-
-            // If no checkboxes are selected, update the data asynchronously
             if (selectedAvards.Count == 0 && selectedEnco.Count == 0 && selectedLevel.Count == 0 && selectedType.Count == 0)
             {
                 updateDataOlimpiadsAsync();
@@ -230,7 +219,7 @@ namespace OlympicStudents
             {
                 searchCriteria = string.Join(" || ", criteriaList);
             }
-            var res = DataBase.Search("student", searchCriteria, $"{textBoxSearch.Text}");
+            var res = DataBase.Search("student", searchCriteria, $"{textBoxSearchStudents.Text}");
             listViewStudent.Clear();
             Adapter.InitializeListViewSudent(listViewStudent);
             foreach (var i in res)
@@ -284,7 +273,7 @@ namespace OlympicStudents
             {
                 searchCriteria = string.Join(" || ", criteriaList);
             }
-            var res = DataBase.Search("olympiad", searchCriteria, $"{textBoxSearchOlimpyad.Text}");
+            var res = DataBase.SearchOlimp("olympiad", searchCriteria, $"{textBoxSearchOlimpyad.Text}");
             listViewOlimp.Clear();
             Adapter.InitializeListViewOlimpiads(listViewOlimp);
             foreach (var i in res)
@@ -332,6 +321,8 @@ namespace OlympicStudents
                 DataBase.Delete("result", "", "olympiad_id", $"{listViewOlympiadsOfStudent.SelectedItems[0].SubItems[9].Text.ToString()}");
             }
             listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
+            updateDataStudentAsync();
+            updateDataOlimpiadsAsync();
         }
         private void deleteOlimpyad_Click(object sender, EventArgs e)
         {
@@ -345,24 +336,26 @@ namespace OlympicStudents
         //Сброс
         private void buttonDumpingStudents_Click(object sender, EventArgs e)
         {
-            foreach (CheckedListBox clb in new List<CheckedListBox> { checkedListBoxSpecialization, checkedListBoxCourse, checkedListBoxSearch })
+            foreach (CheckedListBox clb in new List<CheckedListBox> { checkedListBoxSpecialization, checkedListBoxCourse, checkedListBoxSearch})
             {
                 foreach (int i in clb.CheckedIndices)
                 {
                     clb.SetItemCheckState(i, CheckState.Unchecked);
                 }
             }
+            textBoxSearchStudents.Text = string.Empty;
             updateDataStudentAsync();
         }
         private void buttonDumpingOlimpyad_Click(object sender, EventArgs e)
         {
-            foreach (CheckedListBox clb in new List<CheckedListBox> { checkedListBoxLevel, checkedListBoxType, checkedListBoxAvards, checkedListBoxEnco })
+            foreach (CheckedListBox clb in new List<CheckedListBox> { checkedListBoxLevel, checkedListBoxType, checkedListBoxAvards, checkedListBoxEnco, checkedListBoxSearchOlipyad })
             {
                 foreach (int i in clb.CheckedIndices)
                 {
                     clb.SetItemCheckState(i, CheckState.Unchecked);
                 }
             }
+            textBoxSearchOlimpyad.Text = string.Empty;
             updateDataOlimpiadsAsync();
         }
         //Отчёт
@@ -415,7 +408,7 @@ namespace OlympicStudents
             row1.CreateCell(2).SetCellValue("Дата проведения");
             row1.CreateCell(3).SetCellValue("Награды");
             row1.CreateCell(4).SetCellValue("Поощерение");
-            List<int> size = DataBase.findByids(numericUpDown1);
+            List<int> size = DataBase.findByids(numericUpDown1,numericUpDown2);
             int i = 0;
             for (int k = 0; k < size.Count; k++)
             {

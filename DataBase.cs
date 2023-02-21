@@ -3,8 +3,10 @@ using OlympicStudents;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Collections;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Collections.Generic;
+using NPOI.Util.Collections;
 
 namespace StudentInfo
 {
@@ -254,11 +256,40 @@ namespace StudentInfo
                 }
             }
         }
-        public static List<int> findByids(NumericUpDown numericUpDown1)
+        public static IEnumerable<List<string>> SearchOlimp(string table, string where, string key)
+        {
+            string result;
+
+            List<string> results = new List<string>();
+
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+
+                SqliteCommand command = new SqliteCommand($"SELECT * FROM {table} WHERE {where} LIKE '%{key}%'", connection);
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            results.Clear();
+                            for (int i = 0; i < 10; i++)
+                            {
+                                results.Add(reader.GetString(i));
+                            }
+                            yield return results;
+                        }
+                    }
+                }
+            }
+        }
+        public static List<int> findByids(NumericUpDown numericUpDown1, NumericUpDown numericUpDown2)
         {
             int academicYear = (int)numericUpDown1.Value;
+            int academicYear1 = (int)numericUpDown2.Value;
             DateTime start = new DateTime(academicYear, 9, 1);
-            DateTime end = new DateTime(academicYear + 1, 8, 31);
+            DateTime end = new DateTime(academicYear1, 8, 31);
             using (var connection = new SqliteConnection("Data Source=data.db"))
             {
                 connection.Open();
@@ -281,35 +312,63 @@ namespace StudentInfo
         }
         public static List<Dictionary<string, string>> MultiSearch(string tableName, List<string> searchFields, List<string> searchValues)
         {
-            // Get the data source from the table name
             List<Dictionary<string, string>> dataSource = GetData(tableName);
-
-            // Create a list to store the search results
+            System.Collections.Generic.HashSet<Dictionary<string, string>> f = new System.Collections.Generic.HashSet<Dictionary<string, string>>();
             List<Dictionary<string, string>> searchResults = new List<Dictionary<string, string>>();
-
-            // Perform the search
+            List<Dictionary<string, string>> res = new List<Dictionary<string, string>>();
             foreach (var row in dataSource)
             {
-                bool matchesAllFields = true;
-
-                // Check each search field against the corresponding value in the row
-                for (int i = 0; i < searchFields.Count; i++)
+                for (int j = 0; j < searchValues.Count; j++)
                 {
-                    if (!row[searchFields[i]].Contains(searchValues[i]))
+
+                    for (int i = 0; i < searchFields.Count; i++)
                     {
-                        matchesAllFields = false;
-                        break;
+                        if (row[searchFields[i]].Contains(searchValues[j]))
+                        {
+                            searchResults.Add(row);
+                            f.Add(row);
+                        }
+                    }
+                }
+            }
+            if (searchFields.Count >= 2)
+            {
+                foreach (var i in f)
+                {
+                    int t = 0;
+                    foreach (var j in searchResults)
+                    {
+                        if (i == j)
+                        {
+                            t += 1;
+                        }
+                    }
+                    if (t >= searchFields.Count)
+                    {
+                        res.Add(i);
+                    }
+                }
+            }
+            else {
+                foreach (var i in f)
+                {
+                    bool t = false;
+                    foreach (var j in searchResults)
+                    {
+                        if (i == j)
+                        {
+                            t = true;
+                        }
+                    }
+                    if (t)
+                    {
+                        res.Add(i);
                     }
                 }
 
-                // If all search fields match, add the row to the search results
-                if (matchesAllFields)
-                {
-                    searchResults.Add(row);
-                }
             }
 
-            return searchResults;
+            return res;
         }
 
 

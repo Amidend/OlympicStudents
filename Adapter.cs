@@ -65,6 +65,7 @@ namespace OlympicStudents
                 listView.Columns[i].Width = columnWidth;
             }
             listView.Columns[listView.Columns.Count - 1].Width = 0;
+            listView.Columns[listView.Columns.Count - 1].Dispose(); 
             listView.ColumnClick += (sender, e) =>
             {
                 var list = (ListView)sender;
