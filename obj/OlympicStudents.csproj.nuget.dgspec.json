@@ -53,9 +53,21 @@
               "target": "Package",
               "version": "[7.0.3, )"
             },
+            "ReportViewerCore.WinForms": {
+              "target": "Package",
+              "version": "[15.1.17, )"
+            },
             "System.Collections": {
               "target": "Package",
               "version": "[4.3.0, )"
+            },
+            "System.Data.Odbc": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "System.Data.SQLite": {
+              "target": "Package",
+              "version": "[1.0.117, )"
             }
           },
           "imports": [

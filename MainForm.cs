@@ -2,6 +2,7 @@ using NPOI.XSSF.UserModel;
 using Microsoft.Data.Sqlite;
 using NPOI.SS.UserModel;
 using StudentInfo;
+using Microsoft.Reporting.WinForms;
 
 namespace OlympicStudents
 {
@@ -32,6 +33,10 @@ namespace OlympicStudents
 
             updateDataStudentAsync();
             updateDataOlimpiadsAsync();
+          
+            reportViewer1.LocalReport.ReportEmbeddedResource = "OlympicStudents.ReportDefenitions.Report.rdlc";
+            reportViewer1.LocalReport.Refresh();
+            reportViewer1.RefreshReport();
         }
         //Чек боксики
         private void checkBoxesStudents_CheckedChanged(object sender, EventArgs e)

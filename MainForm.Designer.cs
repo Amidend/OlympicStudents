@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.buttonAddStudent = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.listViewStudent = new System.Windows.Forms.ListView();
@@ -93,6 +93,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.tabPageReport = new System.Windows.Forms.TabPage();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.tabMain.SuspendLayout();
             this.tabPageStudent.SuspendLayout();
             this.panelMenuStudents.SuspendLayout();
@@ -104,6 +106,7 @@
             this.tabPageExcel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.tabPageReport.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAddStudent
@@ -136,9 +139,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewStudent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.listViewStudent.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            listViewItem3.StateImageIndex = 0;
+            listViewItem1.StateImageIndex = 0;
             this.listViewStudent.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem1});
             this.listViewStudent.Location = new System.Drawing.Point(379, -3);
             this.listViewStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewStudent.MultiSelect = false;
@@ -152,7 +155,7 @@
             // listViewOlimp
             // 
             this.listViewOlimp.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem4});
+            listViewItem2});
             this.listViewOlimp.Location = new System.Drawing.Point(3, 3);
             this.listViewOlimp.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listViewOlimp.MultiSelect = false;
@@ -178,6 +181,7 @@
             this.tabMain.Controls.Add(this.tabPageStudent);
             this.tabMain.Controls.Add(this.tabPageOlimpiad);
             this.tabMain.Controls.Add(this.tabPageExcel);
+            this.tabMain.Controls.Add(this.tabPageReport);
             this.tabMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabMain.HotTrack = true;
             this.tabMain.ItemSize = new System.Drawing.Size(64, 20);
@@ -808,7 +812,7 @@
             this.tabPageExcel.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageExcel.Size = new System.Drawing.Size(1896, 1013);
             this.tabPageExcel.TabIndex = 2;
-            this.tabPageExcel.Text = "Отчёт";
+            this.tabPageExcel.Text = "Экспорт в Excel";
             this.tabPageExcel.UseVisualStyleBackColor = true;
             // 
             // checkedListBoxCriteriaExcel
@@ -882,6 +886,25 @@
             0,
             0});
             // 
+            // tabPageReport
+            // 
+            this.tabPageReport.Controls.Add(this.reportViewer1);
+            this.tabPageReport.Location = new System.Drawing.Point(4, 24);
+            this.tabPageReport.Name = "tabPageReport";
+            this.tabPageReport.Size = new System.Drawing.Size(1896, 1013);
+            this.tabPageReport.TabIndex = 3;
+            this.tabPageReport.Text = "Отчёт";
+            this.tabPageReport.UseVisualStyleBackColor = true;
+            // 
+            // reportViewer1
+            // 
+            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.reportViewer1.Name = "ReportViewer";
+            this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.Size = new System.Drawing.Size(1896, 1013);
+            this.reportViewer1.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -911,6 +934,7 @@
             this.tabPageExcel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.tabPageReport.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -979,5 +1003,7 @@
         private Label label19;
         private Label label20;
         private NumericUpDown numericUpDown2;
+        private TabPage tabPageReport;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }
