@@ -431,7 +431,7 @@ namespace OlympicStudents
             workbook.Write(sw);
             sw.Close();
         }
-        //Обнуление таблички
+            //Обнуление таблички
         private async void updateDataStudentAsync()
         {
             Adapter.InitializeListViewSudent(listViewStudent);

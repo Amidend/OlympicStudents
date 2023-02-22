@@ -206,3 +206,4 @@ D:\git\OlympicStudents\obj\Debug\net6.0-windows\refint\OlympicStudents.dll
 D:\git\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.pdb
 D:\git\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.genruntimeconfig.cache
 D:\git\OlympicStudents\obj\Debug\net6.0-windows\ref\OlympicStudents.dll
+D:\git\OlympicStudents\bin\Debug\net6.0-windows\runtimes\linux-ppc64le\native\libe_sqlite3.so

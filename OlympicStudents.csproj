@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="DotNetCore.NPOI" Version="1.2.3" />
-    <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.3" />
     <PackageReference Include="System.Collections" Version="4.3.0" />
   </ItemGroup>
 
