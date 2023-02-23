@@ -3,6 +3,11 @@ using Microsoft.Data.Sqlite;
 using NPOI.SS.UserModel;
 using StudentInfo;
 using Microsoft.Reporting.WinForms;
+using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Data;
+using System.Collections.Generic;
+using System.Data.SQLite;
 
 namespace OlympicStudents
 {
@@ -33,10 +38,52 @@ namespace OlympicStudents
 
             updateDataStudentAsync();
             updateDataOlimpiadsAsync();
-          
+            System.Data.DataSet ds = GetDataSet();
+            ReportDataSource rds = new ReportDataSource("DataSet1", ds.Tables[0]);
+            this.reportViewer1.LocalReport.DataSources.Clear();
+            this.reportViewer1.LocalReport.DataSources.Add(rds);
+
             reportViewer1.LocalReport.ReportEmbeddedResource = "OlympicStudents.ReportDefenitions.Report.rdlc";
             reportViewer1.LocalReport.Refresh();
             reportViewer1.RefreshReport();
+        }
+        //
+        private System.Data.DataSet GetDataSet()
+        {
+
+            DataSet MyDataSet = new DataSet();
+            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=";
+            //Там где находится файл базы данных
+            string sBank = @"C:\Bases\Animals.mdb";
+            string sSql = "Select * from thisanimals";
+            using (OleDbConnection oleConn = new OleDbConnection(connectionString + sBank))
+            {
+                try
+                {
+                    oleConn.Open();
+                    OleDbCommand olecmd = new OleDbCommand(sSql, oleConn);
+                    olecmd.CommandType = CommandType.Text;
+                    OleDbDataAdapter da = new OleDbDataAdapter(olecmd);
+                    da.Fill(MyDataSet);
+                }
+                catch (Exception/* ex*/)
+                {
+                    return;
+                }
+            }
+            reportViewer1.ProcessingMode = ProcessingMode.Local;
+            reportViewer1.LocalReport.ReportEmbeddedResource = "RepView.Report1.rdlc";
+            this.reportViewer1.LocalReport.DataSources.Add(new ReportDataSource(
+                                   "AnimalsDataSet_ThisAnimals", MyDataSet.Tables[0]));
+            this.reportViewer1.RefreshReport();
+
+
+            using (var connection = new SQLiteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+                DataSet1 dataSet1=new DataSet1();
+                return dataSet1;
+            }
         }
         //Чек боксики
         private void checkBoxesStudents_CheckedChanged(object sender, EventArgs e)
@@ -61,11 +108,11 @@ namespace OlympicStudents
             }
             if (searchFields.Any())
             {
-               searchResults = DataBase.MultiSearch("student", searchFields, searchValues)
-              .Select(dict => dict.Values.ToList())
-              .ToList();
+                searchResults = DataBase.MultiSearch("student", searchFields, searchValues)
+               .Select(dict => dict.Values.ToList())
+               .ToList();
             }
-           
+
 
             ListViewItem item;
             Adapter.InitializeListViewSudent(listViewStudent);
@@ -341,7 +388,7 @@ namespace OlympicStudents
         //Сброс
         private void buttonDumpingStudents_Click(object sender, EventArgs e)
         {
-            foreach (CheckedListBox clb in new List<CheckedListBox> { checkedListBoxSpecialization, checkedListBoxCourse, checkedListBoxSearch})
+            foreach (CheckedListBox clb in new List<CheckedListBox> { checkedListBoxSpecialization, checkedListBoxCourse, checkedListBoxSearch })
             {
                 foreach (int i in clb.CheckedIndices)
                 {
@@ -413,7 +460,7 @@ namespace OlympicStudents
             row1.CreateCell(2).SetCellValue("Дата проведения");
             row1.CreateCell(3).SetCellValue("Награды");
             row1.CreateCell(4).SetCellValue("Поощерение");
-            List<int> size = DataBase.findByids(numericUpDown1,numericUpDown2);
+            List<int> size = DataBase.findByids(numericUpDown1, numericUpDown2);
             int i = 0;
             for (int k = 0; k < size.Count; k++)
             {
@@ -423,6 +470,7 @@ namespace OlympicStudents
 
                 if (Student.Count > 0)
                 {
+
                     IRow row = sheet1.CreateRow(i + 1);
                     row.CreateCell(0).SetCellValue(Student[0]);
                     row.CreateCell(1).SetCellValue(Olympyad[7]);
@@ -436,7 +484,7 @@ namespace OlympicStudents
             workbook.Write(sw);
             sw.Close();
         }
-            //Обнуление таблички
+        //Обнуление таблички
         private async void updateDataStudentAsync()
         {
             Adapter.InitializeListViewSudent(listViewStudent);

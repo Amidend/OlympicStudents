@@ -279,32 +279,6 @@ namespace OlympicStudents {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTable1DataTable : global::System.Data.TypedTableBase<DataTable1Row> {
             
-            private global::System.Data.DataColumn columnfio;
-            
-            private global::System.Data.DataColumn columndateOfBirth;
-            
-            private global::System.Data.DataColumn columnaddress;
-            
-            private global::System.Data.DataColumn columnphone;
-            
-            private global::System.Data.DataColumn columngroups;
-            
-            private global::System.Data.DataColumn columnyearApplying;
-            
-            private global::System.Data.DataColumn columnyearOfRelease;
-            
-            private global::System.Data.DataColumn columncourse;
-            
-            private global::System.Data.DataColumn columnspecialization;
-            
-            private global::System.Data.DataColumn columnstudent_id;
-            
-            private global::System.Data.DataColumn columnresult_id;
-            
-            private global::System.Data.DataColumn columnstudent_id1;
-            
-            private global::System.Data.DataColumn columnolympiad_id;
-            
             private global::System.Data.DataColumn columndates;
             
             private global::System.Data.DataColumn columnlevel;
@@ -323,7 +297,33 @@ namespace OlympicStudents {
             
             private global::System.Data.DataColumn columnvenue;
             
+            private global::System.Data.DataColumn columnolympiad_id;
+            
+            private global::System.Data.DataColumn columnresult_id;
+            
+            private global::System.Data.DataColumn columnstudent_id;
+            
             private global::System.Data.DataColumn columnolympiad_id1;
+            
+            private global::System.Data.DataColumn columnfio;
+            
+            private global::System.Data.DataColumn columndateOfBirth;
+            
+            private global::System.Data.DataColumn columnaddress;
+            
+            private global::System.Data.DataColumn columnphone;
+            
+            private global::System.Data.DataColumn columngroups;
+            
+            private global::System.Data.DataColumn columnyearApplying;
+            
+            private global::System.Data.DataColumn columnyearOfRelease;
+            
+            private global::System.Data.DataColumn columncourse;
+            
+            private global::System.Data.DataColumn columnspecialization;
+            
+            private global::System.Data.DataColumn columnstudent_id1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
@@ -356,110 +356,6 @@ namespace OlympicStudents {
             protected DataTable1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn fioColumn {
-                get {
-                    return this.columnfio;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn dateOfBirthColumn {
-                get {
-                    return this.columndateOfBirth;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn addressColumn {
-                get {
-                    return this.columnaddress;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn phoneColumn {
-                get {
-                    return this.columnphone;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn groupsColumn {
-                get {
-                    return this.columngroups;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn yearApplyingColumn {
-                get {
-                    return this.columnyearApplying;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn yearOfReleaseColumn {
-                get {
-                    return this.columnyearOfRelease;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn courseColumn {
-                get {
-                    return this.columncourse;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn specializationColumn {
-                get {
-                    return this.columnspecialization;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn student_idColumn {
-                get {
-                    return this.columnstudent_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn result_idColumn {
-                get {
-                    return this.columnresult_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn student_id1Column {
-                get {
-                    return this.columnstudent_id1;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn olympiad_idColumn {
-                get {
-                    return this.columnolympiad_id;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -536,9 +432,113 @@ namespace OlympicStudents {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn olympiad_idColumn {
+                get {
+                    return this.columnolympiad_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn result_idColumn {
+                get {
+                    return this.columnresult_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn student_idColumn {
+                get {
+                    return this.columnstudent_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public global::System.Data.DataColumn olympiad_id1Column {
                 get {
                     return this.columnolympiad_id1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn fioColumn {
+                get {
+                    return this.columnfio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn dateOfBirthColumn {
+                get {
+                    return this.columndateOfBirth;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn addressColumn {
+                get {
+                    return this.columnaddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn phoneColumn {
+                get {
+                    return this.columnphone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn groupsColumn {
+                get {
+                    return this.columngroups;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn yearApplyingColumn {
+                get {
+                    return this.columnyearApplying;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn yearOfReleaseColumn {
+                get {
+                    return this.columnyearOfRelease;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn courseColumn {
+                get {
+                    return this.columncourse;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn specializationColumn {
+                get {
+                    return this.columnspecialization;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn student_id1Column {
+                get {
+                    return this.columnstudent_id1;
                 }
             }
             
@@ -580,17 +580,6 @@ namespace OlympicStudents {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DataTable1Row AddDataTable1Row(
-                        string fio, 
-                        string dateOfBirth, 
-                        string address, 
-                        string phone, 
-                        string groups, 
-                        string yearApplying, 
-                        string yearOfRelease, 
-                        string course, 
-                        string specialization, 
-                        int student_id1, 
-                        int olympiad_id, 
                         string dates, 
                         string level, 
                         string type, 
@@ -599,22 +588,20 @@ namespace OlympicStudents {
                         string nominations, 
                         string duration, 
                         string title, 
-                        string venue) {
+                        string venue, 
+                        int student_id, 
+                        int olympiad_id1, 
+                        string fio, 
+                        string dateOfBirth, 
+                        string address, 
+                        string phone, 
+                        string groups, 
+                        string yearApplying, 
+                        string yearOfRelease, 
+                        string course, 
+                        string specialization) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        fio,
-                        dateOfBirth,
-                        address,
-                        phone,
-                        groups,
-                        yearApplying,
-                        yearOfRelease,
-                        course,
-                        specialization,
-                        null,
-                        null,
-                        student_id1,
-                        olympiad_id,
                         dates,
                         level,
                         type,
@@ -624,6 +611,19 @@ namespace OlympicStudents {
                         duration,
                         title,
                         venue,
+                        null,
+                        null,
+                        student_id,
+                        olympiad_id1,
+                        fio,
+                        dateOfBirth,
+                        address,
+                        phone,
+                        groups,
+                        yearApplying,
+                        yearOfRelease,
+                        course,
+                        specialization,
                         null};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
@@ -632,11 +632,11 @@ namespace OlympicStudents {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DataTable1Row FindBystudent_idresult_idolympiad_id(int student_id, int result_id, int olympiad_id) {
+            public DataTable1Row FindByolympiad_idresult_idstudent_id(int olympiad_id, int result_id, int student_id) {
                 return ((DataTable1Row)(this.Rows.Find(new object[] {
-                            student_id,
+                            olympiad_id,
                             result_id,
-                            olympiad_id})));
+                            student_id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -656,19 +656,6 @@ namespace OlympicStudents {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnfio = base.Columns["fio"];
-                this.columndateOfBirth = base.Columns["dateOfBirth"];
-                this.columnaddress = base.Columns["address"];
-                this.columnphone = base.Columns["phone"];
-                this.columngroups = base.Columns["groups"];
-                this.columnyearApplying = base.Columns["yearApplying"];
-                this.columnyearOfRelease = base.Columns["yearOfRelease"];
-                this.columncourse = base.Columns["course"];
-                this.columnspecialization = base.Columns["specialization"];
-                this.columnstudent_id = base.Columns["student_id"];
-                this.columnresult_id = base.Columns["result_id"];
-                this.columnstudent_id1 = base.Columns["student_id1"];
-                this.columnolympiad_id = base.Columns["olympiad_id"];
                 this.columndates = base.Columns["dates"];
                 this.columnlevel = base.Columns["level"];
                 this.columntype = base.Columns["type"];
@@ -678,38 +665,25 @@ namespace OlympicStudents {
                 this.columnduration = base.Columns["duration"];
                 this.columntitle = base.Columns["title"];
                 this.columnvenue = base.Columns["venue"];
+                this.columnolympiad_id = base.Columns["olympiad_id"];
+                this.columnresult_id = base.Columns["result_id"];
+                this.columnstudent_id = base.Columns["student_id"];
                 this.columnolympiad_id1 = base.Columns["olympiad_id1"];
+                this.columnfio = base.Columns["fio"];
+                this.columndateOfBirth = base.Columns["dateOfBirth"];
+                this.columnaddress = base.Columns["address"];
+                this.columnphone = base.Columns["phone"];
+                this.columngroups = base.Columns["groups"];
+                this.columnyearApplying = base.Columns["yearApplying"];
+                this.columnyearOfRelease = base.Columns["yearOfRelease"];
+                this.columncourse = base.Columns["course"];
+                this.columnspecialization = base.Columns["specialization"];
+                this.columnstudent_id1 = base.Columns["student_id1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnfio = new global::System.Data.DataColumn("fio", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnfio);
-                this.columndateOfBirth = new global::System.Data.DataColumn("dateOfBirth", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndateOfBirth);
-                this.columnaddress = new global::System.Data.DataColumn("address", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaddress);
-                this.columnphone = new global::System.Data.DataColumn("phone", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnphone);
-                this.columngroups = new global::System.Data.DataColumn("groups", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columngroups);
-                this.columnyearApplying = new global::System.Data.DataColumn("yearApplying", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnyearApplying);
-                this.columnyearOfRelease = new global::System.Data.DataColumn("yearOfRelease", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnyearOfRelease);
-                this.columncourse = new global::System.Data.DataColumn("course", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columncourse);
-                this.columnspecialization = new global::System.Data.DataColumn("specialization", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnspecialization);
-                this.columnstudent_id = new global::System.Data.DataColumn("student_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstudent_id);
-                this.columnresult_id = new global::System.Data.DataColumn("result_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnresult_id);
-                this.columnstudent_id1 = new global::System.Data.DataColumn("student_id1", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnstudent_id1);
-                this.columnolympiad_id = new global::System.Data.DataColumn("olympiad_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnolympiad_id);
                 this.columndates = new global::System.Data.DataColumn("dates", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndates);
                 this.columnlevel = new global::System.Data.DataColumn("level", typeof(string), null, global::System.Data.MappingType.Element);
@@ -728,30 +702,38 @@ namespace OlympicStudents {
                 base.Columns.Add(this.columntitle);
                 this.columnvenue = new global::System.Data.DataColumn("venue", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnvenue);
+                this.columnolympiad_id = new global::System.Data.DataColumn("olympiad_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnolympiad_id);
+                this.columnresult_id = new global::System.Data.DataColumn("result_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnresult_id);
+                this.columnstudent_id = new global::System.Data.DataColumn("student_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstudent_id);
                 this.columnolympiad_id1 = new global::System.Data.DataColumn("olympiad_id1", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnolympiad_id1);
+                this.columnfio = new global::System.Data.DataColumn("fio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfio);
+                this.columndateOfBirth = new global::System.Data.DataColumn("dateOfBirth", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndateOfBirth);
+                this.columnaddress = new global::System.Data.DataColumn("address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaddress);
+                this.columnphone = new global::System.Data.DataColumn("phone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnphone);
+                this.columngroups = new global::System.Data.DataColumn("groups", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columngroups);
+                this.columnyearApplying = new global::System.Data.DataColumn("yearApplying", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnyearApplying);
+                this.columnyearOfRelease = new global::System.Data.DataColumn("yearOfRelease", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnyearOfRelease);
+                this.columncourse = new global::System.Data.DataColumn("course", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncourse);
+                this.columnspecialization = new global::System.Data.DataColumn("specialization", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnspecialization);
+                this.columnstudent_id1 = new global::System.Data.DataColumn("student_id1", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstudent_id1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnstudent_id,
+                                this.columnolympiad_id,
                                 this.columnresult_id,
-                                this.columnolympiad_id}, true));
-                this.columnfio.MaxLength = 65536;
-                this.columndateOfBirth.MaxLength = 65536;
-                this.columnaddress.MaxLength = 65536;
-                this.columnphone.MaxLength = 65536;
-                this.columngroups.MaxLength = 65536;
-                this.columnyearApplying.MaxLength = 65536;
-                this.columnyearOfRelease.MaxLength = 65536;
-                this.columncourse.MaxLength = 65536;
-                this.columnspecialization.MaxLength = 65536;
-                this.columnstudent_id.AutoIncrement = true;
-                this.columnstudent_id.AutoIncrementSeed = -1;
-                this.columnstudent_id.AutoIncrementStep = -1;
-                this.columnstudent_id.AllowDBNull = false;
-                this.columnresult_id.AutoIncrement = true;
-                this.columnresult_id.AutoIncrementSeed = -1;
-                this.columnresult_id.AutoIncrementStep = -1;
-                this.columnresult_id.AllowDBNull = false;
-                this.columnolympiad_id.AllowDBNull = false;
+                                this.columnstudent_id}, true));
                 this.columndates.MaxLength = 65536;
                 this.columnlevel.MaxLength = 65536;
                 this.columntype.MaxLength = 65536;
@@ -761,9 +743,27 @@ namespace OlympicStudents {
                 this.columnduration.MaxLength = 65536;
                 this.columntitle.MaxLength = 65536;
                 this.columnvenue.MaxLength = 65536;
-                this.columnolympiad_id1.AutoIncrement = true;
-                this.columnolympiad_id1.AutoIncrementSeed = -1;
-                this.columnolympiad_id1.AutoIncrementStep = -1;
+                this.columnolympiad_id.AutoIncrement = true;
+                this.columnolympiad_id.AutoIncrementSeed = -1;
+                this.columnolympiad_id.AutoIncrementStep = -1;
+                this.columnolympiad_id.AllowDBNull = false;
+                this.columnresult_id.AutoIncrement = true;
+                this.columnresult_id.AutoIncrementSeed = -1;
+                this.columnresult_id.AutoIncrementStep = -1;
+                this.columnresult_id.AllowDBNull = false;
+                this.columnstudent_id.AllowDBNull = false;
+                this.columnfio.MaxLength = 65536;
+                this.columndateOfBirth.MaxLength = 65536;
+                this.columnaddress.MaxLength = 65536;
+                this.columnphone.MaxLength = 65536;
+                this.columngroups.MaxLength = 65536;
+                this.columnyearApplying.MaxLength = 65536;
+                this.columnyearOfRelease.MaxLength = 65536;
+                this.columncourse.MaxLength = 65536;
+                this.columnspecialization.MaxLength = 65536;
+                this.columnstudent_id1.AutoIncrement = true;
+                this.columnstudent_id1.AutoIncrementSeed = -1;
+                this.columnstudent_id1.AutoIncrementStep = -1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -902,199 +902,6 @@ namespace OlympicStudents {
             internal DataTable1Row(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableDataTable1 = ((DataTable1DataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string fio {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.fioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'fio\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.fioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string dateOfBirth {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.dateOfBirthColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'dateOfBirth\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.dateOfBirthColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string address {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.addressColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'address\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.addressColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string phone {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.phoneColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'phone\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.phoneColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string groups {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.groupsColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'groups\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.groupsColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string yearApplying {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.yearApplyingColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'yearApplying\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.yearApplyingColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string yearOfRelease {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.yearOfReleaseColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'yearOfRelease\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.yearOfReleaseColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string course {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.courseColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'course\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.courseColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string specialization {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.specializationColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'specialization\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.specializationColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int student_id {
-                get {
-                    return ((int)(this[this.tableDataTable1.student_idColumn]));
-                }
-                set {
-                    this[this.tableDataTable1.student_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int result_id {
-                get {
-                    return ((int)(this[this.tableDataTable1.result_idColumn]));
-                }
-                set {
-                    this[this.tableDataTable1.result_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int student_id1 {
-                get {
-                    try {
-                        return ((int)(this[this.tableDataTable1.student_id1Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'student_id1\' в таблице \'DataTable1\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.student_id1Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int olympiad_id {
-                get {
-                    return ((int)(this[this.tableDataTable1.olympiad_idColumn]));
-                }
-                set {
-                    this[this.tableDataTable1.olympiad_idColumn] = value;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1243,6 +1050,39 @@ namespace OlympicStudents {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int olympiad_id {
+                get {
+                    return ((int)(this[this.tableDataTable1.olympiad_idColumn]));
+                }
+                set {
+                    this[this.tableDataTable1.olympiad_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int result_id {
+                get {
+                    return ((int)(this[this.tableDataTable1.result_idColumn]));
+                }
+                set {
+                    this[this.tableDataTable1.result_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int student_id {
+                get {
+                    return ((int)(this[this.tableDataTable1.student_idColumn]));
+                }
+                set {
+                    this[this.tableDataTable1.student_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int olympiad_id1 {
                 get {
                     try {
@@ -1259,122 +1099,162 @@ namespace OlympicStudents {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsfioNull() {
-                return this.IsNull(this.tableDataTable1.fioColumn);
+            public string fio {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.fioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'fio\' в таблице \'DataTable1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.fioColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetfioNull() {
-                this[this.tableDataTable1.fioColumn] = global::System.Convert.DBNull;
+            public string dateOfBirth {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.dateOfBirthColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'dateOfBirth\' в таблице \'DataTable1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.dateOfBirthColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsdateOfBirthNull() {
-                return this.IsNull(this.tableDataTable1.dateOfBirthColumn);
+            public string address {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.addressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'address\' в таблице \'DataTable1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.addressColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetdateOfBirthNull() {
-                this[this.tableDataTable1.dateOfBirthColumn] = global::System.Convert.DBNull;
+            public string phone {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.phoneColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'phone\' в таблице \'DataTable1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.phoneColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsaddressNull() {
-                return this.IsNull(this.tableDataTable1.addressColumn);
+            public string groups {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.groupsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'groups\' в таблице \'DataTable1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.groupsColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetaddressNull() {
-                this[this.tableDataTable1.addressColumn] = global::System.Convert.DBNull;
+            public string yearApplying {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.yearApplyingColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'yearApplying\' в таблице \'DataTable1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.yearApplyingColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsphoneNull() {
-                return this.IsNull(this.tableDataTable1.phoneColumn);
+            public string yearOfRelease {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.yearOfReleaseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'yearOfRelease\' в таблице \'DataTable1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.yearOfReleaseColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetphoneNull() {
-                this[this.tableDataTable1.phoneColumn] = global::System.Convert.DBNull;
+            public string course {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.courseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'course\' в таблице \'DataTable1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.courseColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsgroupsNull() {
-                return this.IsNull(this.tableDataTable1.groupsColumn);
+            public string specialization {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.specializationColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'specialization\' в таблице \'DataTable1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.specializationColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetgroupsNull() {
-                this[this.tableDataTable1.groupsColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsyearApplyingNull() {
-                return this.IsNull(this.tableDataTable1.yearApplyingColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetyearApplyingNull() {
-                this[this.tableDataTable1.yearApplyingColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsyearOfReleaseNull() {
-                return this.IsNull(this.tableDataTable1.yearOfReleaseColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetyearOfReleaseNull() {
-                this[this.tableDataTable1.yearOfReleaseColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IscourseNull() {
-                return this.IsNull(this.tableDataTable1.courseColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetcourseNull() {
-                this[this.tableDataTable1.courseColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool IsspecializationNull() {
-                return this.IsNull(this.tableDataTable1.specializationColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void SetspecializationNull() {
-                this[this.tableDataTable1.specializationColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public bool Isstudent_id1Null() {
-                return this.IsNull(this.tableDataTable1.student_id1Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void Setstudent_id1Null() {
-                this[this.tableDataTable1.student_id1Column] = global::System.Convert.DBNull;
+            public int student_id1 {
+                get {
+                    try {
+                        return ((int)(this[this.tableDataTable1.student_id1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'student_id1\' в таблице \'DataTable1\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.student_id1Column] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1495,6 +1375,126 @@ namespace OlympicStudents {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void Setolympiad_id1Null() {
                 this[this.tableDataTable1.olympiad_id1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsfioNull() {
+                return this.IsNull(this.tableDataTable1.fioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetfioNull() {
+                this[this.tableDataTable1.fioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsdateOfBirthNull() {
+                return this.IsNull(this.tableDataTable1.dateOfBirthColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetdateOfBirthNull() {
+                this[this.tableDataTable1.dateOfBirthColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsaddressNull() {
+                return this.IsNull(this.tableDataTable1.addressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetaddressNull() {
+                this[this.tableDataTable1.addressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsphoneNull() {
+                return this.IsNull(this.tableDataTable1.phoneColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetphoneNull() {
+                this[this.tableDataTable1.phoneColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsgroupsNull() {
+                return this.IsNull(this.tableDataTable1.groupsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetgroupsNull() {
+                this[this.tableDataTable1.groupsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsyearApplyingNull() {
+                return this.IsNull(this.tableDataTable1.yearApplyingColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetyearApplyingNull() {
+                this[this.tableDataTable1.yearApplyingColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsyearOfReleaseNull() {
+                return this.IsNull(this.tableDataTable1.yearOfReleaseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetyearOfReleaseNull() {
+                this[this.tableDataTable1.yearOfReleaseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IscourseNull() {
+                return this.IsNull(this.tableDataTable1.courseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetcourseNull() {
+                this[this.tableDataTable1.courseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsspecializationNull() {
+                return this.IsNull(this.tableDataTable1.specializationColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetspecializationNull() {
+                this[this.tableDataTable1.specializationColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool Isstudent_id1Null() {
+                return this.IsNull(this.tableDataTable1.student_id1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void Setstudent_id1Null() {
+                this[this.tableDataTable1.student_id1Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -1657,19 +1657,6 @@ namespace OlympicStudents.DataSet1TableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "DataTable1";
-            tableMapping.ColumnMappings.Add("fio", "fio");
-            tableMapping.ColumnMappings.Add("dateOfBirth", "dateOfBirth");
-            tableMapping.ColumnMappings.Add("address", "address");
-            tableMapping.ColumnMappings.Add("phone", "phone");
-            tableMapping.ColumnMappings.Add("groups", "groups");
-            tableMapping.ColumnMappings.Add("yearApplying", "yearApplying");
-            tableMapping.ColumnMappings.Add("yearOfRelease", "yearOfRelease");
-            tableMapping.ColumnMappings.Add("course", "course");
-            tableMapping.ColumnMappings.Add("specialization", "specialization");
-            tableMapping.ColumnMappings.Add("student_id", "student_id");
-            tableMapping.ColumnMappings.Add("result_id", "result_id");
-            tableMapping.ColumnMappings.Add("student_id1", "student_id1");
-            tableMapping.ColumnMappings.Add("olympiad_id", "olympiad_id");
             tableMapping.ColumnMappings.Add("dates", "dates");
             tableMapping.ColumnMappings.Add("level", "level");
             tableMapping.ColumnMappings.Add("type", "type");
@@ -1679,7 +1666,20 @@ namespace OlympicStudents.DataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("duration", "duration");
             tableMapping.ColumnMappings.Add("title", "title");
             tableMapping.ColumnMappings.Add("venue", "venue");
+            tableMapping.ColumnMappings.Add("olympiad_id", "olympiad_id");
+            tableMapping.ColumnMappings.Add("result_id", "result_id");
+            tableMapping.ColumnMappings.Add("student_id", "student_id");
             tableMapping.ColumnMappings.Add("olympiad_id1", "olympiad_id1");
+            tableMapping.ColumnMappings.Add("fio", "fio");
+            tableMapping.ColumnMappings.Add("dateOfBirth", "dateOfBirth");
+            tableMapping.ColumnMappings.Add("address", "address");
+            tableMapping.ColumnMappings.Add("phone", "phone");
+            tableMapping.ColumnMappings.Add("groups", "groups");
+            tableMapping.ColumnMappings.Add("yearApplying", "yearApplying");
+            tableMapping.ColumnMappings.Add("yearOfRelease", "yearOfRelease");
+            tableMapping.ColumnMappings.Add("course", "course");
+            tableMapping.ColumnMappings.Add("specialization", "specialization");
+            tableMapping.ColumnMappings.Add("student_id1", "student_id1");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1696,7 +1696,7 @@ namespace OlympicStudents.DataSet1TableAdapters {
             this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        student.*, result.*, olympiad.*\r\nFROM            olympiad, result, " +
+            this._commandCollection[0].CommandText = "SELECT        olympiad.*, result.*, student.*\r\nFROM            olympiad, result, " +
                 "student\r\nWHERE        olympiad.olympiad_id = result.olympiad_id AND result.stude" +
                 "nt_id = student.student_id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
