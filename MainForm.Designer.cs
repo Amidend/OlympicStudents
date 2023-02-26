@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem1 = new ListViewItem("");
-            ListViewItem listViewItem2 = new ListViewItem("");
+            ListViewItem listViewItem3 = new ListViewItem("");
+            ListViewItem listViewItem4 = new ListViewItem("");
             buttonAddStudent = new Button();
             buttonDelete = new Button();
             listViewStudent = new ListView();
@@ -87,16 +87,15 @@
             label2 = new Label();
             DeleteOlimp = new Button();
             button1 = new Button();
-            tabPageExcel = new TabPage();
+            tabPageMainReport = new TabPage();
             panelRightReport = new Panel();
+            reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             panelLeftReport = new Panel();
             checkedListBoxCriteriaExcel = new CheckedListBox();
             label20 = new Label();
             label19 = new Label();
             numericUpDown2 = new NumericUpDown();
             numericUpDown1 = new NumericUpDown();
-            reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            tabPageReport = new TabPage();
             tabMain.SuspendLayout();
             tabPageStudent.SuspendLayout();
             panelMenuStudents.SuspendLayout();
@@ -105,7 +104,8 @@
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
             tabPageOlimpiad.SuspendLayout();
-            tabPageExcel.SuspendLayout();
+            tabPageMainReport.SuspendLayout();
+            panelRightReport.SuspendLayout();
             panelLeftReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
@@ -139,8 +139,8 @@
             listViewStudent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listViewStudent.BorderStyle = BorderStyle.FixedSingle;
             listViewStudent.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewItem1.StateImageIndex = 0;
-            listViewStudent.Items.AddRange(new ListViewItem[] { listViewItem1 });
+            listViewItem3.StateImageIndex = 0;
+            listViewStudent.Items.AddRange(new ListViewItem[] { listViewItem3 });
             listViewStudent.Location = new Point(379, -3);
             listViewStudent.Margin = new Padding(3, 2, 3, 2);
             listViewStudent.MultiSelect = false;
@@ -153,7 +153,7 @@
             // 
             // listViewOlimp
             // 
-            listViewOlimp.Items.AddRange(new ListViewItem[] { listViewItem2 });
+            listViewOlimp.Items.AddRange(new ListViewItem[] { listViewItem4 });
             listViewOlimp.Location = new Point(3, 3);
             listViewOlimp.Margin = new Padding(3, 2, 3, 2);
             listViewOlimp.MultiSelect = false;
@@ -178,8 +178,7 @@
             // 
             tabMain.Controls.Add(tabPageStudent);
             tabMain.Controls.Add(tabPageOlimpiad);
-            tabMain.Controls.Add(tabPageExcel);
-            tabMain.Controls.Add(tabPageReport);
+            tabMain.Controls.Add(tabPageMainReport);
             tabMain.Dock = DockStyle.Fill;
             tabMain.HotTrack = true;
             tabMain.ItemSize = new Size(64, 20);
@@ -747,25 +746,35 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += addOlimpiads_Click;
             // 
-            // tabPageExcel
+            // tabPageMainReport
             // 
-            tabPageExcel.Controls.Add(panelRightReport);
-            tabPageExcel.Controls.Add(panelLeftReport);
-            tabPageExcel.Location = new Point(4, 24);
-            tabPageExcel.Name = "tabPageExcel";
-            tabPageExcel.Padding = new Padding(3);
-            tabPageExcel.Size = new Size(1896, 1013);
-            tabPageExcel.TabIndex = 2;
-            tabPageExcel.Text = "Экспорт в Excel";
-            tabPageExcel.UseVisualStyleBackColor = true;
+            tabPageMainReport.Controls.Add(panelRightReport);
+            tabPageMainReport.Controls.Add(panelLeftReport);
+            tabPageMainReport.Location = new Point(4, 24);
+            tabPageMainReport.Name = "tabPageMainReport";
+            tabPageMainReport.Padding = new Padding(3);
+            tabPageMainReport.Size = new Size(1896, 1013);
+            tabPageMainReport.TabIndex = 2;
+            tabPageMainReport.Text = "Отчёт";
+            tabPageMainReport.UseVisualStyleBackColor = true;
             // 
             // panelRightReport
             // 
+            panelRightReport.Controls.Add(reportViewer1);
             panelRightReport.Dock = DockStyle.Left;
             panelRightReport.Location = new Point(3, 3);
             panelRightReport.Name = "panelRightReport";
             panelRightReport.Size = new Size(1585, 1007);
             panelRightReport.TabIndex = 12;
+            // 
+            // reportViewer1
+            // 
+            reportViewer1.Dock = DockStyle.Fill;
+            reportViewer1.Location = new Point(0, 0);
+            reportViewer1.Name = "ReportViewer";
+            reportViewer1.ServerReport.BearerToken = null;
+            reportViewer1.Size = new Size(1585, 1007);
+            reportViewer1.TabIndex = 0;
             // 
             // panelLeftReport
             // 
@@ -829,24 +838,6 @@
             numericUpDown1.TabIndex = 8;
             numericUpDown1.Value = new decimal(new int[] { 2023, 0, 0, 0 });
             // 
-            // reportViewer1
-            // 
-            reportViewer1.Dock = DockStyle.Fill;
-            reportViewer1.Location = new Point(0, 0);
-            reportViewer1.Name = "ReportViewer";
-            reportViewer1.ServerReport.BearerToken = null;
-            reportViewer1.Size = new Size(300, 1007);
-            reportViewer1.TabIndex = 0;
-            // 
-            // tabPageReport
-            // 
-            tabPageReport.Location = new Point(4, 24);
-            tabPageReport.Name = "tabPageReport";
-            tabPageReport.Size = new Size(1896, 1013);
-            tabPageReport.TabIndex = 3;
-            tabPageReport.Text = "Отчёт";
-            tabPageReport.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -872,10 +863,10 @@
             splitContainer1.ResumeLayout(false);
             tabPageOlimpiad.ResumeLayout(false);
             tabPageOlimpiad.PerformLayout();
-            tabPageExcel.ResumeLayout(false);
+            tabPageMainReport.ResumeLayout(false);
+            panelRightReport.ResumeLayout(false);
             panelLeftReport.ResumeLayout(false);
             panelLeftReport.PerformLayout();
-            panelRightReport.Controls.Add(this.reportViewer1);
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
@@ -890,7 +881,7 @@
         private TabControl tabMain;
         private TabPage tabPageStudent;
         private TabPage tabPageOlimpiad;
-        private TabPage tabPageExcel;
+        private TabPage tabPageMainReport;
         private ListView listViewOlympiadsOfStudent;
         private TextBox textBoxSearchStudents;
         private Button search;
@@ -945,7 +936,6 @@
         private Label label19;
         private Label label20;
         private NumericUpDown numericUpDown2;
-        private TabPage tabPageReport;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private Panel panelLeftReport;
         private Panel panelRightReport;
