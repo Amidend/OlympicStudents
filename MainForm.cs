@@ -39,6 +39,7 @@ namespace OlympicStudents
             updateDataStudentAsync();
             updateDataOlimpiadsAsync();
         }
+      
         //Чек боксики
         private void checkBoxesStudents_CheckedChanged(object sender, EventArgs e)
         {
@@ -448,5 +449,6 @@ namespace OlympicStudents
             Adapter.InitializeListViewOlimpiads(listViewOlimp);
             Adapter.FillOlimpiadsListVewAsync(listViewOlimp);
         }
+
     }
 }
