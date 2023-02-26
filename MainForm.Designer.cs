@@ -88,13 +88,15 @@
             DeleteOlimp = new Button();
             button1 = new Button();
             tabPageExcel = new TabPage();
+            panelRightReport = new Panel();
+            panelLeftReport = new Panel();
             checkedListBoxCriteriaExcel = new CheckedListBox();
             label20 = new Label();
             label19 = new Label();
             numericUpDown2 = new NumericUpDown();
             numericUpDown1 = new NumericUpDown();
-            tabPageReport = new TabPage();
             reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            tabPageReport = new TabPage();
             tabMain.SuspendLayout();
             tabPageStudent.SuspendLayout();
             panelMenuStudents.SuspendLayout();
@@ -104,9 +106,9 @@
             splitContainer1.SuspendLayout();
             tabPageOlimpiad.SuspendLayout();
             tabPageExcel.SuspendLayout();
+            panelLeftReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            tabPageReport.SuspendLayout();
             SuspendLayout();
             // 
             // buttonAddStudent
@@ -163,7 +165,7 @@
             // 
             // excel
             // 
-            excel.Location = new Point(8, 201);
+            excel.Location = new Point(3, 180);
             excel.Margin = new Padding(3, 2, 3, 2);
             excel.Name = "excel";
             excel.Size = new Size(132, 22);
@@ -747,12 +749,8 @@
             // 
             // tabPageExcel
             // 
-            tabPageExcel.Controls.Add(checkedListBoxCriteriaExcel);
-            tabPageExcel.Controls.Add(label20);
-            tabPageExcel.Controls.Add(label19);
-            tabPageExcel.Controls.Add(numericUpDown2);
-            tabPageExcel.Controls.Add(numericUpDown1);
-            tabPageExcel.Controls.Add(excel);
+            tabPageExcel.Controls.Add(panelRightReport);
+            tabPageExcel.Controls.Add(panelLeftReport);
             tabPageExcel.Location = new Point(4, 24);
             tabPageExcel.Name = "tabPageExcel";
             tabPageExcel.Padding = new Padding(3);
@@ -761,21 +759,43 @@
             tabPageExcel.Text = "Экспорт в Excel";
             tabPageExcel.UseVisualStyleBackColor = true;
             // 
+            // panelRightReport
+            // 
+            panelRightReport.Dock = DockStyle.Left;
+            panelRightReport.Location = new Point(3, 3);
+            panelRightReport.Name = "panelRightReport";
+            panelRightReport.Size = new Size(1585, 1007);
+            panelRightReport.TabIndex = 12;
+            // 
+            // panelLeftReport
+            // 
+            panelLeftReport.Controls.Add(checkedListBoxCriteriaExcel);
+            panelLeftReport.Controls.Add(excel);
+            panelLeftReport.Controls.Add(label20);
+            panelLeftReport.Controls.Add(label19);
+            panelLeftReport.Controls.Add(numericUpDown2);
+            panelLeftReport.Controls.Add(numericUpDown1);
+            panelLeftReport.Dock = DockStyle.Right;
+            panelLeftReport.Location = new Point(1593, 3);
+            panelLeftReport.Name = "panelLeftReport";
+            panelLeftReport.Size = new Size(300, 1007);
+            panelLeftReport.TabIndex = 11;
+            // 
             // checkedListBoxCriteriaExcel
             // 
             checkedListBoxCriteriaExcel.FormattingEnabled = true;
             checkedListBoxCriteriaExcel.Items.AddRange(new object[] { "Правоведение", "Коммерческая деятельность", "Банковское дело", "Бухгалтерский учет, анализ и контроль", "Операционная логистика", "Экономика и организация производства", "Программное обеспечение информационных технологий" });
-            checkedListBoxCriteriaExcel.Location = new Point(8, 48);
+            checkedListBoxCriteriaExcel.Location = new Point(3, 3);
             checkedListBoxCriteriaExcel.MultiColumn = true;
             checkedListBoxCriteriaExcel.Name = "checkedListBoxCriteriaExcel";
-            checkedListBoxCriteriaExcel.Size = new Size(143, 148);
+            checkedListBoxCriteriaExcel.Size = new Size(292, 148);
             checkedListBoxCriteriaExcel.TabIndex = 10;
             // 
             // label20
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(262, 14);
+            label20.Location = new Point(117, 154);
             label20.Name = "label20";
             label20.Size = new Size(28, 21);
             label20.TabIndex = 9;
@@ -785,39 +805,29 @@
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label19.Location = new Point(8, 14);
+            label19.Location = new Point(3, 154);
             label19.Name = "label19";
-            label19.Size = new Size(113, 21);
+            label19.Size = new Size(17, 21);
             label19.TabIndex = 9;
-            label19.Text = "Учебный год с";
+            label19.Text = "с";
             // 
             // numericUpDown2
             // 
-            numericUpDown2.Location = new Point(296, 12);
+            numericUpDown2.Location = new Point(151, 152);
             numericUpDown2.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(120, 23);
+            numericUpDown2.Size = new Size(93, 23);
             numericUpDown2.TabIndex = 8;
             numericUpDown2.Value = new decimal(new int[] { 2023, 0, 0, 0 });
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(127, 12);
+            numericUpDown1.Location = new Point(18, 152);
             numericUpDown1.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(120, 23);
+            numericUpDown1.Size = new Size(93, 23);
             numericUpDown1.TabIndex = 8;
             numericUpDown1.Value = new decimal(new int[] { 2023, 0, 0, 0 });
-            // 
-            // tabPageReport
-            // 
-            tabPageReport.Controls.Add(reportViewer1);
-            tabPageReport.Location = new Point(4, 24);
-            tabPageReport.Name = "tabPageReport";
-            tabPageReport.Size = new Size(1896, 1013);
-            tabPageReport.TabIndex = 3;
-            tabPageReport.Text = "Отчёт";
-            tabPageReport.UseVisualStyleBackColor = true;
             // 
             // reportViewer1
             // 
@@ -825,8 +835,17 @@
             reportViewer1.Location = new Point(0, 0);
             reportViewer1.Name = "ReportViewer";
             reportViewer1.ServerReport.BearerToken = null;
-            reportViewer1.Size = new Size(1896, 1013);
+            reportViewer1.Size = new Size(300, 1007);
             reportViewer1.TabIndex = 0;
+            // 
+            // tabPageReport
+            // 
+            tabPageReport.Location = new Point(4, 24);
+            tabPageReport.Name = "tabPageReport";
+            tabPageReport.Size = new Size(1896, 1013);
+            tabPageReport.TabIndex = 3;
+            tabPageReport.Text = "Отчёт";
+            tabPageReport.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -854,10 +873,11 @@
             tabPageOlimpiad.ResumeLayout(false);
             tabPageOlimpiad.PerformLayout();
             tabPageExcel.ResumeLayout(false);
-            tabPageExcel.PerformLayout();
+            panelLeftReport.ResumeLayout(false);
+            panelLeftReport.PerformLayout();
+            panelRightReport.Controls.Add(this.reportViewer1);
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            tabPageReport.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -927,5 +947,7 @@
         private NumericUpDown numericUpDown2;
         private TabPage tabPageReport;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private Panel panelLeftReport;
+        private Panel panelRightReport;
     }
 }

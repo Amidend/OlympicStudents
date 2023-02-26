@@ -38,52 +38,6 @@ namespace OlympicStudents
 
             updateDataStudentAsync();
             updateDataOlimpiadsAsync();
-            System.Data.DataSet ds = GetDataSet();
-            ReportDataSource rds = new ReportDataSource("DataSet1", ds.Tables[0]);
-            this.reportViewer1.LocalReport.DataSources.Clear();
-            this.reportViewer1.LocalReport.DataSources.Add(rds);
-
-            reportViewer1.LocalReport.ReportEmbeddedResource = "OlympicStudents.ReportDefenitions.Report.rdlc";
-            reportViewer1.LocalReport.Refresh();
-            reportViewer1.RefreshReport();
-        }
-        //
-        private System.Data.DataSet GetDataSet()
-        {
-
-            DataSet MyDataSet = new DataSet();
-            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=";
-            //Там где находится файл базы данных
-            string sBank = @"C:\Bases\Animals.mdb";
-            string sSql = "Select * from thisanimals";
-            using (OleDbConnection oleConn = new OleDbConnection(connectionString + sBank))
-            {
-                try
-                {
-                    oleConn.Open();
-                    OleDbCommand olecmd = new OleDbCommand(sSql, oleConn);
-                    olecmd.CommandType = CommandType.Text;
-                    OleDbDataAdapter da = new OleDbDataAdapter(olecmd);
-                    da.Fill(MyDataSet);
-                }
-                catch (Exception/* ex*/)
-                {
-                    return;
-                }
-            }
-            reportViewer1.ProcessingMode = ProcessingMode.Local;
-            reportViewer1.LocalReport.ReportEmbeddedResource = "RepView.Report1.rdlc";
-            this.reportViewer1.LocalReport.DataSources.Add(new ReportDataSource(
-                                   "AnimalsDataSet_ThisAnimals", MyDataSet.Tables[0]));
-            this.reportViewer1.RefreshReport();
-
-
-            using (var connection = new SQLiteConnection("Data Source=data.db"))
-            {
-                connection.Open();
-                DataSet1 dataSet1=new DataSet1();
-                return dataSet1;
-            }
         }
         //Чек боксики
         private void checkBoxesStudents_CheckedChanged(object sender, EventArgs e)
@@ -451,17 +405,14 @@ namespace OlympicStudents
                 searchCriteria = string.Join("||", criteriaList);
             }
 
+            DataTable dt = new DataTable();
+            dt.Columns.Add("fio");
+            dt.Columns.Add("title");
+            dt.Columns.Add("dates");
+            dt.Columns.Add("awards");
+            dt.Columns.Add("encouragement");
 
-            IWorkbook workbook = new XSSFWorkbook();
-            ISheet sheet1 = workbook.CreateSheet("Отчет");
-            IRow row1 = sheet1.CreateRow(0);
-            row1.CreateCell(0).SetCellValue("ФИО");
-            row1.CreateCell(1).SetCellValue("Название Оимпиады");
-            row1.CreateCell(2).SetCellValue("Дата проведения");
-            row1.CreateCell(3).SetCellValue("Награды");
-            row1.CreateCell(4).SetCellValue("Поощерение");
             List<int> size = DataBase.findByids(numericUpDown1, numericUpDown2);
-            int i = 0;
             for (int k = 0; k < size.Count; k++)
             {
                 var student_id = DataBase.FindStudentByOlimpyad(size[k].ToString());
@@ -470,19 +421,21 @@ namespace OlympicStudents
 
                 if (Student.Count > 0)
                 {
-
-                    IRow row = sheet1.CreateRow(i + 1);
-                    row.CreateCell(0).SetCellValue(Student[0]);
-                    row.CreateCell(1).SetCellValue(Olympyad[7]);
-                    row.CreateCell(2).SetCellValue(Olympyad[0]);
-                    row.CreateCell(3).SetCellValue(Olympyad[3]);
-                    row.CreateCell(4).SetCellValue(Olympyad[4]);
-                    i++;
+                    DataRow row = dt.NewRow();
+                    row["fio"] = Student[0];
+                    row["title"] = Olympyad[7];
+                    row["dates"] = Olympyad[0];
+                    row["awards"] = Olympyad[3];
+                    row["encouragement"] = Olympyad[4];
+                    dt.Rows.Add(row);
                 }
             }
-            FileStream sw = File.Create("test.xlsx");
-            workbook.Write(sw);
-            sw.Close();
+
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.ReportEmbeddedResource = "OlympicStudents.ReportDefenitions.Report.rdlc";
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dt));
+            reportViewer1.LocalReport.Refresh();
+            reportViewer1.RefreshReport();
         }
         //Обнуление таблички
         private async void updateDataStudentAsync()
