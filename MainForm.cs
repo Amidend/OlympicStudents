@@ -1,6 +1,4 @@
-using NPOI.XSSF.UserModel;
 using Microsoft.Data.Sqlite;
-using NPOI.SS.UserModel;
 using StudentInfo;
 using Microsoft.Reporting.WinForms;
 using System.Windows.Forms;
@@ -8,6 +6,8 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System;
+using System.Globalization;
 
 namespace OlympicStudents
 {
@@ -368,6 +368,7 @@ namespace OlympicStudents
         //Отчёт
         private void excelReport_ClickAsync(object sender, EventArgs e)
         {
+            List<string> strings = new List<string>();
             List<string> criteriaList = new List<string>();
             foreach (var SearchItem in checkedListBoxCriteriaExcel.CheckedItems)
             {
@@ -390,22 +391,35 @@ namespace OlympicStudents
                         break;
                     case "Экономика и организация производства":
                         criteriaList.Add("Экономика и организация производства");
+                        strings.Add("Экономике и организации производства");
                         break;
                     case "Программное обеспечение информационных технологий":
                         criteriaList.Add("Программное обеспечение информационных технологий");
+                        strings.Add("Программному обеспечению информационных технологий");
                         break;
                 }
             }
             string searchCriteria;
-            if (criteriaList.Count == 0)
+            string categories;
+            string report;
+            if (criteriaList.Count == 0 || criteriaList.Count == 7)
             {
                 searchCriteria = "Правоведение||Коммерческая деятельность||Банковское дело||Бухгалтерский учет, анализ и контроль||Операционная логистика||Экономика и организация производства||Программное обеспечение информационных технологий";
+                categories = "Правоведение, Коммерческая деятельность, Банковское дело, Бухгалтерский учет, анализ и контроль, Операционная логистика, Экономика и организация производства, Программное обеспечение информационных технологий";
+                report = $"Отчет за {numericUpDown1.Value}-{numericUpDown2.Value} учебный год по следующим учебным дисциплинам {categories}";
+            }
+            else if (criteriaList.Count == 1)
+            {
+                searchCriteria = string.Join("||", criteriaList);
+                categories = string.Join(", ", criteriaList);
+                report = $"Отчет за {numericUpDown1.Value}-{numericUpDown2.Value} учебный год по следующей учебной дисциплине {categories}";
             }
             else
             {
                 searchCriteria = string.Join("||", criteriaList);
+                categories = string.Join(", ", criteriaList);
+                report = $"Отчет за {numericUpDown1.Value}-{numericUpDown2.Value} учебный год по следующим дисциплинам {categories}";
             }
-
             DataTable dt = new DataTable();
             dt.Columns.Add("fio");
             dt.Columns.Add("title");
@@ -425,16 +439,19 @@ namespace OlympicStudents
                     DataRow row = dt.NewRow();
                     row["fio"] = Student[0];
                     row["title"] = Olympyad[7];
-                    row["dates"] = Olympyad[0];
+                    DateTime dateTime = DateTime.ParseExact(Olympyad[0], "yyyy.mm.dd", CultureInfo.InvariantCulture);
+                    row["dates"] = dateTime.ToString("dd.mm.yyyy");
                     row["awards"] = Olympyad[3];
                     row["encouragement"] = Olympyad[4];
                     dt.Rows.Add(row);
                 }
             }
-
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.ReportEmbeddedResource = "OlympicStudents.ReportDefenitions.Report.rdlc";
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dt));
+            ReportParameterCollection reportParameters = new ReportParameterCollection();
+            reportParameters.Add(new ReportParameter("ReportParameter1", report));
+            reportViewer1.LocalReport.SetParameters(reportParameters);
             reportViewer1.LocalReport.Refresh();
             reportViewer1.RefreshReport();
         }
@@ -449,7 +466,6 @@ namespace OlympicStudents
             Adapter.InitializeListViewOlimpiads(listViewOlimp);
             Adapter.FillOlimpiadsListVewAsync(listViewOlimp);
         }
-
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
             Console.WriteLine("РАЗРАБОТЧИК - ДМИТРИЙ РИПИНСКИЙ Т-091(Т-096)");

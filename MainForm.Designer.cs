@@ -30,6 +30,7 @@
         {
             ListViewItem listViewItem1 = new ListViewItem("");
             ListViewItem listViewItem2 = new ListViewItem("");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             buttonAddStudent = new Button();
             buttonDelete = new Button();
             listViewStudent = new ListView();
@@ -118,7 +119,7 @@
             buttonAddStudent.Name = "buttonAddStudent";
             buttonAddStudent.Size = new Size(130, 30);
             buttonAddStudent.TabIndex = 1;
-            buttonAddStudent.Text = "Добавить ученика";
+            buttonAddStudent.Text = "Добавить учащегося";
             buttonAddStudent.UseVisualStyleBackColor = true;
             buttonAddStudent.Click += buttonAddStudent_Click;
             // 
@@ -849,6 +850,7 @@
             ClientSize = new Size(1904, 1041);
             Controls.Add(tabMain);
             HelpButton = true;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
             StartPosition = FormStartPosition.Manual;

@@ -18,10 +18,10 @@ namespace OlympicStudents
                 SqliteCommand command = new SqliteCommand();
                 command.Connection = connection;
                 command.CommandText = $"INSERT INTO student (fio, dateOfBirth, address, phone, groups, yearApplying, yearOfRelease, course, specialization)" +
-                    $" VALUES ('{textBox1.Text+" "+ textBox10.Text+" "+textBox11.Text}', '{date}', '{richTextBox1.Text}', '{textBox4.Text+"|"+ textBox5.Text+"|"+textBox6.Text}', '{textBox7.Text}', '{textBox8.Text}', '{textBox9.Text}', '{courseBox.Text}', '{SpecializationBox.Text}')";
+                    $" VALUES ('{textBox1.Text + " " + textBox10.Text + " " + textBox11.Text}', '{date}', '{richTextBox1.Text}', '{textBox4.Text + "|" + textBox5.Text + "|" + textBox6.Text}', '{textBox7.Text}', '{textBox8.Text}', '{textBox9.Text}', '{courseBox.Text}', '{SpecializationBox.Text}')";
                 command.ExecuteNonQuery();
                 command.Cancel();
-                int res=-1;
+                int res = -1;
                 command = new SqliteCommand($"SELECT seq FROM sqlite_sequence WHERE name='student'", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {

@@ -1,12 +1,4 @@
 ﻿using Microsoft.Data.Sqlite;
-using OlympicStudents;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-using System.Collections;
-using System.Windows.Forms;
-using System.Collections.Generic;
-using NPOI.Util.Collections;
 
 namespace StudentInfo
 {
