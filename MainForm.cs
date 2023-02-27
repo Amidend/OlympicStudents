@@ -450,5 +450,9 @@ namespace OlympicStudents
             Adapter.FillOlimpiadsListVewAsync(listViewOlimp);
         }
 
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+            Console.WriteLine("ĞÀÇĞÀÁÎÒ×ÈÊ - ÄÌÈÒĞÈÉ ĞÈÏÈÍÑÊÈÉ Ò-091(Ò-096)");
+        }
     }
 }

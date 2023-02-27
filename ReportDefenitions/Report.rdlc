@@ -23,7 +23,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>2.67539cm</Height>
+              <Height>2.79445cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -34,7 +34,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>fio</Value>
+                              <Value>ФИО</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -64,7 +64,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>title</Value>
+                              <Value>Название мероприятия</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -94,7 +94,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>dates</Value>
+                              <Value>Дата проведения</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -124,7 +124,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>awards</Value>
+                              <Value>Награды</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -154,7 +154,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>encouragement</Value>
+                              <Value>Поощерения</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -178,7 +178,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>2.67539cm</Height>
+              <Height>2.79445cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -354,7 +354,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Height>5.35078cm</Height>
+        <Top>2.83104cm</Top>
+        <Height>5.5889cm</Height>
         <Width>16.51cm</Width>
         <Style>
           <Border>
@@ -363,7 +364,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.10661in</Height>
+    <Height>3.31494in</Height>
     <Style />
   </Body>
   <Width>6.5in</Width>

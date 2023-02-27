@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ListViewItem listViewItem3 = new ListViewItem("");
-            ListViewItem listViewItem4 = new ListViewItem("");
+            ListViewItem listViewItem1 = new ListViewItem("");
+            ListViewItem listViewItem2 = new ListViewItem("");
             buttonAddStudent = new Button();
             buttonDelete = new Button();
             listViewStudent = new ListView();
@@ -139,8 +139,8 @@
             listViewStudent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listViewStudent.BorderStyle = BorderStyle.FixedSingle;
             listViewStudent.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            listViewItem3.StateImageIndex = 0;
-            listViewStudent.Items.AddRange(new ListViewItem[] { listViewItem3 });
+            listViewItem1.StateImageIndex = 0;
+            listViewStudent.Items.AddRange(new ListViewItem[] { listViewItem1 });
             listViewStudent.Location = new Point(379, -3);
             listViewStudent.Margin = new Padding(3, 2, 3, 2);
             listViewStudent.MultiSelect = false;
@@ -153,7 +153,7 @@
             // 
             // listViewOlimp
             // 
-            listViewOlimp.Items.AddRange(new ListViewItem[] { listViewItem4 });
+            listViewOlimp.Items.AddRange(new ListViewItem[] { listViewItem2 });
             listViewOlimp.Location = new Point(3, 3);
             listViewOlimp.Margin = new Padding(3, 2, 3, 2);
             listViewOlimp.MultiSelect = false;
@@ -313,6 +313,7 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(listViewStudent);
+            splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             // 
             // splitContainer1.Panel2
             // 
