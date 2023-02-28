@@ -1,13 +1,9 @@
 using Microsoft.Data.Sqlite;
 using StudentInfo;
 using Microsoft.Reporting.WinForms;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Data;
-using System.Collections.Generic;
-using System.Data.SQLite;
-using System;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace OlympicStudents
 {
@@ -18,11 +14,10 @@ namespace OlympicStudents
         public MainForm()
         {
             InitializeComponent();
-
-            panelMenuStudents.Width = 315;
+            panelMenuStudents.Width = 415;
             panelMenuStudents.Dock = DockStyle.Right;
 
-            splitContainer1.Width -= 300;
+            splitContainer1.Width -= 400;
             Panel upPanel = new Panel();
             upPanel.Dock = DockStyle.Fill;
             listViewStudent.Dock = DockStyle.Fill;
@@ -292,40 +287,52 @@ namespace OlympicStudents
         //Удаление
         private void deleteStudents_Click(object sender, EventArgs e)
         {
+
             if ((listViewStudent.SelectedItems.Count > 0) && !(listViewOlympiadsOfStudent.SelectedItems.Count > 0))
             {
-                List<int?> res = new List<int?>();
-                using (var connection = new SqliteConnection("Data Source=data.db"))
+                if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент?", "Внимание", MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    connection.Open();
-                    int k = 9;
 
-                    SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM result WHERE student_id='{DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString()}'", connection);
-                    using (SqliteDataReader reader = command.ExecuteReader())
+
+                    List<int?> res = new List<int?>();
+                    using (var connection = new SqliteConnection("Data Source=data.db"))
                     {
-                        if (reader.HasRows)
+                        connection.Open();
+                        int k = 9;
+
+                        SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM result WHERE student_id='{DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString()}'", connection);
+                        using (SqliteDataReader reader = command.ExecuteReader())
                         {
-                            while (reader.Read())
+                            if (reader.HasRows)
                             {
-                                if (reader.IsDBNull(0)) continue;
-                                else res?.Add(reader?.GetInt32(0));
+                                while (reader.Read())
+                                {
+                                    if (reader.IsDBNull(0)) continue;
+                                    else res?.Add(reader?.GetInt32(0));
+                                }
                             }
                         }
+                        command.Cancel(); command.Cancel();
                     }
-                    command.Cancel(); command.Cancel();
-                }
-                for (int i = 0; i < res.Count; i++)
-                {
-                    DataBase.Delete("olympiad", "", "olympiad_id", res[i].ToString());
+                    for (int i = 0; i < res.Count; i++)
+                    {
+                        DataBase.Delete("olympiad", "", "olympiad_id", res[i].ToString());
 
-                    DataBase.Delete("result", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
+                        DataBase.Delete("result", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
+                    }
+                    DataBase.Delete("student", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
                 }
-                DataBase.Delete("student", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
             }
             if ((listViewStudent.SelectedItems.Count > 0) && (listViewOlympiadsOfStudent.SelectedItems.Count > 0))
             {
-                DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlympiadsOfStudent.SelectedItems[0].SubItems[9].Text.ToString()}");
-                DataBase.Delete("result", "", "olympiad_id", $"{listViewOlympiadsOfStudent.SelectedItems[0].SubItems[9].Text.ToString()}");
+                if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент?", "Внимание", MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                    DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlympiadsOfStudent.SelectedItems[0].SubItems[9].Text.ToString()}");
+                    DataBase.Delete("result", "", "olympiad_id", $"{listViewOlympiadsOfStudent.SelectedItems[0].SubItems[9].Text.ToString()}");
+                }
             }
             listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
             updateDataStudentAsync();
@@ -335,8 +342,12 @@ namespace OlympicStudents
         {
             if (listViewOlimp.SelectedItems.Count > 0)
             {
-                DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
-                DataBase.Delete("result", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
+                if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент?", "Внимание", MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
+                    DataBase.Delete("result", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
+                }
             }
             updateDataOlimpiadsAsync();
         }
@@ -469,6 +480,11 @@ namespace OlympicStudents
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
             Console.WriteLine("РАЗРАБОТЧИК - ДМИТРИЙ РИПИНСКИЙ Т-091(Т-096)");
+        }
+
+        private void listViewOlimp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
