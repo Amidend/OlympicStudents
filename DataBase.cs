@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 
-namespace StudentInfo
+namespace OlympicStudents
 {
     internal abstract class DataBase
     {
@@ -165,7 +165,7 @@ namespace StudentInfo
                     {
                         while (await reader.ReadAsync())
                         {
-                            for (int i = 0; i < 9; i++)
+                            for (int i = 1; i < 10; i++)
                             {
                                 list.Add(reader.GetString(i));
                             }
@@ -193,7 +193,7 @@ namespace StudentInfo
                         {
                             while (reader.Read())
                             {
-                                for (int i = 0; i < 9; i++)
+                                for (int i = 1; i < 10; i++)
                                 {
                                     list.Add(reader.GetString(i));
                                 }
@@ -238,7 +238,7 @@ namespace StudentInfo
                         while (reader.Read())
                         {
                             results.Clear();
-                            for (int i = 0; i < 9; i++)
+                            for (int i = 1; i < 10; i++)
                             {
                                 results.Add(reader.GetString(i));
                             }
@@ -305,7 +305,7 @@ namespace StudentInfo
         public static List<Dictionary<string, string>> MultiSearch(string tableName, List<string> searchFields, List<string> searchValues)
         {
             List<Dictionary<string, string>> dataSource = GetData(tableName);
-            System.Collections.Generic.HashSet<Dictionary<string, string>> f = new System.Collections.Generic.HashSet<Dictionary<string, string>>();
+            HashSet<Dictionary<string, string>> f = new HashSet<Dictionary<string, string>>();
             List<Dictionary<string, string>> searchResults = new List<Dictionary<string, string>>();
             List<Dictionary<string, string>> res = new List<Dictionary<string, string>>();
             foreach (var row in dataSource)
@@ -341,7 +341,8 @@ namespace StudentInfo
                     }
                 }
             }
-            else {
+            else
+            {
                 foreach (var i in f)
                 {
                     bool t = false;

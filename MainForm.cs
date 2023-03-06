@@ -1,9 +1,7 @@
 using Microsoft.Data.Sqlite;
-using StudentInfo;
 using Microsoft.Reporting.WinForms;
 using System.Data;
 using System.Globalization;
-using System.Windows.Forms;
 
 namespace OlympicStudents
 {
@@ -417,19 +415,25 @@ namespace OlympicStudents
             {
                 searchCriteria = "Правоведение||Коммерческая деятельность||Банковское дело||Бухгалтерский учет, анализ и контроль||Операционная логистика||Экономика и организация производства||Программное обеспечение информационных технологий";
                 categories = "Правоведение, Коммерческая деятельность, Банковское дело, Бухгалтерский учет, анализ и контроль, Операционная логистика, Экономика и организация производства, Программное обеспечение информационных технологий";
-                report = $"Отчет за {numericUpDown1.Value}-{numericUpDown2.Value} учебный год по следующим учебным дисциплинам {categories}";
+                report = $"Отчет об участии учащихся колледжа в олимпиадах \nза {numericUpDown1.Value}-{numericUpDown2.Value} учебный год ";
             }
             else if (criteriaList.Count == 1)
             {
                 searchCriteria = string.Join("||", criteriaList);
                 categories = string.Join(", ", criteriaList);
-                report = $"Отчет за {numericUpDown1.Value}-{numericUpDown2.Value} учебный год по следующей учебной дисциплине {categories}";
+
+                report = $"Отчет об участии учащихся специальности \"{categories}\" в олимпиадах \nза {numericUpDown1.Value}-{numericUpDown2.Value} учебный год ";
             }
             else
             {
+                List<string> criteriaList1= new List<string>();
+                for (int i = 0; i < criteriaList.Count; i++)
+                {
+                    criteriaList1.Add("\"" + criteriaList[i].ToString() + "\"");
+                }
                 searchCriteria = string.Join("||", criteriaList);
-                categories = string.Join(", ", criteriaList);
-                report = $"Отчет за {numericUpDown1.Value}-{numericUpDown2.Value} учебный год по следующим дисциплинам {categories}";
+                categories = string.Join(", ", criteriaList1);
+                report = $"Отчет об участии учащихся специальностей {categories} в олимпиадах \nза {numericUpDown1.Value}-{numericUpDown2.Value} учебный год ";
             }
             DataTable dt = new DataTable();
             dt.Columns.Add("fio");

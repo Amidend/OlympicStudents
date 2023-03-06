@@ -202,7 +202,7 @@
             tabPageStudent.Padding = new Padding(3);
             tabPageStudent.Size = new Size(1896, 1003);
             tabPageStudent.TabIndex = 0;
-            tabPageStudent.Text = "Студенты";
+            tabPageStudent.Text = "Учaщиecя";
             tabPageStudent.UseVisualStyleBackColor = true;
             // 
             // panelMenuStudents
@@ -803,6 +803,7 @@
             // 
             // checkedListBoxCriteriaExcel
             // 
+            checkedListBoxCriteriaExcel.CheckOnClick = true;
             checkedListBoxCriteriaExcel.ColumnWidth = 280;
             checkedListBoxCriteriaExcel.FormattingEnabled = true;
             checkedListBoxCriteriaExcel.Items.AddRange(new object[] { "Правоведение", "Коммерческая деятельность", "Банковское дело", "Бухгалтерский учет, анализ и контроль", "Операционная логистика", "Экономика и организация производства", "Программное обеспечение информационных технологий" });

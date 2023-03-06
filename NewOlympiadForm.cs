@@ -1,5 +1,4 @@
 ﻿using Microsoft.Data.Sqlite;
-using StudentInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,11 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
-using StudentInfo;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace OlympicStudents
 {
@@ -19,21 +15,24 @@ namespace OlympicStudents
             listView.FullRowSelect = true;
             listView.Columns.AddRange(new[]
             {
+            new ColumnHeader {Text = "id"},
             new ColumnHeader {Text = "ФИО"},
-            new ColumnHeader {Text = "Дата рождения"},
-            new ColumnHeader {Text = "Адрес"},
-            new ColumnHeader {Text = "Номер телефона"},
-            new ColumnHeader {Text = "Группа"},
-            new ColumnHeader {Text = "Дата поступления"},
-            new ColumnHeader {Text = "Дата выпуска"},
             new ColumnHeader {Text = "Курс"},
-            new ColumnHeader {Text = "Специализация"}
+            new ColumnHeader {Text = "Группа"},
+            new ColumnHeader {Text = "Специальность"},
+            new ColumnHeader {Text = "Дата рождения"},
+            new ColumnHeader {Text = "Адресс"},
+            new ColumnHeader {Text = "Телефон"},
+            new ColumnHeader {Text = "Дата поступления"},
+            new ColumnHeader {Text = "Дата выпуска"}
             });
-            int columnWidth = listView.ClientSize.Width / listView.Columns.Count;
+            int columnWidth = listView.ClientSize.Width / (listView.Columns.Count-1);
+
             for (int i = 0; i < listView.Columns.Count; i++)
             {
-                listView.Columns[i].Width = columnWidth;
+                listView.Columns[i].Width  = columnWidth; 
             }
+            listView.Columns[0].Width = 0;
             listView.ColumnClick += (sender, e) =>
             {
                 var list = (ListView)sender;
@@ -74,7 +73,7 @@ namespace OlympicStudents
         }
         public static async Task FillStudentListVewAsync(ListView listViewStudent)
         {
-            var items = await DataBase.GetAllFromTableAsync("student", 9);
+            var items = await DataBase.GetAllFromTableAsync("student", 10);
             foreach (var item in items)
             {
                 listViewStudent.Items.Add(item);
@@ -99,7 +98,7 @@ namespace OlympicStudents
         public static async Task FillStudentInformationAsync(int id, List<Label> labels)
         {
             var items = await DataBase.GetStuentInformation(id.ToString());
-            if (items.Count == 9)
+            if (items.Count == 10)
             {
                 labels[0].Text = items[0];
                 labels[1].Text = items[1];
