@@ -14,7 +14,8 @@ namespace OlympicStudents
             InitializeComponent();
             panelMenuStudents.Width = 415;
             panelMenuStudents.Dock = DockStyle.Right;
-
+            listViewOlimp.Dock = DockStyle.Left;
+            listViewOlimp.Width -= 490;
             splitContainer1.Width -= 400;
             Panel upPanel = new Panel();
             upPanel.Dock = DockStyle.Fill;
@@ -56,7 +57,7 @@ namespace OlympicStudents
             }
             if (searchFields.Any())
             {
-                searchResults = DataBase.MultiSearch("student", searchFields, searchValues)
+                searchResults = DataBase.MultiSearch(Constants.tableStudent, searchFields, searchValues)
                .Select(dict => dict.Values.ToList())
                .ToList();
             }
@@ -151,22 +152,19 @@ namespace OlympicStudents
         //Когда нажал на табличку
         private void listViewStudents_MouseOneClick(object sender, MouseEventArgs e)
         {
-            try
-            {
+
                 int index = listViewStudent.SelectedIndices[0];
-                string studentId = (listViewStudent.Items[index].SubItems[0].Text);
-                int id = DataBase.FindStudentById(studentId);
+                int id = int.Parse(listViewStudent.Items[index].SubItems[0].Text);
                 Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
                 Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id);
-            }
-            catch (Exception ex) { }
+
         }
         private void listViewOlimp_MouseOneClick(object sender, MouseEventArgs e)
         {
             try
             {
                 int index = listViewOlimp.SelectedIndices[0];
-                string studentId = (listViewOlimp.Items[index].SubItems[9].Text);
+                string studentId = (listViewOlimp.Items[index].SubItems[0].Text);
                 int id = DataBase.FindStudentByOlimpyad(studentId);
                 List<Label> labels = new List<Label>() { labelfio, labeldob, labeladd, labelph1, labelph2, labelph3, labelgro, labelyap, labelyor, labelcou, labelspe };
                 Adapter.FillStudentInformationAsync(id, labels);
@@ -219,7 +217,7 @@ namespace OlympicStudents
             {
                 searchCriteria = string.Join(" || ", criteriaList);
             }
-            var res = DataBase.Search("student", searchCriteria, $"{textBoxSearchStudents.Text}");
+            var res = DataBase.Search(Constants.tableStudent, searchCriteria, $"{textBoxSearchStudents.Text}");
             listViewStudent.Clear();
             Adapter.InitializeListViewSudent(listViewStudent);
             foreach (var i in res)
@@ -273,7 +271,7 @@ namespace OlympicStudents
             {
                 searchCriteria = string.Join(" || ", criteriaList);
             }
-            var res = DataBase.SearchOlimp("olympiad", searchCriteria, $"{textBoxSearchOlimpyad.Text}");
+            var res = DataBase.Search("olympiad", searchCriteria, $"{textBoxSearchOlimpyad.Text}");
             listViewOlimp.Clear();
             Adapter.InitializeListViewOlimpiads(listViewOlimp);
             foreach (var i in res)
@@ -426,7 +424,7 @@ namespace OlympicStudents
             }
             else
             {
-                List<string> criteriaList1= new List<string>();
+                List<string> criteriaList1 = new List<string>();
                 for (int i = 0; i < criteriaList.Count; i++)
                 {
                     criteriaList1.Add("\"" + criteriaList[i].ToString() + "\"");
@@ -452,12 +450,20 @@ namespace OlympicStudents
                 if (Student.Count > 0)
                 {
                     DataRow row = dt.NewRow();
-                    row["fio"] = Student[0];
-                    row["title"] = Olympyad[7];
-                    DateTime dateTime = DateTime.ParseExact(Olympyad[0], "yyyy.mm.dd", CultureInfo.InvariantCulture);
-                    row["dates"] = dateTime.ToString("dd.mm.yyyy");
-                    row["awards"] = Olympyad[3];
-                    row["encouragement"] = Olympyad[4];
+                    row["fio"] = Student[1];
+                    row["title"] = Olympyad[2];
+                    DateTime dateTime;
+                    if (DateTime.TryParseExact(Olympyad[1], "yyyy.MM.dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime))
+                    {
+                        row["dates"] = dateTime.ToString("dd.MM.yyyy");
+                    }
+                    else
+                    {
+                        // Handle the case where the date string is empty or invalid
+                        row["dates"] = string.Empty; // or set to some default value
+                    }
+                    row["awards"] = Olympyad[5];
+                    row["encouragement"] = Olympyad[6];
                     dt.Rows.Add(row);
                 }
             }
@@ -474,12 +480,12 @@ namespace OlympicStudents
         private async void updateDataStudentAsync()
         {
             Adapter.InitializeListViewSudent(listViewStudent);
-            Adapter.FillStudentListVewAsync(listViewStudent);
+            Adapter.FillListVewAsync(listViewStudent, Constants.tableStudent,10);
         }
         private void updateDataOlimpiadsAsync()
         {
             Adapter.InitializeListViewOlimpiads(listViewOlimp);
-            Adapter.FillOlimpiadsListVewAsync(listViewOlimp);
+            Adapter.FillListVewAsync(listViewOlimp, Constants.tableOlimpiad, 10);
         }
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {

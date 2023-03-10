@@ -19,7 +19,7 @@ namespace OlympicStudents
         {
             InitializeComponent();
             Adapter.InitializeListViewSudent(listView1);
-            Adapter.FillStudentListVewAsync(listView1);
+            Adapter.FillListVewAsync(listView1,Constants.tableStudent, 10);
         }
         private void button2_Click(object sender, EventArgs e)
         {

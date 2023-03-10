@@ -18,9 +18,9 @@ namespace OlympicStudents
                         while (await reader.ReadAsync())
                         {
                             string[] arr = new string[n];
-                            for (int i = 0; i < n; i++)
+                            for (int i = 0; i < reader.FieldCount; i++)
                             {
-                                arr[i] = reader.GetString(i);
+                                arr[i] = reader.IsDBNull(i) ? null : reader.GetString(i);
                             }
                             items.Add(new ListViewItem(arr));
                         }
@@ -32,7 +32,7 @@ namespace OlympicStudents
         public static async Task<List<ListViewItem>> GetAllOlympiadsByStudentIdAsync(int id)
         {
             List<ListViewItem> items = new List<ListViewItem>();
-            string[] arr = new string[11];
+            string[] arr = new string[10];
             string sqlExpressionmain = $"SELECT olympiad_id FROM result WHERE student_id='{id.ToString()}'";
 
             List<int> l = new List<int>();
@@ -69,11 +69,11 @@ namespace OlympicStudents
                         {
                             for (int j = 0; j < l.Count; j++)
                             {
-                                if (l[j] == reader.GetInt32(9))
+                                if (l[j] == reader.GetInt32(0))
                                 {
-                                    for (int i = 0; i < 10; i++)
+                                    for (int i = 0; i < reader.FieldCount; i++)
                                     {
-                                        arr[i] = reader.GetString(i);
+                                        arr[i] = reader.IsDBNull(i) ? null : reader.GetString(i);
                                     }
                                     items.Add(new ListViewItem(arr));
                                 }
@@ -98,9 +98,9 @@ namespace OlympicStudents
                     {
                         while (reader.Read())
                         {
-                            for (int i = 0; i < 9; i++)
+                            for (int i = 0; i < 10; i++)
                             {
-                                list.Add(reader.GetString(i));
+                                list.Add(reader.IsDBNull(i) ? null : reader.GetString(i));
                             }
                         }
                     }
@@ -165,9 +165,9 @@ namespace OlympicStudents
                     {
                         while (await reader.ReadAsync())
                         {
-                            for (int i = 1; i < 10; i++)
+                            for (int i = 0; i < 10; i++)
                             {
-                                list.Add(reader.GetString(i));
+                                list.Add(reader.IsDBNull(i) ? null : reader.GetString(i));
                             }
                         }
                     }
@@ -193,9 +193,9 @@ namespace OlympicStudents
                         {
                             while (reader.Read())
                             {
-                                for (int i = 1; i < 10; i++)
+                                for (int i = 0; i < 10; i++)
                                 {
-                                    list.Add(reader.GetString(i));
+                                    list.Add(reader.IsDBNull(i) ? null : reader.GetString(i));
                                 }
                             }
                         }
@@ -238,37 +238,9 @@ namespace OlympicStudents
                         while (reader.Read())
                         {
                             results.Clear();
-                            for (int i = 1; i < 10; i++)
-                            {
-                                results.Add(reader.GetString(i));
-                            }
-                            yield return results;
-                        }
-                    }
-                }
-            }
-        }
-        public static IEnumerable<List<string>> SearchOlimp(string table, string where, string key)
-        {
-            string result;
-
-            List<string> results = new List<string>();
-
-            using (var connection = new SqliteConnection("Data Source=data.db"))
-            {
-                connection.Open();
-
-                SqliteCommand command = new SqliteCommand($"SELECT * FROM {table} WHERE {where} LIKE '%{key}%'", connection);
-                using (SqliteDataReader reader = command.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            results.Clear();
                             for (int i = 0; i < 10; i++)
                             {
-                                results.Add(reader.GetString(i));
+                                results.Add(reader.IsDBNull(i) ? null : reader.GetString(i));
                             }
                             yield return results;
                         }
@@ -363,8 +335,6 @@ namespace OlympicStudents
 
             return res;
         }
-
-
 
         public static List<Dictionary<string, string>> GetData(string tableName)
         {

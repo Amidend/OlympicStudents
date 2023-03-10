@@ -154,12 +154,13 @@
             // 
             // listViewOlimp
             // 
+            listViewOlimp.Dock = DockStyle.Fill;
             listViewOlimp.Items.AddRange(new ListViewItem[] { listViewItem2 });
             listViewOlimp.Location = new Point(3, 3);
             listViewOlimp.Margin = new Padding(3, 2, 3, 2);
             listViewOlimp.MultiSelect = false;
             listViewOlimp.Name = "listViewOlimp";
-            listViewOlimp.Size = new Size(1400, 1007);
+            listViewOlimp.Size = new Size(1890, 997);
             listViewOlimp.TabIndex = 2;
             listViewOlimp.UseCompatibleStateImageBehavior = false;
             listViewOlimp.SelectedIndexChanged += listViewOlimp_SelectedIndexChanged;
@@ -860,11 +861,9 @@
             AutoValidate = AutoValidate.Disable;
             ClientSize = new Size(1904, 1041);
             Controls.Add(tabMain);
-            HelpButton = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
-            StartPosition = FormStartPosition.Manual;
             Text = "Олимпиады";
             WindowState = FormWindowState.Maximized;
             tabMain.ResumeLayout(false);
