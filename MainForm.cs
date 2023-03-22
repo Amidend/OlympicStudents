@@ -7,12 +7,11 @@ namespace OlympicStudents
 {
     public partial class MainForm : Form
     {
-
-
         public MainForm()
         {
             InitializeComponent();
-            panelMenuStudents.Width = 415;
+
+           /*panelMenuStudents.Width = 415;
             panelMenuStudents.Dock = DockStyle.Right;
             listViewOlimp.Dock = DockStyle.Left;
             listViewOlimp.Width -= 490;
@@ -28,7 +27,7 @@ namespace OlympicStudents
             listViewOlympiadsOfStudent.Dock = DockStyle.Fill;
             bottomPanel.Controls.Add(listViewOlympiadsOfStudent);
 
-            splitContainer1.Panel2.Controls.Add(bottomPanel);
+            splitContainer1.Panel2.Controls.Add(bottomPanel);*/
 
             updateDataStudentAsync();
             updateDataOlimpiadsAsync();
@@ -153,10 +152,10 @@ namespace OlympicStudents
         private void listViewStudents_MouseOneClick(object sender, MouseEventArgs e)
         {
 
-                int index = listViewStudent.SelectedIndices[0];
-                int id = int.Parse(listViewStudent.Items[index].SubItems[0].Text);
-                Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
-                Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id);
+            int index = listViewStudent.SelectedIndices[0];
+            int id = int.Parse(listViewStudent.Items[index].SubItems[0].Text);
+            Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
+            Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id);
 
         }
         private void listViewOlimp_MouseOneClick(object sender, MouseEventArgs e)
@@ -480,21 +479,12 @@ namespace OlympicStudents
         private async void updateDataStudentAsync()
         {
             Adapter.InitializeListViewSudent(listViewStudent);
-            Adapter.FillListVewAsync(listViewStudent, Constants.tableStudent,10);
+            Adapter.FillListVewAsync(listViewStudent, Constants.tableStudent, 10);
         }
         private void updateDataOlimpiadsAsync()
         {
             Adapter.InitializeListViewOlimpiads(listViewOlimp);
             Adapter.FillListVewAsync(listViewOlimp, Constants.tableOlimpiad, 10);
-        }
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-            Console.WriteLine("–¿«–¿¡Œ“◊»  - ƒÃ»“–»… –»œ»Õ— »… “-091(“-096)");
-        }
-
-        private void listViewOlimp_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

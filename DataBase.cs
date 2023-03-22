@@ -4,7 +4,7 @@ namespace OlympicStudents
 {
     internal abstract class DataBase
     {
-        public static async Task<List<ListViewItem>> GetAllFromTableAsync(string table, int n)
+        public static async Task<List<ListViewItem>> GetAllFromTableAsync(string table)
         {
             List<ListViewItem> items = new List<ListViewItem>();
             using (var connection = new SqliteConnection("Data Source=data.db"))
@@ -17,12 +17,12 @@ namespace OlympicStudents
                     {
                         while (await reader.ReadAsync())
                         {
-                            string[] arr = new string[n];
+                            List<string> arr = new List<string>();
                             for (int i = 0; i < reader.FieldCount; i++)
                             {
-                                arr[i] = reader.IsDBNull(i) ? null : reader.GetString(i);
+                                arr.Add(reader.IsDBNull(i) ? null : reader.GetString(i));
                             }
-                            items.Add(new ListViewItem(arr));
+                            items.Add(new ListViewItem(arr.ToArray()));
                         }
                     }
                 }
@@ -32,7 +32,7 @@ namespace OlympicStudents
         public static async Task<List<ListViewItem>> GetAllOlympiadsByStudentIdAsync(int id)
         {
             List<ListViewItem> items = new List<ListViewItem>();
-            string[] arr = new string[10];
+            List<String> arr = new List<string>();
             string sqlExpressionmain = $"SELECT olympiad_id FROM result WHERE student_id='{id.ToString()}'";
 
             List<int> l = new List<int>();
@@ -69,18 +69,20 @@ namespace OlympicStudents
                         {
                             for (int j = 0; j < l.Count; j++)
                             {
+                                
                                 if (l[j] == reader.GetInt32(0))
                                 {
                                     for (int i = 0; i < reader.FieldCount; i++)
                                     {
-                                        arr[i] = reader.IsDBNull(i) ? null : reader.GetString(i);
+                                        arr.Add(reader.IsDBNull(i) ? null : reader.GetString(i));
                                     }
-                                    items.Add(new ListViewItem(arr));
+                                    items.Add(new ListViewItem(arr.ToArray()));
                                 }
                             }
 
                         }
                     }
+                   
                 }
             }
             return items;
@@ -115,7 +117,7 @@ namespace OlympicStudents
             {
                 connection.Open();
                 int res = -1;
-                SqliteCommand command = new SqliteCommand($"SELECT student_id FROM student WHERE fio LIKE '{s}'", connection);
+                SqliteCommand command = new SqliteCommand($"SELECT id FROM student WHERE fio LIKE '{s}'", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)
@@ -151,14 +153,13 @@ namespace OlympicStudents
                 return res;
             }
         }
-
         public static async Task<List<string>> GetStuentInformation(string id)
         {
             List<string> list = new List<string>();
             using (var connection = new SqliteConnection("Data Source=data.db"))
             {
                 connection.Open();
-                SqliteCommand command = new SqliteCommand($"SELECT * FROM student WHERE student_id = '{id}'", connection);
+                SqliteCommand command = new SqliteCommand($"SELECT * FROM student WHERE id = '{id}'", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)
@@ -186,7 +187,7 @@ namespace OlympicStudents
                 using (var connection = new SqliteConnection("Data Source=data.db"))
                 {
                     connection.Open();
-                    SqliteCommand command = new SqliteCommand($"SELECT * FROM student WHERE student_id = '{id}' AND specialization = '{criteria}'", connection);
+                    SqliteCommand command = new SqliteCommand($"SELECT * FROM student WHERE id = '{id}' AND specialization = '{criteria}'", connection);
                     using (SqliteDataReader reader = command.ExecuteReader())
                     {
                         if (reader.HasRows)
@@ -287,7 +288,7 @@ namespace OlympicStudents
 
                     for (int i = 0; i < searchFields.Count; i++)
                     {
-                        if (row[searchFields[i]].Contains(searchValues[j]))
+                        if (row[searchFields[i]] != null && row[searchFields[i]].Contains(searchValues[j]))
                         {
                             searchResults.Add(row);
                             f.Add(row);
@@ -335,7 +336,6 @@ namespace OlympicStudents
 
             return res;
         }
-
         public static List<Dictionary<string, string>> GetData(string tableName)
         {
             List<Dictionary<string, string>> data = new List<Dictionary<string, string>>();

@@ -54,10 +54,12 @@ namespace OlympicStudents
                 new ColumnHeader { Text = "Уровень" },
                 new ColumnHeader { Text = "Вид" },
                 new ColumnHeader { Text = "Результат" },
-                new ColumnHeader { Text = "Поощерение" },
                 new ColumnHeader { Text = "Номинации" },
                 new ColumnHeader { Text = "Место проведения" },
-                new ColumnHeader { Text = "Продолжительность" }
+                new ColumnHeader { Text = "Продолжительность" },
+                new ColumnHeader { Text = "Сертификат достижений" },
+                new ColumnHeader { Text = "Грамота колледжа" },
+                new ColumnHeader { Text = "Благодарность колледжа" },
             });
 
             int columnWidth = listView.ClientSize.Width / (listView.Columns.Count - 1);
@@ -77,7 +79,7 @@ namespace OlympicStudents
         }
         public static async Task FillListVewAsync(ListView listViewStudent,string table,int n)
         {
-            var items = await DataBase.GetAllFromTableAsync(table, n);
+            var items = await DataBase.GetAllFromTableAsync(table);
             foreach (var item in items)
             {
                 listViewStudent.Items.Add(item);

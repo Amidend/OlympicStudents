@@ -97,6 +97,9 @@
             label19 = new Label();
             numericUpDown2 = new NumericUpDown();
             numericUpDown1 = new NumericUpDown();
+            tabPageEducationGroup = new TabPage();
+            tabPageEducationWork = new TabPage();
+            tabPageHonor = new TabPage();
             tabMain.SuspendLayout();
             tabPageStudent.SuspendLayout();
             panelMenuStudents.SuspendLayout();
@@ -163,7 +166,6 @@
             listViewOlimp.Size = new Size(1890, 997);
             listViewOlimp.TabIndex = 2;
             listViewOlimp.UseCompatibleStateImageBehavior = false;
-            listViewOlimp.SelectedIndexChanged += listViewOlimp_SelectedIndexChanged;
             listViewOlimp.MouseClick += listViewOlimp_MouseOneClick;
             // 
             // excel
@@ -181,6 +183,9 @@
             // 
             tabMain.Controls.Add(tabPageStudent);
             tabMain.Controls.Add(tabPageOlimpiad);
+            tabMain.Controls.Add(tabPageEducationGroup);
+            tabMain.Controls.Add(tabPageEducationWork);
+            tabMain.Controls.Add(tabPageHonor);
             tabMain.Controls.Add(tabPageMainReport);
             tabMain.Dock = DockStyle.Fill;
             tabMain.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
@@ -318,7 +323,6 @@
             // splitContainer1.Panel1
             // 
             splitContainer1.Panel1.Controls.Add(listViewStudent);
-            splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             // 
             // splitContainer1.Panel2
             // 
@@ -852,6 +856,36 @@
             numericUpDown1.TabIndex = 8;
             numericUpDown1.Value = new decimal(new int[] { 2022, 0, 0, 0 });
             // 
+            // tabPageEducationGroup
+            // 
+            tabPageEducationGroup.Location = new Point(4, 34);
+            tabPageEducationGroup.Name = "tabPageEducationGroup";
+            tabPageEducationGroup.Padding = new Padding(3);
+            tabPageEducationGroup.Size = new Size(1896, 1003);
+            tabPageEducationGroup.TabIndex = 3;
+            tabPageEducationGroup.Text = "Воспитательная работа группы";
+            tabPageEducationGroup.UseVisualStyleBackColor = true;
+            // 
+            // tabPageEducationWork
+            // 
+            tabPageEducationWork.Location = new Point(4, 34);
+            tabPageEducationWork.Name = "tabPageEducationWork";
+            tabPageEducationWork.Padding = new Padding(3);
+            tabPageEducationWork.Size = new Size(1896, 1003);
+            tabPageEducationWork.TabIndex = 4;
+            tabPageEducationWork.Text = "Воспитательная работа ";
+            tabPageEducationWork.UseVisualStyleBackColor = true;
+            // 
+            // tabPageHonor
+            // 
+            tabPageHonor.Location = new Point(4, 34);
+            tabPageHonor.Name = "tabPageHonor";
+            tabPageHonor.Padding = new Padding(3);
+            tabPageHonor.Size = new Size(1896, 1003);
+            tabPageHonor.TabIndex = 5;
+            tabPageHonor.Text = "Доска почета";
+            tabPageHonor.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -952,5 +986,8 @@
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private Panel panelLeftReport;
         private Panel panelRightReport;
+        private TabPage tabPageEducationGroup;
+        private TabPage tabPageEducationWork;
+        private TabPage tabPageHonor;
     }
 }
