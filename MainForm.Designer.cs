@@ -39,6 +39,8 @@
             tabMain = new TabControl();
             tabPageStudent = new TabPage();
             panelMenuStudents = new Panel();
+            checkBox1 = new CheckBox();
+            buttonUpdateStudent = new Button();
             buttonDumping = new Button();
             checkedListBoxSearch = new CheckedListBox();
             checkedListBoxCourse = new CheckedListBox();
@@ -48,8 +50,11 @@
             textBoxSearchStudents = new TextBox();
             search = new Button();
             splitContainer1 = new SplitContainer();
+            upPanel = new Panel();
+            bottomPanel = new Panel();
             listViewOlympiadsOfStudent = new ListView();
             tabPageOlimpiad = new TabPage();
+            buttonUpdateOlimpiad = new Button();
             buttonDumpingOlimpyad = new Button();
             button3 = new Button();
             textBoxSearchOlimpyad = new TextBox();
@@ -89,8 +94,32 @@
             DeleteOlimp = new Button();
             button1 = new Button();
             tabPageEducationGroup = new TabPage();
+            buttonUpdateEWG = new Button();
+            buttonDeleteEWG = new Button();
+            buttonAddEWG = new Button();
+            listViewEducationWorkGroup = new ListView();
+            tabPageStudentEW = new TabPage();
+            buttonUpdateEWS = new Button();
+            buttonDeleteEWS = new Button();
+            buttonAddEWS = new Button();
+            listViewEWByStudent = new ListView();
+            listViewEWStudent = new ListView();
             tabPageEducationWork = new TabPage();
+            buttonUpdateEW = new Button();
+            buttonDeleteEW = new Button();
+            buttonAddEW = new Button();
+            listViewEducationWork = new ListView();
+            tabPageStudentHonor = new TabPage();
+            buttonUpdateHS = new Button();
+            buttonDeleteHS = new Button();
+            buttonAddHS = new Button();
+            listViewHonorByS = new ListView();
+            listViewStudentsH = new ListView();
             tabPageHonor = new TabPage();
+            buttonUpdateHonor = new Button();
+            buttonDeleteHonor = new Button();
+            buttonAddHonor = new Button();
+            listViewHonor = new ListView();
             tabPageMainReport = new TabPage();
             panelRightReport = new Panel();
             reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -100,6 +129,7 @@
             label19 = new Label();
             numericUpDown2 = new NumericUpDown();
             numericUpDown1 = new NumericUpDown();
+            reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             tabMain.SuspendLayout();
             tabPageStudent.SuspendLayout();
             panelMenuStudents.SuspendLayout();
@@ -107,7 +137,14 @@
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            upPanel.SuspendLayout();
+            bottomPanel.SuspendLayout();
             tabPageOlimpiad.SuspendLayout();
+            tabPageEducationGroup.SuspendLayout();
+            tabPageStudentEW.SuspendLayout();
+            tabPageEducationWork.SuspendLayout();
+            tabPageStudentHonor.SuspendLayout();
+            tabPageHonor.SuspendLayout();
             tabPageMainReport.SuspendLayout();
             panelRightReport.SuspendLayout();
             panelLeftReport.SuspendLayout();
@@ -140,16 +177,16 @@
             // listViewStudent
             // 
             listViewStudent.Activation = ItemActivation.OneClick;
-            listViewStudent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             listViewStudent.BorderStyle = BorderStyle.FixedSingle;
+            listViewStudent.Dock = DockStyle.Fill;
             listViewStudent.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             listViewItem1.StateImageIndex = 0;
             listViewStudent.Items.AddRange(new ListViewItem[] { listViewItem1 });
-            listViewStudent.Location = new Point(379, -3);
+            listViewStudent.Location = new Point(0, 0);
             listViewStudent.Margin = new Padding(3, 2, 3, 2);
             listViewStudent.MultiSelect = false;
             listViewStudent.Name = "listViewStudent";
-            listViewStudent.Size = new Size(712, 498);
+            listViewStudent.Size = new Size(1490, 497);
             listViewStudent.TabIndex = 2;
             listViewStudent.TabStop = false;
             listViewStudent.UseCompatibleStateImageBehavior = false;
@@ -184,7 +221,9 @@
             tabMain.Controls.Add(tabPageStudent);
             tabMain.Controls.Add(tabPageOlimpiad);
             tabMain.Controls.Add(tabPageEducationGroup);
+            tabMain.Controls.Add(tabPageStudentEW);
             tabMain.Controls.Add(tabPageEducationWork);
+            tabMain.Controls.Add(tabPageStudentHonor);
             tabMain.Controls.Add(tabPageHonor);
             tabMain.Controls.Add(tabPageMainReport);
             tabMain.Dock = DockStyle.Fill;
@@ -214,6 +253,8 @@
             // panelMenuStudents
             // 
             panelMenuStudents.BorderStyle = BorderStyle.FixedSingle;
+            panelMenuStudents.Controls.Add(checkBox1);
+            panelMenuStudents.Controls.Add(buttonUpdateStudent);
             panelMenuStudents.Controls.Add(buttonDumping);
             panelMenuStudents.Controls.Add(checkedListBoxSearch);
             panelMenuStudents.Controls.Add(checkedListBoxCourse);
@@ -229,6 +270,28 @@
             panelMenuStudents.Name = "panelMenuStudents";
             panelMenuStudents.Size = new Size(415, 997);
             panelMenuStudents.TabIndex = 12;
+            // 
+            // checkBox1
+            // 
+            checkBox1.Appearance = Appearance.Button;
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(5, 644);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(111, 35);
+            checkBox1.TabIndex = 20;
+            checkBox1.Text = "checkBox1";
+            checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            // 
+            // buttonUpdateStudent
+            // 
+            buttonUpdateStudent.Location = new Point(5, 834);
+            buttonUpdateStudent.Name = "buttonUpdateStudent";
+            buttonUpdateStudent.Size = new Size(404, 42);
+            buttonUpdateStudent.TabIndex = 19;
+            buttonUpdateStudent.Text = "Изменить";
+            buttonUpdateStudent.UseVisualStyleBackColor = true;
+            buttonUpdateStudent.Click += buttonUpdateStudent_Click;
             // 
             // buttonDumping
             // 
@@ -322,27 +385,46 @@
             // 
             // splitContainer1.Panel1
             // 
-            splitContainer1.Panel1.Controls.Add(listViewStudent);
+            splitContainer1.Panel1.Controls.Add(upPanel);
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(listViewOlympiadsOfStudent);
+            splitContainer1.Panel2.Controls.Add(bottomPanel);
             splitContainer1.Size = new Size(1490, 997);
             splitContainer1.SplitterDistance = 497;
             splitContainer1.TabIndex = 13;
             // 
+            // upPanel
+            // 
+            upPanel.Controls.Add(listViewStudent);
+            upPanel.Dock = DockStyle.Fill;
+            upPanel.Location = new Point(0, 0);
+            upPanel.Name = "upPanel";
+            upPanel.Size = new Size(1490, 497);
+            upPanel.TabIndex = 0;
+            // 
+            // bottomPanel
+            // 
+            bottomPanel.Controls.Add(listViewOlympiadsOfStudent);
+            bottomPanel.Dock = DockStyle.Fill;
+            bottomPanel.Location = new Point(0, 0);
+            bottomPanel.Name = "bottomPanel";
+            bottomPanel.Size = new Size(1490, 496);
+            bottomPanel.TabIndex = 0;
+            // 
             // listViewOlympiadsOfStudent
             // 
-            listViewOlympiadsOfStudent.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            listViewOlympiadsOfStudent.Location = new Point(7, 162);
+            listViewOlympiadsOfStudent.Dock = DockStyle.Fill;
+            listViewOlympiadsOfStudent.Location = new Point(0, 0);
             listViewOlympiadsOfStudent.MultiSelect = false;
             listViewOlympiadsOfStudent.Name = "listViewOlympiadsOfStudent";
-            listViewOlympiadsOfStudent.Size = new Size(1490, 329);
+            listViewOlympiadsOfStudent.Size = new Size(1490, 496);
             listViewOlympiadsOfStudent.TabIndex = 6;
             listViewOlympiadsOfStudent.UseCompatibleStateImageBehavior = false;
             // 
             // tabPageOlimpiad
             // 
+            tabPageOlimpiad.Controls.Add(buttonUpdateOlimpiad);
             tabPageOlimpiad.Controls.Add(buttonDumpingOlimpyad);
             tabPageOlimpiad.Controls.Add(button3);
             tabPageOlimpiad.Controls.Add(textBoxSearchOlimpyad);
@@ -390,6 +472,15 @@
             tabPageOlimpiad.TabIndex = 1;
             tabPageOlimpiad.Text = "Олимпиады";
             tabPageOlimpiad.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpdateOlimpiad
+            // 
+            buttonUpdateOlimpiad.Location = new Point(1408, 973);
+            buttonUpdateOlimpiad.Name = "buttonUpdateOlimpiad";
+            buttonUpdateOlimpiad.Size = new Size(478, 23);
+            buttonUpdateOlimpiad.TabIndex = 10;
+            buttonUpdateOlimpiad.Text = "button2";
+            buttonUpdateOlimpiad.UseVisualStyleBackColor = true;
             // 
             // buttonDumpingOlimpyad
             // 
@@ -763,6 +854,10 @@
             // 
             // tabPageEducationGroup
             // 
+            tabPageEducationGroup.Controls.Add(buttonUpdateEWG);
+            tabPageEducationGroup.Controls.Add(buttonDeleteEWG);
+            tabPageEducationGroup.Controls.Add(buttonAddEWG);
+            tabPageEducationGroup.Controls.Add(listViewEducationWorkGroup);
             tabPageEducationGroup.Location = new Point(4, 34);
             tabPageEducationGroup.Name = "tabPageEducationGroup";
             tabPageEducationGroup.Padding = new Padding(3);
@@ -771,8 +866,104 @@
             tabPageEducationGroup.Text = "Воспитательная работа группы";
             tabPageEducationGroup.UseVisualStyleBackColor = true;
             // 
+            // buttonUpdateEWG
+            // 
+            buttonUpdateEWG.Location = new Point(708, 506);
+            buttonUpdateEWG.Name = "buttonUpdateEWG";
+            buttonUpdateEWG.Size = new Size(478, 23);
+            buttonUpdateEWG.TabIndex = 16;
+            buttonUpdateEWG.Text = "Изменить";
+            buttonUpdateEWG.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteEWG
+            // 
+            buttonDeleteEWG.Location = new Point(709, 473);
+            buttonDeleteEWG.Name = "buttonDeleteEWG";
+            buttonDeleteEWG.Size = new Size(200, 30);
+            buttonDeleteEWG.TabIndex = 15;
+            buttonDeleteEWG.Text = "Удалить";
+            buttonDeleteEWG.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddEWG
+            // 
+            buttonAddEWG.Location = new Point(988, 473);
+            buttonAddEWG.Name = "buttonAddEWG";
+            buttonAddEWG.Size = new Size(200, 30);
+            buttonAddEWG.TabIndex = 14;
+            buttonAddEWG.Text = "Добавить олимпиаду";
+            buttonAddEWG.UseVisualStyleBackColor = true;
+            // 
+            // listViewEducationWorkGroup
+            // 
+            listViewEducationWorkGroup.Location = new Point(239, 82);
+            listViewEducationWorkGroup.Name = "listViewEducationWorkGroup";
+            listViewEducationWorkGroup.Size = new Size(121, 97);
+            listViewEducationWorkGroup.TabIndex = 0;
+            listViewEducationWorkGroup.UseCompatibleStateImageBehavior = false;
+            // 
+            // tabPageStudentEW
+            // 
+            tabPageStudentEW.Controls.Add(buttonUpdateEWS);
+            tabPageStudentEW.Controls.Add(buttonDeleteEWS);
+            tabPageStudentEW.Controls.Add(buttonAddEWS);
+            tabPageStudentEW.Controls.Add(listViewEWByStudent);
+            tabPageStudentEW.Controls.Add(listViewEWStudent);
+            tabPageStudentEW.Location = new Point(4, 34);
+            tabPageStudentEW.Name = "tabPageStudentEW";
+            tabPageStudentEW.Size = new Size(1896, 1003);
+            tabPageStudentEW.TabIndex = 6;
+            tabPageStudentEW.Text = "Учащиеся по Воспитательной работе ";
+            tabPageStudentEW.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpdateEWS
+            // 
+            buttonUpdateEWS.Location = new Point(943, 702);
+            buttonUpdateEWS.Name = "buttonUpdateEWS";
+            buttonUpdateEWS.Size = new Size(478, 23);
+            buttonUpdateEWS.TabIndex = 20;
+            buttonUpdateEWS.Text = "Изменить";
+            buttonUpdateEWS.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteEWS
+            // 
+            buttonDeleteEWS.Location = new Point(944, 669);
+            buttonDeleteEWS.Name = "buttonDeleteEWS";
+            buttonDeleteEWS.Size = new Size(200, 30);
+            buttonDeleteEWS.TabIndex = 19;
+            buttonDeleteEWS.Text = "Удалить";
+            buttonDeleteEWS.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddEWS
+            // 
+            buttonAddEWS.Location = new Point(1223, 669);
+            buttonAddEWS.Name = "buttonAddEWS";
+            buttonAddEWS.Size = new Size(200, 30);
+            buttonAddEWS.TabIndex = 18;
+            buttonAddEWS.Text = "Добавить олимпиаду";
+            buttonAddEWS.UseVisualStyleBackColor = true;
+            // 
+            // listViewEWByStudent
+            // 
+            listViewEWByStudent.Location = new Point(474, 401);
+            listViewEWByStudent.Name = "listViewEWByStudent";
+            listViewEWByStudent.Size = new Size(121, 97);
+            listViewEWByStudent.TabIndex = 17;
+            listViewEWByStudent.UseCompatibleStateImageBehavior = false;
+            // 
+            // listViewEWStudent
+            // 
+            listViewEWStudent.Location = new Point(474, 278);
+            listViewEWStudent.Name = "listViewEWStudent";
+            listViewEWStudent.Size = new Size(121, 97);
+            listViewEWStudent.TabIndex = 17;
+            listViewEWStudent.UseCompatibleStateImageBehavior = false;
+            // 
             // tabPageEducationWork
             // 
+            tabPageEducationWork.Controls.Add(buttonUpdateEW);
+            tabPageEducationWork.Controls.Add(buttonDeleteEW);
+            tabPageEducationWork.Controls.Add(buttonAddEW);
+            tabPageEducationWork.Controls.Add(listViewEducationWork);
             tabPageEducationWork.Location = new Point(4, 34);
             tabPageEducationWork.Name = "tabPageEducationWork";
             tabPageEducationWork.Padding = new Padding(3);
@@ -781,8 +972,104 @@
             tabPageEducationWork.Text = "Воспитательная работа ";
             tabPageEducationWork.UseVisualStyleBackColor = true;
             // 
+            // buttonUpdateEW
+            // 
+            buttonUpdateEW.Location = new Point(708, 506);
+            buttonUpdateEW.Name = "buttonUpdateEW";
+            buttonUpdateEW.Size = new Size(478, 23);
+            buttonUpdateEW.TabIndex = 13;
+            buttonUpdateEW.Text = "Изменить";
+            buttonUpdateEW.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteEW
+            // 
+            buttonDeleteEW.Location = new Point(709, 473);
+            buttonDeleteEW.Name = "buttonDeleteEW";
+            buttonDeleteEW.Size = new Size(200, 30);
+            buttonDeleteEW.TabIndex = 12;
+            buttonDeleteEW.Text = "Удалить";
+            buttonDeleteEW.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddEW
+            // 
+            buttonAddEW.Location = new Point(988, 473);
+            buttonAddEW.Name = "buttonAddEW";
+            buttonAddEW.Size = new Size(200, 30);
+            buttonAddEW.TabIndex = 11;
+            buttonAddEW.Text = "Добавить олимпиаду";
+            buttonAddEW.UseVisualStyleBackColor = true;
+            // 
+            // listViewEducationWork
+            // 
+            listViewEducationWork.Location = new Point(297, 120);
+            listViewEducationWork.Name = "listViewEducationWork";
+            listViewEducationWork.Size = new Size(121, 97);
+            listViewEducationWork.TabIndex = 0;
+            listViewEducationWork.UseCompatibleStateImageBehavior = false;
+            // 
+            // tabPageStudentHonor
+            // 
+            tabPageStudentHonor.Controls.Add(buttonUpdateHS);
+            tabPageStudentHonor.Controls.Add(buttonDeleteHS);
+            tabPageStudentHonor.Controls.Add(buttonAddHS);
+            tabPageStudentHonor.Controls.Add(listViewHonorByS);
+            tabPageStudentHonor.Controls.Add(listViewStudentsH);
+            tabPageStudentHonor.Location = new Point(4, 34);
+            tabPageStudentHonor.Name = "tabPageStudentHonor";
+            tabPageStudentHonor.Size = new Size(1896, 1003);
+            tabPageStudentHonor.TabIndex = 7;
+            tabPageStudentHonor.Text = "Учащиеся Доски Почета";
+            tabPageStudentHonor.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpdateHS
+            // 
+            buttonUpdateHS.Location = new Point(943, 702);
+            buttonUpdateHS.Name = "buttonUpdateHS";
+            buttonUpdateHS.Size = new Size(478, 23);
+            buttonUpdateHS.TabIndex = 25;
+            buttonUpdateHS.Text = "Изменить";
+            buttonUpdateHS.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteHS
+            // 
+            buttonDeleteHS.Location = new Point(944, 669);
+            buttonDeleteHS.Name = "buttonDeleteHS";
+            buttonDeleteHS.Size = new Size(200, 30);
+            buttonDeleteHS.TabIndex = 24;
+            buttonDeleteHS.Text = "Удалить";
+            buttonDeleteHS.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddHS
+            // 
+            buttonAddHS.Location = new Point(1223, 669);
+            buttonAddHS.Name = "buttonAddHS";
+            buttonAddHS.Size = new Size(200, 30);
+            buttonAddHS.TabIndex = 23;
+            buttonAddHS.Text = "Добавить олимпиаду";
+            buttonAddHS.UseVisualStyleBackColor = true;
+            // 
+            // listViewHonorByS
+            // 
+            listViewHonorByS.Location = new Point(474, 401);
+            listViewHonorByS.Name = "listViewHonorByS";
+            listViewHonorByS.Size = new Size(121, 97);
+            listViewHonorByS.TabIndex = 21;
+            listViewHonorByS.UseCompatibleStateImageBehavior = false;
+            // 
+            // listViewStudentsH
+            // 
+            listViewStudentsH.Location = new Point(474, 278);
+            listViewStudentsH.Name = "listViewStudentsH";
+            listViewStudentsH.Size = new Size(121, 97);
+            listViewStudentsH.TabIndex = 22;
+            listViewStudentsH.UseCompatibleStateImageBehavior = false;
+            // 
             // tabPageHonor
             // 
+            tabPageHonor.Controls.Add(buttonUpdateHonor);
+            tabPageHonor.Controls.Add(buttonDeleteHonor);
+            tabPageHonor.Controls.Add(buttonAddHonor);
+            tabPageHonor.Controls.Add(listViewHonor);
             tabPageHonor.Location = new Point(4, 34);
             tabPageHonor.Name = "tabPageHonor";
             tabPageHonor.Padding = new Padding(3);
@@ -790,6 +1077,41 @@
             tabPageHonor.TabIndex = 5;
             tabPageHonor.Text = "Доска почета";
             tabPageHonor.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpdateHonor
+            // 
+            buttonUpdateHonor.Location = new Point(708, 506);
+            buttonUpdateHonor.Name = "buttonUpdateHonor";
+            buttonUpdateHonor.Size = new Size(478, 23);
+            buttonUpdateHonor.TabIndex = 16;
+            buttonUpdateHonor.Text = "Изменить";
+            buttonUpdateHonor.UseVisualStyleBackColor = true;
+            // 
+            // buttonDeleteHonor
+            // 
+            buttonDeleteHonor.Location = new Point(709, 473);
+            buttonDeleteHonor.Name = "buttonDeleteHonor";
+            buttonDeleteHonor.Size = new Size(200, 30);
+            buttonDeleteHonor.TabIndex = 15;
+            buttonDeleteHonor.Text = "Удалить";
+            buttonDeleteHonor.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddHonor
+            // 
+            buttonAddHonor.Location = new Point(988, 473);
+            buttonAddHonor.Name = "buttonAddHonor";
+            buttonAddHonor.Size = new Size(200, 30);
+            buttonAddHonor.TabIndex = 14;
+            buttonAddHonor.Text = "Добавить олимпиаду";
+            buttonAddHonor.UseVisualStyleBackColor = true;
+            // 
+            // listViewHonor
+            // 
+            listViewHonor.Location = new Point(276, 76);
+            listViewHonor.Name = "listViewHonor";
+            listViewHonor.Size = new Size(121, 97);
+            listViewHonor.TabIndex = 0;
+            listViewHonor.UseCompatibleStateImageBehavior = false;
             // 
             // tabPageMainReport
             // 
@@ -886,6 +1208,14 @@
             numericUpDown1.TabIndex = 8;
             numericUpDown1.Value = new decimal(new int[] { 2022, 0, 0, 0 });
             // 
+            // reportViewer2
+            // 
+            reportViewer2.Location = new Point(0, 0);
+            reportViewer2.Name = "ReportViewer";
+            reportViewer2.ServerReport.BearerToken = null;
+            reportViewer2.Size = new Size(396, 246);
+            reportViewer2.TabIndex = 0;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -908,8 +1238,15 @@
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            upPanel.ResumeLayout(false);
+            bottomPanel.ResumeLayout(false);
             tabPageOlimpiad.ResumeLayout(false);
             tabPageOlimpiad.PerformLayout();
+            tabPageEducationGroup.ResumeLayout(false);
+            tabPageStudentEW.ResumeLayout(false);
+            tabPageEducationWork.ResumeLayout(false);
+            tabPageStudentHonor.ResumeLayout(false);
+            tabPageHonor.ResumeLayout(false);
             tabPageMainReport.ResumeLayout(false);
             panelRightReport.ResumeLayout(false);
             panelLeftReport.ResumeLayout(false);
@@ -917,19 +1254,6 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
-
-            Panel upPanel = new Panel();
-            upPanel.Dock = DockStyle.Fill;
-            listViewStudent.Dock = DockStyle.Fill;
-            upPanel.Controls.Add(listViewStudent);
-            splitContainer1.Panel1.Controls.Add(upPanel);
-            Panel bottomPanel = new Panel();
-            bottomPanel.Dock = DockStyle.Fill;
-
-            listViewOlympiadsOfStudent.Dock = DockStyle.Fill;
-            bottomPanel.Controls.Add(listViewOlympiadsOfStudent);
-
-            splitContainer1.Panel2.Controls.Add(bottomPanel);
         }
 
 
@@ -1004,5 +1328,35 @@
         private TabPage tabPageEducationGroup;
         private TabPage tabPageEducationWork;
         private TabPage tabPageHonor;
+        private Button buttonUpdateStudent;
+        private Panel upPanel;
+        private Panel bottomPanel;
+        private Button buttonUpdateOlimpiad;
+        private ListView listViewEducationWorkGroup;
+        private Button buttonUpdateEW;
+        private Button buttonDeleteEW;
+        private Button buttonAddEW;
+        private ListView listViewEducationWork;
+        private ListView listViewHonor;
+        private Button buttonUpdateEWG;
+        private Button buttonDeleteEWG;
+        private Button buttonAddEWG;
+        private Button buttonUpdateHonor;
+        private Button buttonDeleteHonor;
+        private Button buttonAddHonor;
+        private CheckBox checkBox1;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        private TabPage tabPageStudentEW;
+        private Button buttonUpdateEWS;
+        private Button buttonDeleteEWS;
+        private Button buttonAddEWS;
+        private ListView listViewEWByStudent;
+        private ListView listViewEWStudent;
+        private TabPage tabPageStudentHonor;
+        private Button buttonUpdateHS;
+        private Button buttonDeleteHS;
+        private Button buttonAddHS;
+        private ListView listViewHonorByS;
+        private ListView listViewStudentsH;
     }
 }

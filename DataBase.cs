@@ -29,6 +29,67 @@ namespace OlympicStudents
             }
             return items;
         }
+
+        public static async Task<List<ListViewItem>> GetAllStudentAsync(string table)
+        {
+            List<ListViewItem> items = new List<ListViewItem>();
+            List<String> arr = new List<string>();
+            string sqlExpressionmain = $"SELECT student_id FROM result ";
+
+            List<int> l = new List<int>();
+            using (var connection = new SqliteConnection("Data Source=data.db"))
+            {
+                connection.Open();
+                ListViewItem item;
+                SqliteCommand commandmain = new SqliteCommand(sqlExpressionmain, connection);
+                commandmain.ExecuteNonQuery();
+                using (SqliteDataReader reader = commandmain.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        int i = 0;
+                        while (reader.Read())
+                        {
+                            if (!reader.IsDBNull(reader.GetOrdinal("student_id")))
+                            {
+                                l.Add(reader.GetInt32(i));
+                            }
+
+                        }
+                    }
+                }
+                commandmain.Cancel();
+                commandmain.Connection = connection;
+                l = l.Distinct().ToList();
+                string sqlExpression = "SELECT * FROM student";
+                SqliteCommand command = new SqliteCommand(sqlExpression, connection);
+                using (SqliteDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            for (int j = 0; j < l.Count; j++)
+                            {
+
+                                if (l[j] == reader.GetInt32(0))
+                                {
+                                    for (int i = 0; i < reader.FieldCount; i++)
+                                    {
+                                        arr.Add(reader.IsDBNull(i) ? null : reader.GetString(i));
+                                    }
+                                    items.Add(new ListViewItem(arr.ToArray()));
+                                    arr = new List<string>();
+                                }
+                            }
+
+                        }
+                    }
+
+                }
+            }
+            return items;
+        }
         public static async Task<List<ListViewItem>> GetAllOlympiadsByStudentIdAsync(int id)
         {
             List<ListViewItem> items = new List<ListViewItem>();

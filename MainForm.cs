@@ -468,5 +468,31 @@ namespace OlympicStudents
             Adapter.InitializeListViewOlimpiads(listViewOlimp);
             Adapter.FillListVewAsync(listViewOlimp, Constants.tableOlimpiad, 10);
         }
+        private void buttonUpdateStudent_Click(object sender, EventArgs e)
+        {
+            if ((listViewStudent.SelectedItems.Count > 0) && !(listViewOlympiadsOfStudent.SelectedItems.Count > 0))
+            {
+                MessageBox.Show("122");
+                listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
+                updateDataStudentAsync();
+                updateDataOlimpiadsAsync();
+            }
+            if ((listViewStudent.SelectedItems.Count > 0) && (listViewOlympiadsOfStudent.SelectedItems.Count > 0))
+            {
+                MessageBox.Show("12");
+                listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
+                updateDataStudentAsync();
+                updateDataOlimpiadsAsync();
+            }
+
+        }
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == 0)
+            {
+                tabMain.SelectedIndex = 1;
+                tabMain.TabPages[0].Hide();
+            }
+        }
     }
 }

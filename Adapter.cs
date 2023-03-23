@@ -79,7 +79,7 @@ namespace OlympicStudents
         }
         public static async Task FillListVewAsync(ListView listViewStudent,string table,int n)
         {
-            var items = await DataBase.GetAllFromTableAsync(table);
+            var items = await DataBase.GetAllStudentAsync(table);
             foreach (var item in items)
             {
                 listViewStudent.Items.Add(item);
