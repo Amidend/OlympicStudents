@@ -88,6 +88,9 @@
             label2 = new Label();
             DeleteOlimp = new Button();
             button1 = new Button();
+            tabPageEducationGroup = new TabPage();
+            tabPageEducationWork = new TabPage();
+            tabPageHonor = new TabPage();
             tabPageMainReport = new TabPage();
             panelRightReport = new Panel();
             reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
@@ -97,9 +100,6 @@
             label19 = new Label();
             numericUpDown2 = new NumericUpDown();
             numericUpDown1 = new NumericUpDown();
-            tabPageEducationGroup = new TabPage();
-            tabPageEducationWork = new TabPage();
-            tabPageHonor = new TabPage();
             tabMain.SuspendLayout();
             tabPageStudent.SuspendLayout();
             panelMenuStudents.SuspendLayout();
@@ -149,7 +149,7 @@
             listViewStudent.Margin = new Padding(3, 2, 3, 2);
             listViewStudent.MultiSelect = false;
             listViewStudent.Name = "listViewStudent";
-            listViewStudent.Size = new Size(1112, 498);
+            listViewStudent.Size = new Size(712, 498);
             listViewStudent.TabIndex = 2;
             listViewStudent.TabStop = false;
             listViewStudent.UseCompatibleStateImageBehavior = false;
@@ -157,13 +157,13 @@
             // 
             // listViewOlimp
             // 
-            listViewOlimp.Dock = DockStyle.Fill;
+            listViewOlimp.Dock = DockStyle.Left;
             listViewOlimp.Items.AddRange(new ListViewItem[] { listViewItem2 });
             listViewOlimp.Location = new Point(3, 3);
             listViewOlimp.Margin = new Padding(3, 2, 3, 2);
             listViewOlimp.MultiSelect = false;
             listViewOlimp.Name = "listViewOlimp";
-            listViewOlimp.Size = new Size(1890, 997);
+            listViewOlimp.Size = new Size(1390, 997);
             listViewOlimp.TabIndex = 2;
             listViewOlimp.UseCompatibleStateImageBehavior = false;
             listViewOlimp.MouseClick += listViewOlimp_MouseOneClick;
@@ -327,7 +327,7 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(listViewOlympiadsOfStudent);
-            splitContainer1.Size = new Size(1890, 997);
+            splitContainer1.Size = new Size(1490, 997);
             splitContainer1.SplitterDistance = 497;
             splitContainer1.TabIndex = 13;
             // 
@@ -337,7 +337,7 @@
             listViewOlympiadsOfStudent.Location = new Point(7, 162);
             listViewOlympiadsOfStudent.MultiSelect = false;
             listViewOlympiadsOfStudent.Name = "listViewOlympiadsOfStudent";
-            listViewOlympiadsOfStudent.Size = new Size(1890, 329);
+            listViewOlympiadsOfStudent.Size = new Size(1490, 329);
             listViewOlympiadsOfStudent.TabIndex = 6;
             listViewOlympiadsOfStudent.UseCompatibleStateImageBehavior = false;
             // 
@@ -761,6 +761,36 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += addOlimpiads_Click;
             // 
+            // tabPageEducationGroup
+            // 
+            tabPageEducationGroup.Location = new Point(4, 34);
+            tabPageEducationGroup.Name = "tabPageEducationGroup";
+            tabPageEducationGroup.Padding = new Padding(3);
+            tabPageEducationGroup.Size = new Size(1896, 1003);
+            tabPageEducationGroup.TabIndex = 3;
+            tabPageEducationGroup.Text = "Воспитательная работа группы";
+            tabPageEducationGroup.UseVisualStyleBackColor = true;
+            // 
+            // tabPageEducationWork
+            // 
+            tabPageEducationWork.Location = new Point(4, 34);
+            tabPageEducationWork.Name = "tabPageEducationWork";
+            tabPageEducationWork.Padding = new Padding(3);
+            tabPageEducationWork.Size = new Size(1896, 1003);
+            tabPageEducationWork.TabIndex = 4;
+            tabPageEducationWork.Text = "Воспитательная работа ";
+            tabPageEducationWork.UseVisualStyleBackColor = true;
+            // 
+            // tabPageHonor
+            // 
+            tabPageHonor.Location = new Point(4, 34);
+            tabPageHonor.Name = "tabPageHonor";
+            tabPageHonor.Padding = new Padding(3);
+            tabPageHonor.Size = new Size(1896, 1003);
+            tabPageHonor.TabIndex = 5;
+            tabPageHonor.Text = "Доска почета";
+            tabPageHonor.UseVisualStyleBackColor = true;
+            // 
             // tabPageMainReport
             // 
             tabPageMainReport.Controls.Add(panelRightReport);
@@ -856,36 +886,6 @@
             numericUpDown1.TabIndex = 8;
             numericUpDown1.Value = new decimal(new int[] { 2022, 0, 0, 0 });
             // 
-            // tabPageEducationGroup
-            // 
-            tabPageEducationGroup.Location = new Point(4, 34);
-            tabPageEducationGroup.Name = "tabPageEducationGroup";
-            tabPageEducationGroup.Padding = new Padding(3);
-            tabPageEducationGroup.Size = new Size(1896, 1003);
-            tabPageEducationGroup.TabIndex = 3;
-            tabPageEducationGroup.Text = "Воспитательная работа группы";
-            tabPageEducationGroup.UseVisualStyleBackColor = true;
-            // 
-            // tabPageEducationWork
-            // 
-            tabPageEducationWork.Location = new Point(4, 34);
-            tabPageEducationWork.Name = "tabPageEducationWork";
-            tabPageEducationWork.Padding = new Padding(3);
-            tabPageEducationWork.Size = new Size(1896, 1003);
-            tabPageEducationWork.TabIndex = 4;
-            tabPageEducationWork.Text = "Воспитательная работа ";
-            tabPageEducationWork.UseVisualStyleBackColor = true;
-            // 
-            // tabPageHonor
-            // 
-            tabPageHonor.Location = new Point(4, 34);
-            tabPageHonor.Name = "tabPageHonor";
-            tabPageHonor.Padding = new Padding(3);
-            tabPageHonor.Size = new Size(1896, 1003);
-            tabPageHonor.TabIndex = 5;
-            tabPageHonor.Text = "Доска почета";
-            tabPageHonor.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -917,7 +917,22 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
+
+            Panel upPanel = new Panel();
+            upPanel.Dock = DockStyle.Fill;
+            listViewStudent.Dock = DockStyle.Fill;
+            upPanel.Controls.Add(listViewStudent);
+            splitContainer1.Panel1.Controls.Add(upPanel);
+            Panel bottomPanel = new Panel();
+            bottomPanel.Dock = DockStyle.Fill;
+
+            listViewOlympiadsOfStudent.Dock = DockStyle.Fill;
+            bottomPanel.Controls.Add(listViewOlympiadsOfStudent);
+
+            splitContainer1.Panel2.Controls.Add(bottomPanel);
         }
+
+
 
         #endregion
         private Button buttonAddStudent;

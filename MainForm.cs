@@ -11,24 +11,6 @@ namespace OlympicStudents
         {
             InitializeComponent();
 
-           /*panelMenuStudents.Width = 415;
-            panelMenuStudents.Dock = DockStyle.Right;
-            listViewOlimp.Dock = DockStyle.Left;
-            listViewOlimp.Width -= 490;
-            splitContainer1.Width -= 400;
-            Panel upPanel = new Panel();
-            upPanel.Dock = DockStyle.Fill;
-            listViewStudent.Dock = DockStyle.Fill;
-            upPanel.Controls.Add(listViewStudent);
-            splitContainer1.Panel1.Controls.Add(upPanel);
-            Panel bottomPanel = new Panel();
-            bottomPanel.Dock = DockStyle.Fill;
-
-            listViewOlympiadsOfStudent.Dock = DockStyle.Fill;
-            bottomPanel.Controls.Add(listViewOlympiadsOfStudent);
-
-            splitContainer1.Panel2.Controls.Add(bottomPanel);*/
-
             updateDataStudentAsync();
             updateDataOlimpiadsAsync();
         }
