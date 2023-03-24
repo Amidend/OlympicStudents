@@ -310,6 +310,8 @@ namespace OlympicStudents
                 }
             }
         }
+
+        //да тут отчетик
         public static List<int> findByids(NumericUpDown numericUpDown1, NumericUpDown numericUpDown2)
         {
             int academicYear = (int)numericUpDown1.Value;

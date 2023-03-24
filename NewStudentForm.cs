@@ -3,77 +3,45 @@ namespace OlympicStudents
 {
     public partial class NewStudentForm : Form
     {
-        private int studentId; // add a private field to store the student ID
+        private int studentId;
 
-        // modify the constructor to accept the student ID as a parameter
         public NewStudentForm(int studentId = -1)
         {
             InitializeComponent();
             this.studentId = studentId;
             if (studentId != -1)
             {
-                LoadStudentData(studentId); // if a student ID is passed, load the student data into the form
+                PopulateFormFields();
             }
         }
-        private void LoadStudentData(int studentId)
+        private void PopulateFormFields()
         {
             using (var connection = new SqliteConnection("Data Source=data.db"))
             {
                 connection.Open();
-
-                SqliteCommand command = new SqliteCommand();
-                command.Connection = connection;
-                command.CommandText = $"SELECT * FROM student WHERE id = {studentId}";
-
+                SqliteCommand command = new SqliteCommand($"SELECT * FROM student WHERE id = {studentId}", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
-                    if (reader.HasRows)
+                    if (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            string fio = reader.GetString(1);
-                            string[] fioParts = fio.Split(' ');
-                            if (fioParts.Length >= 1)
-                            {
-                                textBox1.Text = fioParts[0];
-                            }
-                            if (fioParts.Length >= 2)
-                            {
-                                textBox10.Text = fioParts[1];
-                            }
-                            if (fioParts.Length >= 3)
-                            {
-                                textBox11.Text = fioParts[2];
-                            }
-                            MessageBox.Show(reader.GetString(2));
-                            DateTime dateOfBirth = reader.GetDateTime(2);
-                            monthCalendar1.SetDate(dateOfBirth);
-                            string address = reader.GetString(3);
-                            richTextBox1.Text = address;
-                            string[] phoneParts = reader.GetString(4).Split('|');
-                            if (phoneParts.Length >= 1)
-                            {
-                                textBox4.Text = phoneParts[0];
-                            }
-                            if (phoneParts.Length >= 2)
-                            {
-                                textBox5.Text = phoneParts[1];
-                            }
-                            if (phoneParts.Length >= 3)
-                            {
-                                textBox6.Text = phoneParts[2];
-                            }
-                            textBox7.Text = reader.GetString(5);
-                            textBox8.Text = reader.GetString(6);
-                            textBox9.Text = reader.GetString(7);
-                            courseBox.Text = reader.GetString(8);
-                            SpecializationBox.Text = reader.GetString(9);
-                        }
+                        textBox1.Text = reader["fio"] != DBNull.Value ? reader["fio"].ToString().Split(' ')[0] : "";
+                        textBox10.Text = reader["fio"] != DBNull.Value ? reader["fio"].ToString().Split(' ')[1] : "";
+                        textBox11.Text = reader["fio"] != DBNull.Value ? reader["fio"].ToString().Split(' ')[2] : "";
+                        monthCalendar1.SelectionStart = reader["date_birth"] != DBNull.Value ? DateTime.Parse(reader["date_birth"].ToString()) : DateTime.Today;
+                        richTextBox1.Text = reader["address"] != DBNull.Value ? reader["address"].ToString() : "";
+                        string[] phoneNumbers = reader["phone"] != DBNull.Value ? reader["phone"].ToString().Split('|') : new string[3] { "", "", "" };
+                        textBox4.Text = phoneNumbers[0];
+                        textBox5.Text = phoneNumbers[1];
+                        textBox6.Text = phoneNumbers[2];
+                        textBox7.Text = reader["groups"] != DBNull.Value ? reader["groups"].ToString() : "";
+                        textBox8.Text = reader["year_applying"] != DBNull.Value ? reader["year_applying"].ToString() : "";
+                        textBox9.Text = reader["year_release"] != DBNull.Value ? reader["year_release"].ToString() : "";
+                        courseBox.Text = reader["course"] != DBNull.Value ? reader["course"].ToString() : "";
+                        SpecializationBox.Text = reader["specialization"] != DBNull.Value ? reader["specialization"].ToString() : "";
                     }
                 }
             }
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -84,14 +52,14 @@ namespace OlympicStudents
 
                 SqliteCommand command = new SqliteCommand();
                 command.Connection = connection;
-                if (studentId == -1) // if no student ID is passed, insert a new record
+                if (studentId == 0)
                 {
-                    command.CommandText = $"INSERT INTO student (fio, dateOfBirth, address, phone, groups, yearApplying, yearOfRelease, course, specialization)" +
-                    $" VALUES ('{textBox1.Text + " " + textBox10.Text + " " + textBox11.Text}', '{date}', '{richTextBox1.Text}', '{textBox4.Text + "|" + textBox5.Text + "|" + textBox6.Text}', '{textBox7.Text}', '{textBox8.Text}', '{textBox9.Text}', '{courseBox.Text}', '{SpecializationBox.Text}')";
+                    command.CommandText = $"INSERT INTO student (fio, date_birth, address, phone, groups, year_applying, year_release, course, specialization)" +
+                        $" VALUES ('{textBox1.Text + " " + textBox10.Text + " " + textBox11.Text}', '{date}', '{richTextBox1.Text}', '{textBox4.Text + "|" + textBox5.Text + "|" + textBox6.Text}', '{textBox7.Text}', '{textBox8.Text}', '{textBox9.Text}', '{courseBox.Text}', '{SpecializationBox.Text}')";
                 }
-                else // if a student ID is passed, update the existing record
+                else
                 {
-                    command.CommandText = $"UPDATE student SET fio = '{textBox1.Text + " " + textBox10.Text + " " + textBox11.Text}', dateOfBirth = '{date}', address = '{richTextBox1.Text}', phone = '{textBox4.Text + "|" + textBox5.Text + "|" + textBox6.Text}', groups = '{textBox7.Text}', yearApplying = '{textBox8.Text}', yearOfRelease = '{textBox9.Text}', course = '{courseBox.Text}', specialization = '{SpecializationBox.Text}' WHERE id = {studentId}";
+                    command.CommandText = $"UPDATE student SET fio = '{textBox1.Text + " " + textBox10.Text + " " + textBox11.Text}', date_birth = '{date}', address = '{richTextBox1.Text}', phone = '{textBox4.Text + "|" + textBox5.Text + "|" + textBox6.Text}', groups = '{textBox7.Text}', year_applying = '{textBox8.Text}', year_release = '{textBox9.Text}', course = '{courseBox.Text}', specialization = '{SpecializationBox.Text}' WHERE id = {studentId}";
                 }
                 command.ExecuteNonQuery();
                 command.Cancel();

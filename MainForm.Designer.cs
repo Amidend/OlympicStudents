@@ -897,7 +897,7 @@
             // 
             listViewEducationWorkGroup.Location = new Point(239, 82);
             listViewEducationWorkGroup.Name = "listViewEducationWorkGroup";
-            listViewEducationWorkGroup.Size = new Size(121, 97);
+            listViewEducationWorkGroup.Size = new Size(768, 97);
             listViewEducationWorkGroup.TabIndex = 0;
             listViewEducationWorkGroup.UseCompatibleStateImageBehavior = false;
             // 

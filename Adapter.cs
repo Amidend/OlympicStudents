@@ -5,6 +5,99 @@ namespace OlympicStudents
 
     public static class Adapter
     {
+        public static void InitializeEducationWorkGroup(ListView listView)
+        {
+            listView.Clear();
+            listView.View = View.Details;
+            listView.GridLines = true;
+            listView.FullRowSelect = true;
+
+            listView.Columns.AddRange(new[] {
+                new ColumnHeader { Text = "id" },
+                new ColumnHeader { Text = "Группа" },
+                new ColumnHeader { Text = "Специальность" },
+                new ColumnHeader { Text = "Мероприятие" },
+                new ColumnHeader { Text = "Место проведения" },
+                new ColumnHeader { Text = "Номинация" },
+                new ColumnHeader { Text = "Место" },
+                new ColumnHeader { Text = "Вид поощрения" }
+            });
+
+            int columnWidth = listView.ClientSize.Width / (listView.Columns.Count - 1);
+            for (int i = 0; i < listView.Columns.Count; i++)
+            {
+                listView.Columns[i].Width = columnWidth;
+            }
+            listView.Columns[0].Width = 0;
+
+            listView.ListViewItemSorter = new ListViewItemComparer(0, true);
+            listView.ColumnClick += (sender, e) =>
+            {
+                var list = (ListView)sender;
+                bool reverse = (list.ListViewItemSorter as ListViewItemComparer)?.Reverse ?? false;
+                list.ListViewItemSorter = new ListViewItemComparer(e.Column, !reverse);
+            };
+        }
+        public static void InitializeHonor(ListView listView)
+        {
+            listView.Clear();
+            listView.View = View.Details;
+            listView.GridLines = true;
+            listView.FullRowSelect = true;
+
+            listView.Columns.AddRange(new[] {
+                new ColumnHeader { Text = "id" },
+                new ColumnHeader { Text = "Дата" },
+                new ColumnHeader { Text = "Мероприятие" },
+                new ColumnHeader { Text = "Место проведения" },
+                new ColumnHeader { Text = "Результат" }
+            });
+
+            int columnWidth = listView.ClientSize.Width / (listView.Columns.Count - 1);
+            for (int i = 0; i < listView.Columns.Count; i++)
+            {
+                listView.Columns[i].Width = columnWidth;
+            }
+            listView.Columns[0].Width = 0;
+
+            listView.ListViewItemSorter = new ListViewItemComparer(0, true);
+            listView.ColumnClick += (sender, e) =>
+            {
+                var list = (ListView)sender;
+                bool reverse = (list.ListViewItemSorter as ListViewItemComparer)?.Reverse ?? false;
+                list.ListViewItemSorter = new ListViewItemComparer(e.Column, !reverse);
+            };
+        }
+        public static void InitializeEW(ListView listView)
+        {
+            listView.Clear();
+            listView.View = View.Details;
+            listView.GridLines = true;
+            listView.FullRowSelect = true;
+
+            listView.Columns.AddRange(new[] {
+                new ColumnHeader { Text = "id" },
+                new ColumnHeader { Text = "Мероприятие" },
+                new ColumnHeader { Text = "Дата проведения" },
+                new ColumnHeader { Text = "Номинация" },
+                new ColumnHeader { Text = "Место проведения" }
+            });
+
+            int columnWidth = listView.ClientSize.Width / (listView.Columns.Count - 1);
+            for (int i = 0; i < listView.Columns.Count; i++)
+            {
+                listView.Columns[i].Width = columnWidth;
+            }
+            listView.Columns[0].Width = 0;
+
+            listView.ListViewItemSorter = new ListViewItemComparer(0, true);
+            listView.ColumnClick += (sender, e) =>
+            {
+                var list = (ListView)sender;
+                bool reverse = (list.ListViewItemSorter as ListViewItemComparer)?.Reverse ?? false;
+                list.ListViewItemSorter = new ListViewItemComparer(e.Column, !reverse);
+            };
+        }
         public static void InitializeListViewSudent(ListView listView)
         {
             listView.Clear();
@@ -25,10 +118,10 @@ namespace OlympicStudents
                 new ColumnHeader { Text = "Дата выпуска" }
             });
 
-            int columnWidth = listView.ClientSize.Width / (listView.Columns.Count-1);
+            int columnWidth = listView.ClientSize.Width / (listView.Columns.Count - 1);
             for (int i = 0; i < listView.Columns.Count; i++)
             {
-                listView.Columns[i].Width  = columnWidth; 
+                listView.Columns[i].Width = columnWidth;
             }
             listView.Columns[0].Width = 0;
 
@@ -78,7 +171,7 @@ namespace OlympicStudents
                 list.ListViewItemSorter = new ListViewItemComparer(e.Column, !reverse);
             };
         }
-        public static async Task FillListVewAsync(ListView listViewStudent,string table,int n)
+        public static async Task FillListVewAsync(ListView listViewStudent, string table, int n)
         {
             var items = await DataBase.GetAllStudentAsync(table);
             foreach (var item in items)
@@ -102,7 +195,7 @@ namespace OlympicStudents
                 labels[0].Text = items[1];
                 labels[1].Text = items[5];
                 labels[2].Text = items[6];
-                if  (items[7]!=null)
+                if (items[7] != null)
                 {
                     string[] phoneNumbers = items[7].Split('|');
                     labels[3].Text = phoneNumbers.Length >= 1 ? phoneNumbers[0] : "";
@@ -116,7 +209,14 @@ namespace OlympicStudents
                 labels[10].Text = items[4];
             }
         }
-
+        public static async Task FillListVewAsync(ListView listViewStudent, string table)
+        {
+            var items = await DataBase.GetAllFromTableAsync(table);
+            foreach (var item in items)
+            {
+                listViewStudent.Items.Add(item);
+            }
+        }
     }
     public class ListViewItemComparer : IComparer
     {

@@ -12,8 +12,9 @@ namespace OlympicStudents
         {
             InitializeComponent();
 
-            updateDataStudentAsync();
-            updateDataOlimpiadsAsync();
+            updateDataStudent();
+            updateDataOlimpiads();
+            UpdateDAta();
         }
 
         //Чек боксики
@@ -54,7 +55,7 @@ namespace OlympicStudents
             }
             if (selectedCourses.Count == 0 && selectedSpecializations.Count == 0)
             {
-                updateDataStudentAsync();
+                updateDataStudent();
             }
         }
         private void checkBoxesOlimp_CheckedChanged(object sender, EventArgs e)
@@ -110,7 +111,7 @@ namespace OlympicStudents
 
             if (selectedAvards.Count == 0 && selectedEnco.Count == 0 && selectedLevel.Count == 0 && selectedType.Count == 0)
             {
-                updateDataOlimpiadsAsync();
+                updateDataOlimpiads();
             }
         }
 
@@ -121,7 +122,7 @@ namespace OlympicStudents
             {
                 ns.ShowDialog();
             }
-            updateDataStudentAsync();
+            updateDataStudent();
         }
         private void addOlimpiads_Click(object sender, EventArgs e)
         {
@@ -129,7 +130,7 @@ namespace OlympicStudents
             {
                 ns.ShowDialog();
             }
-            updateDataOlimpiadsAsync();
+            updateDataOlimpiads();
         }
         //Когда нажал на табличку
         private void listViewStudents_MouseOneClick(object sender, MouseEventArgs e)
@@ -141,7 +142,7 @@ namespace OlympicStudents
                 Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
                 Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id);
             }
-            catch(ArgumentOutOfRangeException ex) { }
+            catch (ArgumentOutOfRangeException ex) { }
         }
         private void listViewOlimp_MouseOneClick(object sender, MouseEventArgs e)
         {
@@ -315,8 +316,8 @@ namespace OlympicStudents
                 }
             }
             listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
-            updateDataStudentAsync();
-            updateDataOlimpiadsAsync();
+            updateDataStudent();
+            updateDataOlimpiads();
         }
         private void deleteOlimpyad_Click(object sender, EventArgs e)
         {
@@ -329,7 +330,7 @@ namespace OlympicStudents
                     DataBase.Delete("result", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
                 }
             }
-            updateDataOlimpiadsAsync();
+            updateDataOlimpiads();
         }
         //Сброс
         private void buttonDumpingStudents_Click(object sender, EventArgs e)
@@ -342,7 +343,7 @@ namespace OlympicStudents
                 }
             }
             textBoxSearchStudents.Text = string.Empty;
-            updateDataStudentAsync();
+            updateDataStudent();
         }
         private void buttonDumpingOlimpyad_Click(object sender, EventArgs e)
         {
@@ -354,7 +355,7 @@ namespace OlympicStudents
                 }
             }
             textBoxSearchOlimpyad.Text = string.Empty;
-            updateDataOlimpiadsAsync();
+            updateDataOlimpiads();
         }
         //Отчёт
         private void excelReport_ClickAsync(object sender, EventArgs e)
@@ -461,36 +462,59 @@ namespace OlympicStudents
             reportViewer1.RefreshReport();
         }
         //Обнуление таблички
-        private async void updateDataStudentAsync()
+        private void UpdateDAta()
+        {
+            updateDataStudent();
+            updateDataOlimpiads();
+            UpdateDataEWG();
+            UpdateDataHonor();
+            UpdateDataEW();
+        }
+        private void updateDataStudent()
         {
             Adapter.InitializeListViewSudent(listViewStudent);
             Adapter.FillListVewAsync(listViewStudent, Constants.tableStudent, 10);
         }
-        private void updateDataOlimpiadsAsync()
+        private void updateDataOlimpiads()
         {
             Adapter.InitializeListViewOlimpiads(listViewOlimp);
             Adapter.FillListVewAsync(listViewOlimp, Constants.tableOlimpiad, 10);
+        }
+        private void UpdateDataEWG()
+        {
+            Adapter.InitializeEducationWorkGroup(listViewEducationWorkGroup);
+            Adapter.FillListVewAsync(listViewEducationWorkGroup, Constants.tableEWG);
+        }
+        private void UpdateDataHonor()
+        {
+            Adapter.InitializeHonor(listViewHonor);
+            Adapter.FillListVewAsync(listViewHonor, Constants.tableHonor);
+        }
+        private void UpdateDataEW()
+        {
+            Adapter.InitializeEW(listViewEducationWork);
+            Adapter.FillListVewAsync(listViewEducationWork, Constants.tableEW);
+
         }
         private void buttonUpdateStudent_Click(object sender, EventArgs e)
         {
             if ((listViewStudent.SelectedItems.Count > 0) && !(listViewOlympiadsOfStudent.SelectedItems.Count > 0))
             {
-                int.TryParse(listViewStudent.Items[listViewStudent.SelectedIndices[0]].SubItems[0].Text,out int studentId);
-                MessageBox.Show(studentId.ToString());
+                int.TryParse(listViewStudent.Items[listViewStudent.SelectedIndices[0]].SubItems[0].Text, out int studentId);
                 using (NewStudentForm ns = new NewStudentForm(studentId))
                 {
                     ns.ShowDialog();
                 }
                 listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
-                updateDataStudentAsync();
-                updateDataOlimpiadsAsync();
+                updateDataStudent();
+                updateDataOlimpiads();
             }
             if ((listViewOlympiadsOfStudent.SelectedItems.Count > 0))
             {
                 MessageBox.Show("12");
                 listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
-                updateDataStudentAsync();
-                updateDataOlimpiadsAsync();
+                updateDataStudent();
+                updateDataOlimpiads();
             }
 
         }
