@@ -1,5 +1,6 @@
 using Microsoft.Data.Sqlite;
 using Microsoft.Reporting.WinForms;
+using System;
 using System.Data;
 using System.Globalization;
 
@@ -133,12 +134,14 @@ namespace OlympicStudents
         //Когда нажал на табличку
         private void listViewStudents_MouseOneClick(object sender, MouseEventArgs e)
         {
-
-            int index = listViewStudent.SelectedIndices[0];
-            int id = int.Parse(listViewStudent.Items[index].SubItems[0].Text);
-            Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
-            Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id);
-
+            try
+            {
+                int index = listViewStudent.SelectedIndices[0];
+                int id = int.Parse(listViewStudent.Items[index].SubItems[0].Text);
+                Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
+                Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id);
+            }
+            catch(ArgumentOutOfRangeException ex) { }
         }
         private void listViewOlimp_MouseOneClick(object sender, MouseEventArgs e)
         {
@@ -472,12 +475,17 @@ namespace OlympicStudents
         {
             if ((listViewStudent.SelectedItems.Count > 0) && !(listViewOlympiadsOfStudent.SelectedItems.Count > 0))
             {
-                MessageBox.Show("122");
+                int.TryParse(listViewStudent.Items[listViewStudent.SelectedIndices[0]].SubItems[0].Text,out int studentId);
+                MessageBox.Show(studentId.ToString());
+                using (NewStudentForm ns = new NewStudentForm(studentId))
+                {
+                    ns.ShowDialog();
+                }
                 listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
                 updateDataStudentAsync();
                 updateDataOlimpiadsAsync();
             }
-            if ((listViewStudent.SelectedItems.Count > 0) && (listViewOlympiadsOfStudent.SelectedItems.Count > 0))
+            if ((listViewOlympiadsOfStudent.SelectedItems.Count > 0))
             {
                 MessageBox.Show("12");
                 listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);

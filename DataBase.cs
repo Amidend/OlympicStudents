@@ -29,12 +29,11 @@ namespace OlympicStudents
             }
             return items;
         }
-
         public static async Task<List<ListViewItem>> GetAllStudentAsync(string table)
         {
             List<ListViewItem> items = new List<ListViewItem>();
             List<String> arr = new List<string>();
-            string sqlExpressionmain = $"SELECT student_id FROM result ";
+            string sqlExpressionmain = $"SELECT olympiad_id FROM result";
 
             List<int> l = new List<int>();
             using (var connection = new SqliteConnection("Data Source=data.db"))
@@ -50,7 +49,7 @@ namespace OlympicStudents
                         int i = 0;
                         while (reader.Read())
                         {
-                            if (!reader.IsDBNull(reader.GetOrdinal("student_id")))
+                            if (!reader.IsDBNull(reader.GetOrdinal("olympiad_id")))
                             {
                                 l.Add(reader.GetInt32(i));
                             }
@@ -61,7 +60,8 @@ namespace OlympicStudents
                 commandmain.Cancel();
                 commandmain.Connection = connection;
                 l = l.Distinct().ToList();
-                string sqlExpression = "SELECT * FROM student";
+                l.Sort();
+                string sqlExpression = $"SELECT * FROM {table}";
                 SqliteCommand command = new SqliteCommand(sqlExpression, connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {

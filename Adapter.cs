@@ -57,6 +57,7 @@ namespace OlympicStudents
                 new ColumnHeader { Text = "Номинации" },
                 new ColumnHeader { Text = "Место проведения" },
                 new ColumnHeader { Text = "Продолжительность" },
+                new ColumnHeader { Text = "Вид поощрения" },
                 new ColumnHeader { Text = "Сертификат достижений" },
                 new ColumnHeader { Text = "Грамота колледжа" },
                 new ColumnHeader { Text = "Благодарность колледжа" },
