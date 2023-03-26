@@ -17,6 +17,17 @@ namespace OlympicStudents
             UpdateDAta();
         }
 
+        private Dictionary<TabPage, int> tabPageIndexes = new Dictionary<TabPage, int>();
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            // save the indexes of each TabPage in a dictionary
+            for (int i = 0; i < tabMain.TabPages.Count; i++)
+            {
+                tabPageIndexes.Add(tabMain.TabPages[i], i);
+            }
+        }
+
         //Чек боксики
         private void checkBoxesStudents_CheckedChanged(object sender, EventArgs e)
         {
@@ -122,7 +133,7 @@ namespace OlympicStudents
             {
                 ns.ShowDialog();
             }
-            updateDataStudent();
+            UpdateDAta();
         }
         private void addOlimpiads_Click(object sender, EventArgs e)
         {
@@ -130,7 +141,7 @@ namespace OlympicStudents
             {
                 ns.ShowDialog();
             }
-            updateDataOlimpiads();
+            UpdateDAta();
         }
         //Когда нажал на табличку
         private void listViewStudents_MouseOneClick(object sender, MouseEventArgs e)
@@ -150,7 +161,7 @@ namespace OlympicStudents
             {
                 int index = listViewOlimp.SelectedIndices[0];
                 string studentId = (listViewOlimp.Items[index].SubItems[0].Text);
-                int id = DataBase.FindStudentByOlimpyad(studentId);
+                int id = DataBase.FindStudentByOlimpyad(studentId, "student_id", "result", "olympiad_id");
                 List<Label> labels = new List<Label>() { labelfio, labeldob, labeladd, labelph1, labelph2, labelph3, labelgro, labelyap, labelyor, labelcou, labelspe };
                 Adapter.FillStudentInformationAsync(id, labels);
             }
@@ -282,7 +293,7 @@ namespace OlympicStudents
                         connection.Open();
                         int k = 9;
 
-                        SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM result WHERE student_id='{DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString()}'", connection);
+                        SqliteCommand command = new SqliteCommand($"SELECT olympiad_id FROM result WHERE student_id='{listViewStudent.Items[listViewStudent.SelectedIndices[0]].SubItems[0].Text.ToString()}'", connection);
                         using (SqliteDataReader reader = command.ExecuteReader())
                         {
                             if (reader.HasRows)
@@ -300,9 +311,9 @@ namespace OlympicStudents
                     {
                         DataBase.Delete("olympiad", "", "olympiad_id", res[i].ToString());
 
-                        DataBase.Delete("result", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
+                        DataBase.Delete("result", "", "student_id", listViewStudent.Items[listViewStudent.SelectedIndices[0]].SubItems[0].Text.ToString());
                     }
-                    DataBase.Delete("student", "", "student_id", DataBase.FindStudentById(listViewStudent.SelectedItems[0].Text.ToString()).ToString());
+                    DataBase.Delete("student", "", "id", listViewStudent.Items[listViewStudent.SelectedIndices[0]].SubItems[0].Text.ToString());
                 }
             }
             if ((listViewStudent.SelectedItems.Count > 0) && (listViewOlympiadsOfStudent.SelectedItems.Count > 0))
@@ -311,8 +322,8 @@ namespace OlympicStudents
                  MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
 
-                    DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlympiadsOfStudent.SelectedItems[0].SubItems[9].Text.ToString()}");
-                    DataBase.Delete("result", "", "olympiad_id", $"{listViewOlympiadsOfStudent.SelectedItems[0].SubItems[9].Text.ToString()}");
+                    DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlympiadsOfStudent.Items[listViewOlympiadsOfStudent.SelectedIndices[0]].SubItems[0].Text.ToString()}");
+                    DataBase.Delete("result", "", "olympiad_id", $"{listViewOlympiadsOfStudent.Items[listViewOlympiadsOfStudent.SelectedIndices[0]].SubItems[0].Text.ToString()}");
                 }
             }
             listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
@@ -326,8 +337,8 @@ namespace OlympicStudents
                 if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент?", "Внимание", MessageBoxButtons.YesNo,
                  MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                 {
-                    DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
-                    DataBase.Delete("result", "", "olympiad_id", $"{listViewOlimp.SelectedItems[0].SubItems[9].Text.ToString()}");
+                    DataBase.Delete("olympiad", "", "olympiad_id", $"{listViewOlimp.Items[listViewOlimp.SelectedIndices[0]].SubItems[0].Text.ToString()}");
+                    DataBase.Delete("result", "", "olympiad_id", $"{listViewOlimp.Items[listViewOlimp.SelectedIndices[0]].SubItems[0].Text.ToString()}");
                 }
             }
             updateDataOlimpiads();
@@ -428,7 +439,7 @@ namespace OlympicStudents
             List<int> size = DataBase.findByids(numericUpDown1, numericUpDown2);
             for (int k = 0; k < size.Count; k++)
             {
-                var student_id = DataBase.FindStudentByOlimpyad(size[k].ToString());
+                var student_id = DataBase.FindStudentByOlimpyad(size[k].ToString(), "student_id", "result", "olympiad_id");
                 List<string> Olympyad = DataBase.FindOlimpyadById(size[k].ToString());
                 List<string> Student = DataBase.GetStuentInfofrmationAndSp(student_id.ToString(), searchCriteria);
 
@@ -469,16 +480,18 @@ namespace OlympicStudents
             UpdateDataEWG();
             UpdateDataHonor();
             UpdateDataEW();
+            UpdateDataEducationWorkStudent();
+            UpdateDataHonorStudent();
         }
         private void updateDataStudent()
         {
             Adapter.InitializeListViewSudent(listViewStudent);
-            Adapter.FillListVewAsync(listViewStudent, Constants.tableStudent, 10);
+            Adapter.FillListVewAsync(listViewStudent, Constants.tableStudent, "student_id", "result");
         }
         private void updateDataOlimpiads()
         {
             Adapter.InitializeListViewOlimpiads(listViewOlimp);
-            Adapter.FillListVewAsync(listViewOlimp, Constants.tableOlimpiad, 10);
+            Adapter.FillListVewAsync(listViewOlimp, Constants.tableOlimpiad, "olympiad_id", "result");
         }
         private void UpdateDataEWG()
         {
@@ -496,6 +509,16 @@ namespace OlympicStudents
             Adapter.FillListVewAsync(listViewEducationWork, Constants.tableEW);
 
         }
+        private void UpdateDataEducationWorkStudent()
+        {
+            Adapter.InitializeListViewSudent(listViewEWStudent);
+            Adapter.FillListVewAsync(listViewEWStudent, Constants.tableStudent, "student_id", "education_works");
+        }
+        private void UpdateDataHonorStudent()
+        {
+            Adapter.InitializeListViewSudent(listViewStudentsH);
+            Adapter.FillListVewAsync(listViewStudentsH, Constants.tableStudent, "student_id", "honors");
+        }
         private void buttonUpdateStudent_Click(object sender, EventArgs e)
         {
             if ((listViewStudent.SelectedItems.Count > 0) && !(listViewOlympiadsOfStudent.SelectedItems.Count > 0))
@@ -505,18 +528,174 @@ namespace OlympicStudents
                 {
                     ns.ShowDialog();
                 }
-                listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
+
                 updateDataStudent();
                 updateDataOlimpiads();
             }
             if ((listViewOlympiadsOfStudent.SelectedItems.Count > 0))
             {
-                MessageBox.Show("12");
-                listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
+                int.TryParse(listViewOlympiadsOfStudent.Items[listViewOlympiadsOfStudent.SelectedIndices[0]].SubItems[0].Text, out int olimpiadId);
+                using (NewOlympiadForm ns = new NewOlympiadForm(olimpiadId))
+                {
+                    ns.ShowDialog();
+                }
                 updateDataStudent();
                 updateDataOlimpiads();
             }
 
+        }
+        private void buttonUpdateOlimpiad_Click(object sender, EventArgs e)
+        {
+            if ((listViewOlimp.SelectedItems.Count > 0) && (listViewOlimp.SelectedItems.Count == 1))
+            {
+                int.TryParse(listViewOlimp.Items[listViewOlimp.SelectedIndices[0]].SubItems[0].Text, out int olimpiadId);
+                using (NewOlympiadForm ns = new NewOlympiadForm(olimpiadId))
+                {
+                    ns.ShowDialog();
+                }
+                updateDataStudent();
+                updateDataOlimpiads();
+            }
+        }
+
+        private void buttonAddEW_Click(object sender, EventArgs e)
+        {
+            using (NewEWForm ns = new NewEWForm())
+            {
+                ns.ShowDialog();
+            }
+            UpdateDataEW();
+        }
+
+        private void buttonUpdateEW_Click(object sender, EventArgs e)
+        {
+            if ((listViewEducationWork.SelectedItems.Count > 0) && (listViewEducationWork.SelectedItems.Count == 1))
+            {
+                int.TryParse(listViewEducationWork.Items[listViewEducationWork.SelectedIndices[0]].SubItems[0].Text, out int Id);
+                using (NewEWForm ns = new NewEWForm(Id))
+                {
+                    ns.ShowDialog();
+                }
+                UpdateDataEW();
+            }
+        }
+
+        private void buttonDeleteEW_Click(object sender, EventArgs e)
+        {
+            if (listViewEducationWork.SelectedItems.Count > 0)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент?", "Внимание", MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    DataBase.Delete("education_work", "", "id", $"{listViewEducationWork.Items[listViewEducationWork.SelectedIndices[0]].SubItems[0].Text.ToString()}");
+                    DataBase.Delete("education_works", "", "education_work_id", $"{listViewEducationWork.Items[listViewEducationWork.SelectedIndices[0]].SubItems[0].Text.ToString()}");
+                }
+            }
+            UpdateDAta();
+        }
+        private void buttonDeleteHonor_Click(object sender, EventArgs e)
+        {
+            if (listViewHonor.SelectedItems.Count > 0)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент?", "Внимание", MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    DataBase.Delete("honor", "", "id", $"{listViewHonor.Items[listViewHonor.SelectedIndices[0]].SubItems[0].Text.ToString()}");
+                    DataBase.Delete("honors", "", "honor_id", $"{listViewHonor.Items[listViewHonor.SelectedIndices[0]].SubItems[0].Text.ToString()}");
+                }
+            }
+            UpdateDAta();
+        }
+
+        private void buttonAddHonor_Click(object sender, EventArgs e)
+        {
+            using (NewHonorForm ns = new NewHonorForm())
+            {
+                ns.ShowDialog();
+            }
+            UpdateDAta();
+        }
+
+        private void buttonUpdateHonor_Click(object sender, EventArgs e)
+        {
+            if ((listViewHonor.SelectedItems.Count > 0) && (listViewHonor.SelectedItems.Count == 1))
+            {
+                int.TryParse(listViewHonor.Items[listViewHonor.SelectedIndices[0]].SubItems[0].Text, out int Id);
+                using (NewHonorForm ns = new NewHonorForm(Id))
+                {
+                    ns.ShowDialog();
+                }
+                UpdateDAta();
+            }
+        }
+
+        private void listViewEWStudent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewStudentsH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonAddEWG_Click(object sender, EventArgs e)
+        {
+            using (NewEWGroupForm ns = new NewEWGroupForm())
+            {
+                ns.ShowDialog();
+            }
+            UpdateDAta();
+        }
+
+        private void buttonUpdateEWG_Click(object sender, EventArgs e)
+        {
+
+            if ((listViewEducationWorkGroup.SelectedItems.Count > 0) && (listViewEducationWorkGroup.SelectedItems.Count == 1))
+            {
+                int.TryParse(listViewEducationWorkGroup.Items[listViewEducationWorkGroup.SelectedIndices[0]].SubItems[0].Text, out int Id);
+                using (NewEWGroupForm ns = new NewEWGroupForm(Id))
+                {
+                    ns.ShowDialog();
+                }
+                UpdateDAta();
+            }
+        }
+
+        private void buttonDeleteEWG_Click(object sender, EventArgs e)
+        {
+            if (listViewEducationWorkGroup.SelectedItems.Count > 0)
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент?", "Внимание", MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    DataBase.Delete("education_work_group", "", "id", $"{listViewEducationWorkGroup.Items[listViewEducationWorkGroup.SelectedIndices[0]].SubItems[0].Text.ToString()}");
+                }
+            }
+            UpdateDAta();
+        }
+
+
+        private void HideTabPage(TabPage tabPage)
+        {
+            if (tabMain.TabPages.Contains(tabPage))
+            {
+                int index = tabPageIndexes[tabPage];
+                tabMain.TabPages.Remove(tabPage);
+                tabPageIndexes.Remove(tabPage);
+                // save any objects associated with the TabPage here
+            }
+        }
+
+        private void ShowTabPage(TabPage tabPage)
+        {
+            if (!tabMain.TabPages.Contains(tabPage))
+            {
+                int index = tabPageIndexes[tabPage];
+                tabMain.TabPages.Insert(index, tabPage);
+                tabPageIndexes.Add(tabPage, index);
+                // restore any objects associated with the TabPage here
+            }
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -526,5 +705,121 @@ namespace OlympicStudents
                 tabMain.TabPages[0].Hide();
             }
         }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == 1)
+            {
+                tabMain.SelectedIndex = 0;
+                tabMain.TabPages[1].Hide();
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == 3)
+            {
+                tabMain.SelectedIndex = 4;
+                tabMain.TabPages[3].Hide();
+            }
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == 4)
+            {
+                tabMain.SelectedIndex = 3;
+                tabMain.TabPages[4].Hide();
+            }
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == 5)
+            {
+                tabMain.SelectedIndex = 6;
+                tabMain.TabPages[5].Hide();
+            }
+        }
+
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tabMain.SelectedIndex == 6)
+            {
+                tabMain.SelectedIndex = 5;
+                tabMain.TabPages[6].Hide();
+            }
+        }
+
+        private void listViewEducationWorkGroup_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void listViewEWStudent_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void listViewEducationWork_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                int index = listViewEducationWork.SelectedIndices[0];
+                string studentId = (listViewEducationWork.Items[index].SubItems[0].Text);
+                int id = DataBase.FindStudentByOlimpyad(studentId, "student_id", "education_works", "education_work_id");
+                List<Label> labels = new List<Label>() { labelfioEW, labelDoBEW, labeladressEW, labellabelph1EW, labellabelph2EW, labellabelph3Ew, labelGroupEW, labelDoAEW, labelDoEEW, labelCourseEW, labelspEW };
+                Adapter.FillStudentInformationAsync(id, labels);
+            }
+            catch (Exception ex) { }
+        }
+
+        private void listViewStudentsH_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void listViewHonor_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                int index = listViewHonor.SelectedIndices[0];
+                string studentId = (listViewHonor.Items[index].SubItems[0].Text);
+                int id = DataBase.FindStudentByOlimpyad(studentId, "student_id", "honors", "honor_id");
+                List<Label> labels = new List<Label>() { labelfioH, labelDoBH, labeladressH, labelph1H, labelph2H, labelph3H, labelGroupH, labelDoAH, labelDoEH, labelCourseH, labelspH };
+                Adapter.FillStudentInformationAsync(id, labels);
+            }
+            catch (Exception ex) { }
+        }
+
+
+
+
+        /*
+private void listViewStudents_MouseOneClick(object sender, MouseEventArgs e)
+{
+   try
+   {
+       int index = listViewStudent.SelectedIndices[0];
+       int id = int.Parse(listViewStudent.Items[index].SubItems[0].Text);
+       Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
+       Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id);
+   }
+   catch (ArgumentOutOfRangeException ex) { }
+}
+private void listViewOlimp_MouseOneClick(object sender, MouseEventArgs e)
+{
+   try
+   {
+       int index = listViewOlimp.SelectedIndices[0];
+       string studentId = (listViewOlimp.Items[index].SubItems[0].Text);
+       int id = DataBase.FindStudentByOlimpyad(studentId);
+       List<Label> labels = new List<Label>() { labelfio, labeldob, labeladd, labelph1, labelph2, labelph3, labelgro, labelyap, labelyor, labelcou, labelspe };
+       Adapter.FillStudentInformationAsync(id, labels);
+   }
+   catch (Exception ex) { }
+}
+*/
+
     }
 }

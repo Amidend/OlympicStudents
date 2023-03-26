@@ -4,6 +4,15 @@
     <Compile Update="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="NewEWGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="NewEWForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="NewHonorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="NewOlympiadForm.cs">
       <SubType>Form</SubType>
     </Compile>

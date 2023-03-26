@@ -2519,11 +2519,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\git\\OlympicStudents\\OlympicStudents.csproj",
+      "projectUniqueName": "C:\\github\\OlympicStudents\\OlympicStudents.csproj",
       "projectName": "OlympicStudents",
-      "projectPath": "D:\\git\\OlympicStudents\\OlympicStudents.csproj",
+      "projectPath": "C:\\github\\OlympicStudents\\OlympicStudents.csproj",
       "packagesPath": "C:\\Users\\diman\\.nuget\\packages\\",
-      "outputPath": "D:\\git\\OlympicStudents\\obj\\",
+      "outputPath": "C:\\github\\OlympicStudents\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2538,7 +2538,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2597,7 +2596,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

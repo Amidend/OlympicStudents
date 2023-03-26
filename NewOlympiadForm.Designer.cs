@@ -50,6 +50,15 @@
             listView1 = new ListView();
             button2 = new Button();
             button3 = new Button();
+            label10 = new Label();
+            richTextBox3 = new RichTextBox();
+            label11 = new Label();
+            richTextBox4 = new RichTextBox();
+            label12 = new Label();
+            richTextBox5 = new RichTextBox();
+            label13 = new Label();
+            label14 = new Label();
+            label15 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -100,18 +109,18 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(13, 434);
+            label5.Location = new Point(13, 426);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(134, 25);
+            label5.Size = new Size(48, 25);
             label5.TabIndex = 4;
-            label5.Text = "Поощерение";
+            label5.Text = "Вид";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(13, 476);
+            label6.Location = new Point(11, 489);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(124, 25);
@@ -122,7 +131,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(13, 630);
+            label7.Location = new Point(13, 555);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(196, 25);
@@ -150,7 +159,7 @@
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(211, 629);
+            textBox4.Location = new Point(211, 554);
             textBox4.Margin = new Padding(4, 3, 4, 3);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(415, 29);
@@ -160,7 +169,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(13, 672);
+            label9.Location = new Point(13, 597);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(189, 25);
@@ -229,25 +238,25 @@
             // richTextBox1
             // 
             richTextBox1.Location = new Point(153, 479);
-            richTextBox1.Margin = new Padding(4, 4, 4, 4);
+            richTextBox1.Margin = new Padding(4);
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(473, 133);
+            richTextBox1.Size = new Size(473, 68);
             richTextBox1.TabIndex = 9;
             richTextBox1.Text = "";
             // 
             // richTextBox2
             // 
-            richTextBox2.Location = new Point(211, 672);
-            richTextBox2.Margin = new Padding(4, 4, 4, 4);
+            richTextBox2.Location = new Point(211, 597);
+            richTextBox2.Margin = new Padding(4);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(415, 144);
+            richTextBox2.Size = new Size(415, 59);
             richTextBox2.TabIndex = 10;
             richTextBox2.Text = "";
             // 
             // listView1
             // 
             listView1.Location = new Point(667, 14);
-            listView1.Margin = new Padding(4, 4, 4, 4);
+            listView1.Margin = new Padding(4);
             listView1.Name = "listView1";
             listView1.Size = new Size(1250, 753);
             listView1.TabIndex = 11;
@@ -256,7 +265,7 @@
             // button2
             // 
             button2.Location = new Point(667, 777);
-            button2.Margin = new Padding(4, 4, 4, 4);
+            button2.Margin = new Padding(4);
             button2.Name = "button2";
             button2.Size = new Size(1251, 41);
             button2.TabIndex = 12;
@@ -267,13 +276,106 @@
             // button3
             // 
             button3.Location = new Point(13, 857);
-            button3.Margin = new Padding(4, 4, 4, 4);
+            button3.Margin = new Padding(4);
             button3.Name = "button3";
             button3.Size = new Size(225, 56);
             button3.TabIndex = 13;
             button3.Text = "Отмена";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Location = new Point(13, 664);
+            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(124, 25);
+            label10.TabIndex = 4;
+            label10.Text = "Сертификат";
+            // 
+            // richTextBox3
+            // 
+            richTextBox3.Location = new Point(211, 664);
+            richTextBox3.Margin = new Padding(4);
+            richTextBox3.Name = "richTextBox3";
+            richTextBox3.Size = new Size(415, 43);
+            richTextBox3.TabIndex = 10;
+            richTextBox3.Text = "";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            label11.Location = new Point(13, 717);
+            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(192, 25);
+            label11.TabIndex = 4;
+            label11.Text = "Грамота колледжа ";
+            // 
+            // richTextBox4
+            // 
+            richTextBox4.Location = new Point(211, 717);
+            richTextBox4.Margin = new Padding(4);
+            richTextBox4.Name = "richTextBox4";
+            richTextBox4.Size = new Size(415, 43);
+            richTextBox4.TabIndex = 10;
+            richTextBox4.Text = "";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(13, 777);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(152, 25);
+            label12.TabIndex = 4;
+            label12.Text = "Благодарность";
+            // 
+            // richTextBox5
+            // 
+            richTextBox5.Location = new Point(211, 777);
+            richTextBox5.Margin = new Padding(4);
+            richTextBox5.Name = "richTextBox5";
+            richTextBox5.Size = new Size(415, 43);
+            richTextBox5.TabIndex = 10;
+            richTextBox5.Text = "";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.Location = new Point(13, 689);
+            label13.Margin = new Padding(4, 0, 4, 0);
+            label13.Name = "label13";
+            label13.Size = new Size(128, 25);
+            label13.TabIndex = 4;
+            label13.Text = "достижений";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            label14.Location = new Point(13, 802);
+            label14.Margin = new Padding(4, 0, 4, 0);
+            label14.Name = "label14";
+            label14.Size = new Size(105, 25);
+            label14.TabIndex = 4;
+            label14.Text = "колледжа";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            label15.Location = new Point(13, 451);
+            label15.Margin = new Padding(4, 0, 4, 0);
+            label15.Name = "label15";
+            label15.Size = new Size(122, 25);
+            label15.TabIndex = 4;
+            label15.Text = "поощрения";
             // 
             // NewOlympiadForm
             // 
@@ -283,6 +385,9 @@
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(listView1);
+            Controls.Add(richTextBox5);
+            Controls.Add(richTextBox4);
+            Controls.Add(richTextBox3);
             Controls.Add(richTextBox2);
             Controls.Add(richTextBox1);
             Controls.Add(monthCalendar1);
@@ -292,9 +397,15 @@
             Controls.Add(comboBox2);
             Controls.Add(comboBox1);
             Controls.Add(label8);
+            Controls.Add(label14);
+            Controls.Add(label12);
+            Controls.Add(label11);
+            Controls.Add(label13);
+            Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label7);
             Controls.Add(label6);
+            Controls.Add(label15);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -333,5 +444,14 @@
         private ListView listView1;
         private Button button2;
         private Button button3;
+        private Label label10;
+        private RichTextBox richTextBox3;
+        private Label label11;
+        private RichTextBox richTextBox4;
+        private Label label12;
+        private RichTextBox richTextBox5;
+        private Label label13;
+        private Label label14;
+        private Label label15;
     }
 }

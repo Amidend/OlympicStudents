@@ -302,3 +302,6 @@ C:\github\OlympicStudents\obj\Debug\net6.0-windows\refint\OlympicStudents.dll
 C:\github\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.pdb
 C:\github\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.genruntimeconfig.cache
 C:\github\OlympicStudents\obj\Debug\net6.0-windows\ref\OlympicStudents.dll
+C:\github\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.NewHonorForm.resources
+C:\github\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.NewEWForm.resources
+C:\github\OlympicStudents\obj\Debug\net6.0-windows\OlympicStudents.NewEWGroupForm.resources

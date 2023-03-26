@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "itE3sf7D2fJWZQ6hHKg+/duD36RNN6Qd6IeZOxxNgoEBq1wq0+x6JLeSo78DJhHNkMaT0ZBbQHTG/ThRgY+y9w==",
+  "dgSpecHash": "HzhbQ3d0A8IoDHqGiOA2CAZuaHh6U47/xNFKrWyipKWcoeRDKkvwW16TAsGFtU6N6jyiH8294udlwoAMBRbQZw==",
   "success": true,
-  "projectFilePath": "D:\\git\\OlympicStudents\\OlympicStudents.csproj",
+  "projectFilePath": "C:\\github\\OlympicStudents\\OlympicStudents.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\diman\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\diman\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.2\\microsoft.codeanalysis.analyzers.3.3.2.nupkg.sha512",

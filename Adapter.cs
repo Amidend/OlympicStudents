@@ -171,9 +171,17 @@ namespace OlympicStudents
                 list.ListViewItemSorter = new ListViewItemComparer(e.Column, !reverse);
             };
         }
-        public static async Task FillListVewAsync(ListView listViewStudent, string table, int n)
+        public static async Task FillAllListVewAsync(ListView listViewStudent, string table)
         {
-            var items = await DataBase.GetAllStudentAsync(table);
+            var items = await DataBase.GetAllFromTableAsync(table);
+            foreach (var item in items)
+            {
+                listViewStudent.Items.Add(item);
+            }
+        }
+        public static async Task FillListVewAsync(ListView listViewStudent, string table, string id, string funderTable)
+        {
+            var items = await DataBase.GetAllStudentAsync(table,id,funderTable);
             foreach (var item in items)
             {
                 listViewStudent.Items.Add(item);

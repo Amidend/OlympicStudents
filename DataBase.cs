@@ -29,11 +29,11 @@ namespace OlympicStudents
             }
             return items;
         }
-        public static async Task<List<ListViewItem>> GetAllStudentAsync(string table)
+        public static async Task<List<ListViewItem>> GetAllStudentAsync(string table, string id,string funderTable)
         {
             List<ListViewItem> items = new List<ListViewItem>();
             List<String> arr = new List<string>();
-            string sqlExpressionmain = $"SELECT olympiad_id FROM result";
+            string sqlExpressionmain = $"SELECT {id} FROM {funderTable}";
 
             List<int> l = new List<int>();
             using (var connection = new SqliteConnection("Data Source=data.db"))
@@ -49,7 +49,7 @@ namespace OlympicStudents
                         int i = 0;
                         while (reader.Read())
                         {
-                            if (!reader.IsDBNull(reader.GetOrdinal("olympiad_id")))
+                            if (!reader.IsDBNull(reader.GetOrdinal($"{id}")))
                             {
                                 l.Add(reader.GetInt32(i));
                             }
@@ -138,6 +138,7 @@ namespace OlympicStudents
                                         arr.Add(reader.IsDBNull(i) ? null : reader.GetString(i));
                                     }
                                     items.Add(new ListViewItem(arr.ToArray()));
+                                    arr = new List<string>();
                                 }
                             }
 
@@ -193,13 +194,13 @@ namespace OlympicStudents
                 return res;
             }
         }
-        public static int FindStudentByOlimpyad(string id)
+        public static int FindStudentByOlimpyad(string id, string what, string from, string where)
         {
             using (var connection = new SqliteConnection("Data Source=data.db"))
             {
                 connection.Open();
                 int res = -1;
-                SqliteCommand command = new SqliteCommand($"SELECT student_id FROM result WHERE olympiad_id = '{id}'", connection);
+                SqliteCommand command = new SqliteCommand($"SELECT {what} FROM {from} WHERE {where} = '{id}'", connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows)
