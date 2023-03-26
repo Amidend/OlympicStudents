@@ -100,41 +100,16 @@
             buttonAddEWG = new Button();
             listViewEducationWorkGroup = new ListView();
             tabPageStudentEW = new TabPage();
+            splitContainer2 = new SplitContainer();
+            upPanelEW = new Panel();
+            listViewEWStudent = new ListView();
+            bottomPanelEW = new Panel();
+            listViewEWByStudent = new ListView();
             checkBox2 = new CheckBox();
             buttonUpdateEWS = new Button();
             buttonDeleteEWS = new Button();
             buttonAddEWS = new Button();
-            listViewEWByStudent = new ListView();
-            listViewEWStudent = new ListView();
             tabPageEducationWork = new TabPage();
-            checkBox3 = new CheckBox();
-            buttonUpdateEW = new Button();
-            buttonDeleteEW = new Button();
-            buttonAddEW = new Button();
-            listViewEducationWork = new ListView();
-            tabPageStudentHonor = new TabPage();
-            checkBox4 = new CheckBox();
-            buttonUpdateHS = new Button();
-            buttonDeleteHS = new Button();
-            buttonAddHS = new Button();
-            listViewHonorByS = new ListView();
-            listViewStudentsH = new ListView();
-            tabPageHonor = new TabPage();
-            checkBox5 = new CheckBox();
-            buttonUpdateHonor = new Button();
-            buttonDeleteHonor = new Button();
-            buttonAddHonor = new Button();
-            listViewHonor = new ListView();
-            tabPageMainReport = new TabPage();
-            panelRightReport = new Panel();
-            reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            panelLeftReport = new Panel();
-            checkedListBoxCriteriaExcel = new CheckedListBox();
-            label20 = new Label();
-            label19 = new Label();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown1 = new NumericUpDown();
-            reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             labelCourseEW = new Label();
             labellabelph3Ew = new Label();
             label24 = new Label();
@@ -159,6 +134,22 @@
             label43 = new Label();
             label44 = new Label();
             label45 = new Label();
+            checkBox3 = new CheckBox();
+            buttonUpdateEW = new Button();
+            buttonDeleteEW = new Button();
+            buttonAddEW = new Button();
+            listViewEducationWork = new ListView();
+            tabPageStudentHonor = new TabPage();
+            splitContainer3 = new SplitContainer();
+            upPanelH = new Panel();
+            listViewStudentsH = new ListView();
+            bottomPanelH = new Panel();
+            listViewHonorByS = new ListView();
+            checkBox4 = new CheckBox();
+            buttonUpdateHS = new Button();
+            buttonDeleteHS = new Button();
+            buttonAddHS = new Button();
+            tabPageHonor = new TabPage();
             labelCourseH = new Label();
             labelph3H = new Label();
             label25 = new Label();
@@ -183,6 +174,21 @@
             label56 = new Label();
             label57 = new Label();
             label58 = new Label();
+            checkBox5 = new CheckBox();
+            buttonUpdateHonor = new Button();
+            buttonDeleteHonor = new Button();
+            buttonAddHonor = new Button();
+            listViewHonor = new ListView();
+            tabPageMainReport = new TabPage();
+            panelRightReport = new Panel();
+            reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            panelLeftReport = new Panel();
+            checkedListBoxCriteriaExcel = new CheckedListBox();
+            label20 = new Label();
+            label19 = new Label();
+            numericUpDown2 = new NumericUpDown();
+            numericUpDown1 = new NumericUpDown();
+            reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
             tabMain.SuspendLayout();
             tabPageStudent.SuspendLayout();
             panelMenuStudents.SuspendLayout();
@@ -195,8 +201,16 @@
             tabPageOlimpiad.SuspendLayout();
             tabPageEducationGroup.SuspendLayout();
             tabPageStudentEW.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
+            splitContainer2.SuspendLayout();
             tabPageEducationWork.SuspendLayout();
             tabPageStudentHonor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
+            splitContainer3.Panel1.SuspendLayout();
+            splitContainer3.Panel2.SuspendLayout();
+            splitContainer3.SuspendLayout();
             tabPageHonor.SuspendLayout();
             tabPageMainReport.SuspendLayout();
             panelRightReport.SuspendLayout();
@@ -935,7 +949,7 @@
             // 
             // buttonUpdateEWG
             // 
-            buttonUpdateEWG.Location = new Point(708, 506);
+            buttonUpdateEWG.Location = new Point(1408, 82);
             buttonUpdateEWG.Name = "buttonUpdateEWG";
             buttonUpdateEWG.Size = new Size(478, 23);
             buttonUpdateEWG.TabIndex = 16;
@@ -945,7 +959,7 @@
             // 
             // buttonDeleteEWG
             // 
-            buttonDeleteEWG.Location = new Point(709, 473);
+            buttonDeleteEWG.Location = new Point(1409, 49);
             buttonDeleteEWG.Name = "buttonDeleteEWG";
             buttonDeleteEWG.Size = new Size(200, 30);
             buttonDeleteEWG.TabIndex = 15;
@@ -955,7 +969,7 @@
             // 
             // buttonAddEWG
             // 
-            buttonAddEWG.Location = new Point(988, 473);
+            buttonAddEWG.Location = new Point(1688, 49);
             buttonAddEWG.Name = "buttonAddEWG";
             buttonAddEWG.Size = new Size(200, 30);
             buttonAddEWG.TabIndex = 14;
@@ -965,15 +979,17 @@
             // 
             // listViewEducationWorkGroup
             // 
-            listViewEducationWorkGroup.Location = new Point(38, 25);
+            listViewEducationWorkGroup.Dock = DockStyle.Left;
+            listViewEducationWorkGroup.Location = new Point(3, 3);
             listViewEducationWorkGroup.Name = "listViewEducationWorkGroup";
-            listViewEducationWorkGroup.Size = new Size(768, 371);
+            listViewEducationWorkGroup.Size = new Size(1400, 997);
             listViewEducationWorkGroup.TabIndex = 0;
             listViewEducationWorkGroup.UseCompatibleStateImageBehavior = false;
             listViewEducationWorkGroup.MouseClick += listViewEducationWorkGroup_MouseClick;
             // 
             // tabPageStudentEW
             // 
+            tabPageStudentEW.Controls.Add(splitContainer2);
             tabPageStudentEW.Controls.Add(checkBox2);
             tabPageStudentEW.Controls.Add(buttonUpdateEWS);
             tabPageStudentEW.Controls.Add(buttonDeleteEWS);
@@ -987,11 +1003,66 @@
             tabPageStudentEW.Text = "Учащиеся по Воспитательной работе ";
             tabPageStudentEW.UseVisualStyleBackColor = true;
             // 
+            // splitContainer2
+            // 
+            splitContainer2.Dock = DockStyle.Left;
+            splitContainer2.Location = new Point(0, 0);
+            splitContainer2.Name = "splitContainer2";
+            splitContainer2.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.Controls.Add(upPanelEW);
+            // 
+            // splitContainer2.Panel2
+            // 
+            splitContainer2.Panel2.Controls.Add(bottomPanelEW);
+            splitContainer2.Size = new Size(1400, 1003);
+            splitContainer2.SplitterDistance = 501;
+            splitContainer2.TabIndex = 23;
+            // 
+            // upPanelEW
+            // 
+            upPanelEW.Dock = DockStyle.Fill;
+            upPanelEW.Location = new Point(0, 0);
+            upPanelEW.Name = "upPanelEW";
+            upPanelEW.Size = new Size(1400, 501);
+            upPanelEW.TabIndex = 0;
+            upPanelEW.Controls.Add(listViewEWStudent);
+            // 
+            // listViewEWStudent
+            // 
+            listViewEWStudent.Dock = DockStyle.Fill;
+            listViewEWStudent.Location = new Point(0, 0);
+            listViewEWStudent.Name = "listViewEWStudent";
+            listViewEWStudent.Size = new Size(1896, 1003);
+            listViewEWStudent.TabIndex = 17;
+            listViewEWStudent.UseCompatibleStateImageBehavior = false;
+            listViewEWStudent.MouseClick += listViewEWStudent_MouseClick;
+            // 
+            // bottomPanelEW
+            // 
+            bottomPanelEW.Dock = DockStyle.Fill;
+            bottomPanelEW.Location = new Point(0, 0);
+            bottomPanelEW.Name = "bottomPanelEW";
+            bottomPanelEW.Size = new Size(1400, 498);
+            bottomPanelEW.TabIndex = 0;
+            bottomPanelEW.Controls.Add(listViewEWByStudent);
+            // 
+            // listViewEWByStudent
+            // 
+            listViewEWByStudent.Dock = DockStyle.Fill;
+            listViewEWByStudent.Location = new Point(0, 0);
+            listViewEWByStudent.Name = "listViewEWByStudent";
+            listViewEWByStudent.Size = new Size(1896, 1003);
+            listViewEWByStudent.TabIndex = 17;
+            listViewEWByStudent.UseCompatibleStateImageBehavior = false;
+            // 
             // checkBox2
             // 
             checkBox2.Appearance = Appearance.Button;
             checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(944, 613);
+            checkBox2.Location = new Point(1403, 857);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(220, 35);
             checkBox2.TabIndex = 22;
@@ -1001,7 +1072,7 @@
             // 
             // buttonUpdateEWS
             // 
-            buttonUpdateEWS.Location = new Point(943, 702);
+            buttonUpdateEWS.Location = new Point(1402, 946);
             buttonUpdateEWS.Name = "buttonUpdateEWS";
             buttonUpdateEWS.Size = new Size(478, 23);
             buttonUpdateEWS.TabIndex = 20;
@@ -1010,7 +1081,7 @@
             // 
             // buttonDeleteEWS
             // 
-            buttonDeleteEWS.Location = new Point(944, 669);
+            buttonDeleteEWS.Location = new Point(1403, 913);
             buttonDeleteEWS.Name = "buttonDeleteEWS";
             buttonDeleteEWS.Size = new Size(200, 30);
             buttonDeleteEWS.TabIndex = 19;
@@ -1019,30 +1090,12 @@
             // 
             // buttonAddEWS
             // 
-            buttonAddEWS.Location = new Point(1223, 669);
+            buttonAddEWS.Location = new Point(1682, 913);
             buttonAddEWS.Name = "buttonAddEWS";
             buttonAddEWS.Size = new Size(200, 30);
             buttonAddEWS.TabIndex = 18;
             buttonAddEWS.Text = "Добавить олимпиаду";
             buttonAddEWS.UseVisualStyleBackColor = true;
-            // 
-            // listViewEWByStudent
-            // 
-            listViewEWByStudent.Location = new Point(86, 401);
-            listViewEWByStudent.Name = "listViewEWByStudent";
-            listViewEWByStudent.Size = new Size(509, 277);
-            listViewEWByStudent.TabIndex = 17;
-            listViewEWByStudent.UseCompatibleStateImageBehavior = false;
-            // 
-            // listViewEWStudent
-            // 
-            listViewEWStudent.Location = new Point(28, 16);
-            listViewEWStudent.Name = "listViewEWStudent";
-            listViewEWStudent.Size = new Size(567, 359);
-            listViewEWStudent.TabIndex = 17;
-            listViewEWStudent.UseCompatibleStateImageBehavior = false;
-            listViewEWStudent.SelectedIndexChanged += listViewEWStudent_SelectedIndexChanged;
-            listViewEWStudent.MouseClick += listViewEWStudent_MouseClick;
             // 
             // tabPageEducationWork
             // 
@@ -1083,11 +1136,230 @@
             tabPageEducationWork.Text = "Воспитательная работа ";
             tabPageEducationWork.UseVisualStyleBackColor = true;
             // 
+            // labelCourseEW
+            // 
+            labelCourseEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelCourseEW.Location = new Point(1569, 331);
+            labelCourseEW.Name = "labelCourseEW";
+            labelCourseEW.Size = new Size(317, 28);
+            labelCourseEW.TabIndex = 23;
+            // 
+            // labellabelph3Ew
+            // 
+            labellabelph3Ew.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labellabelph3Ew.Location = new Point(1569, 212);
+            labellabelph3Ew.Name = "labellabelph3Ew";
+            labellabelph3Ew.Size = new Size(317, 28);
+            labellabelph3Ew.TabIndex = 44;
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label24.Location = new Point(1406, 266);
+            label24.Name = "label24";
+            label24.Size = new Size(139, 21);
+            label24.TabIndex = 43;
+            label24.Text = "Дата поступления";
+            // 
+            // labelDoBEW
+            // 
+            labelDoBEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDoBEW.Location = new Point(1569, 61);
+            labelDoBEW.Name = "labelDoBEW";
+            labelDoBEW.Size = new Size(317, 28);
+            labelDoBEW.TabIndex = 42;
+            // 
+            // labelspEW
+            // 
+            labelspEW.AutoEllipsis = true;
+            labelspEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelspEW.Location = new Point(1551, 359);
+            labelspEW.Name = "labelspEW";
+            labelspEW.Size = new Size(336, 33);
+            labelspEW.TabIndex = 41;
+            // 
+            // labelDoEEW
+            // 
+            labelDoEEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDoEEW.Location = new Point(1569, 301);
+            labelDoEEW.Name = "labelDoEEW";
+            labelDoEEW.Size = new Size(317, 28);
+            labelDoEEW.TabIndex = 40;
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label28.Location = new Point(1436, 146);
+            label28.Name = "label28";
+            label28.Size = new Size(109, 21);
+            label28.TabIndex = 39;
+            label28.Text = "Мобильный 1";
+            // 
+            // labellabelph2EW
+            // 
+            labellabelph2EW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labellabelph2EW.Location = new Point(1569, 181);
+            labellabelph2EW.Name = "labellabelph2EW";
+            labellabelph2EW.Size = new Size(317, 28);
+            labellabelph2EW.TabIndex = 38;
+            // 
+            // labelfioEW
+            // 
+            labelfioEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelfioEW.Location = new Point(1569, 31);
+            labelfioEW.Name = "labelfioEW";
+            labelfioEW.Size = new Size(317, 28);
+            labelfioEW.TabIndex = 37;
+            // 
+            // labelDoAEW
+            // 
+            labelDoAEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelDoAEW.Location = new Point(1569, 271);
+            labelDoAEW.Name = "labelDoAEW";
+            labelDoAEW.Size = new Size(317, 28);
+            labelDoAEW.TabIndex = 36;
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label32.Location = new Point(1405, 236);
+            label32.Name = "label32";
+            label32.Size = new Size(61, 21);
+            label32.TabIndex = 35;
+            label32.Text = "Группа";
+            // 
+            // labellabelph1EW
+            // 
+            labellabelph1EW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labellabelph1EW.Location = new Point(1569, 151);
+            labellabelph1EW.Name = "labellabelph1EW";
+            labellabelph1EW.Size = new Size(317, 28);
+            labellabelph1EW.TabIndex = 34;
+            // 
+            // label34
+            // 
+            label34.AutoSize = true;
+            label34.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label34.Location = new Point(1406, 116);
+            label34.Name = "label34";
+            label34.Size = new Size(130, 21);
+            label34.TabIndex = 33;
+            label34.Text = "Номер телефона";
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label35.Location = new Point(1406, 356);
+            label35.Name = "label35";
+            label35.Size = new Size(123, 21);
+            label35.TabIndex = 32;
+            label35.Text = "Специализация";
+            // 
+            // labelGroupEW
+            // 
+            labelGroupEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labelGroupEW.Location = new Point(1569, 241);
+            labelGroupEW.Name = "labelGroupEW";
+            labelGroupEW.Size = new Size(317, 28);
+            labelGroupEW.TabIndex = 31;
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label37.Location = new Point(1436, 206);
+            label37.Name = "label37";
+            label37.Size = new Size(89, 21);
+            label37.TabIndex = 30;
+            label37.Text = "Домашний";
+            // 
+            // labeladressEW
+            // 
+            labeladressEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            labeladressEW.Location = new Point(1569, 91);
+            labeladressEW.Name = "labeladressEW";
+            labeladressEW.Size = new Size(317, 28);
+            labeladressEW.TabIndex = 29;
+            // 
+            // label39
+            // 
+            label39.AutoSize = true;
+            label39.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label39.Location = new Point(1407, 86);
+            label39.Name = "label39";
+            label39.Size = new Size(53, 21);
+            label39.TabIndex = 28;
+            label39.Text = "Адрес";
+            // 
+            // label40
+            // 
+            label40.AutoSize = true;
+            label40.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label40.Location = new Point(1406, 326);
+            label40.Name = "label40";
+            label40.Size = new Size(43, 21);
+            label40.TabIndex = 27;
+            label40.Text = "Курс";
+            // 
+            // label41
+            // 
+            label41.AutoSize = true;
+            label41.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label41.Location = new Point(1436, 176);
+            label41.Name = "label41";
+            label41.Size = new Size(109, 21);
+            label41.TabIndex = 26;
+            label41.Text = "Мобильный 2";
+            // 
+            // label42
+            // 
+            label42.AutoSize = true;
+            label42.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label42.Location = new Point(1406, 296);
+            label42.Name = "label42";
+            label42.Size = new Size(107, 21);
+            label42.TabIndex = 25;
+            label42.Text = "Дата выпуска";
+            // 
+            // label43
+            // 
+            label43.AutoSize = true;
+            label43.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label43.Location = new Point(1407, 56);
+            label43.Name = "label43";
+            label43.Size = new Size(121, 21);
+            label43.TabIndex = 24;
+            label43.Text = "Дата рождения";
+            // 
+            // label44
+            // 
+            label44.AutoSize = true;
+            label44.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label44.Location = new Point(1405, 6);
+            label44.Name = "label44";
+            label44.Size = new Size(204, 21);
+            label44.TabIndex = 45;
+            label44.Text = "Информация об учащемся";
+            // 
+            // label45
+            // 
+            label45.AutoSize = true;
+            label45.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label45.Location = new Point(1406, 31);
+            label45.Name = "label45";
+            label45.Size = new Size(46, 21);
+            label45.TabIndex = 46;
+            label45.Text = "ФИО";
+            // 
             // checkBox3
             // 
             checkBox3.Appearance = Appearance.Button;
             checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(826, 409);
+            checkBox3.Location = new Point(1409, 392);
             checkBox3.Name = "checkBox3";
             checkBox3.Size = new Size(110, 35);
             checkBox3.TabIndex = 22;
@@ -1097,7 +1369,7 @@
             // 
             // buttonUpdateEW
             // 
-            buttonUpdateEW.Location = new Point(708, 506);
+            buttonUpdateEW.Location = new Point(1412, 751);
             buttonUpdateEW.Name = "buttonUpdateEW";
             buttonUpdateEW.Size = new Size(478, 23);
             buttonUpdateEW.TabIndex = 13;
@@ -1107,7 +1379,7 @@
             // 
             // buttonDeleteEW
             // 
-            buttonDeleteEW.Location = new Point(709, 473);
+            buttonDeleteEW.Location = new Point(1405, 804);
             buttonDeleteEW.Name = "buttonDeleteEW";
             buttonDeleteEW.Size = new Size(200, 30);
             buttonDeleteEW.TabIndex = 12;
@@ -1117,7 +1389,7 @@
             // 
             // buttonAddEW
             // 
-            buttonAddEW.Location = new Point(988, 473);
+            buttonAddEW.Location = new Point(1687, 804);
             buttonAddEW.Name = "buttonAddEW";
             buttonAddEW.Size = new Size(200, 30);
             buttonAddEW.TabIndex = 11;
@@ -1127,15 +1399,17 @@
             // 
             // listViewEducationWork
             // 
-            listViewEducationWork.Location = new Point(8, 6);
+            listViewEducationWork.Dock = DockStyle.Left;
+            listViewEducationWork.Location = new Point(3, 3);
             listViewEducationWork.Name = "listViewEducationWork";
-            listViewEducationWork.Size = new Size(744, 467);
+            listViewEducationWork.Size = new Size(1400, 997);
             listViewEducationWork.TabIndex = 0;
             listViewEducationWork.UseCompatibleStateImageBehavior = false;
             listViewEducationWork.MouseClick += listViewEducationWork_MouseClick;
             // 
             // tabPageStudentHonor
             // 
+            tabPageStudentHonor.Controls.Add(splitContainer3);
             tabPageStudentHonor.Controls.Add(checkBox4);
             tabPageStudentHonor.Controls.Add(buttonUpdateHS);
             tabPageStudentHonor.Controls.Add(buttonDeleteHS);
@@ -1149,11 +1423,66 @@
             tabPageStudentHonor.Text = "Учащиеся Доски Почета";
             tabPageStudentHonor.UseVisualStyleBackColor = true;
             // 
+            // splitContainer3
+            // 
+            splitContainer3.Dock = DockStyle.Left;
+            splitContainer3.Location = new Point(0, 0);
+            splitContainer3.Name = "splitContainer3";
+            splitContainer3.Orientation = Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            splitContainer3.Panel1.Controls.Add(upPanelH);
+            // 
+            // splitContainer3.Panel2
+            // 
+            splitContainer3.Panel2.Controls.Add(bottomPanelH);
+            splitContainer3.Size = new Size(1400, 1003);
+            splitContainer3.SplitterDistance = 501;
+            splitContainer3.TabIndex = 27;
+            // 
+            // upPanelH
+            // 
+            upPanelH.Dock = DockStyle.Fill;
+            upPanelH.Location = new Point(0, 0);
+            upPanelH.Name = "upPanelH";
+            upPanelH.Size = new Size(1400, 501);
+            upPanelH.TabIndex = 0;
+            upPanelH.Controls.Add(listViewStudentsH);
+            // 
+            // listViewStudentsH
+            // 
+            listViewStudentsH.Dock = DockStyle.Fill;
+            listViewStudentsH.Location = new Point(0, 0);
+            listViewStudentsH.Name = "listViewStudentsH";
+            listViewStudentsH.Size = new Size(1896, 1003);
+            listViewStudentsH.TabIndex = 22;
+            listViewStudentsH.UseCompatibleStateImageBehavior = false;
+            listViewStudentsH.MouseClick += listViewStudentsH_MouseClick;
+            // 
+            // bottomPanelH
+            // 
+            bottomPanelH.Dock = DockStyle.Fill;
+            bottomPanelH.Location = new Point(0, 0);
+            bottomPanelH.Name = "bottomPanelH";
+            bottomPanelH.Size = new Size(1400, 498);
+            bottomPanelH.TabIndex = 0;
+            bottomPanelH.Controls.Add(listViewHonorByS);
+            // 
+            // listViewHonorByS
+            // 
+            listViewHonorByS.Dock = DockStyle.Fill;
+            listViewHonorByS.Location = new Point(0, 0);
+            listViewHonorByS.Name = "listViewHonorByS";
+            listViewHonorByS.Size = new Size(1896, 1003);
+            listViewHonorByS.TabIndex = 21;
+            listViewHonorByS.UseCompatibleStateImageBehavior = false;
+            // 
             // checkBox4
             // 
             checkBox4.Appearance = Appearance.Button;
             checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(944, 628);
+            checkBox4.Location = new Point(1405, 887);
             checkBox4.Name = "checkBox4";
             checkBox4.Size = new Size(140, 35);
             checkBox4.TabIndex = 26;
@@ -1163,7 +1492,7 @@
             // 
             // buttonUpdateHS
             // 
-            buttonUpdateHS.Location = new Point(943, 702);
+            buttonUpdateHS.Location = new Point(1404, 961);
             buttonUpdateHS.Name = "buttonUpdateHS";
             buttonUpdateHS.Size = new Size(478, 23);
             buttonUpdateHS.TabIndex = 25;
@@ -1172,7 +1501,7 @@
             // 
             // buttonDeleteHS
             // 
-            buttonDeleteHS.Location = new Point(944, 669);
+            buttonDeleteHS.Location = new Point(1405, 928);
             buttonDeleteHS.Name = "buttonDeleteHS";
             buttonDeleteHS.Size = new Size(200, 30);
             buttonDeleteHS.TabIndex = 24;
@@ -1181,30 +1510,12 @@
             // 
             // buttonAddHS
             // 
-            buttonAddHS.Location = new Point(1223, 669);
+            buttonAddHS.Location = new Point(1684, 928);
             buttonAddHS.Name = "buttonAddHS";
             buttonAddHS.Size = new Size(200, 30);
             buttonAddHS.TabIndex = 23;
             buttonAddHS.Text = "Добавить олимпиаду";
             buttonAddHS.UseVisualStyleBackColor = true;
-            // 
-            // listViewHonorByS
-            // 
-            listViewHonorByS.Location = new Point(53, 401);
-            listViewHonorByS.Name = "listViewHonorByS";
-            listViewHonorByS.Size = new Size(542, 289);
-            listViewHonorByS.TabIndex = 21;
-            listViewHonorByS.UseCompatibleStateImageBehavior = false;
-            // 
-            // listViewStudentsH
-            // 
-            listViewStudentsH.Location = new Point(67, 41);
-            listViewStudentsH.Name = "listViewStudentsH";
-            listViewStudentsH.Size = new Size(787, 334);
-            listViewStudentsH.TabIndex = 22;
-            listViewStudentsH.UseCompatibleStateImageBehavior = false;
-            listViewStudentsH.SelectedIndexChanged += listViewStudentsH_SelectedIndexChanged;
-            listViewStudentsH.MouseClick += listViewStudentsH_MouseClick;
             // 
             // tabPageHonor
             // 
@@ -1244,379 +1555,6 @@
             tabPageHonor.TabIndex = 5;
             tabPageHonor.Text = "Доска почета";
             tabPageHonor.UseVisualStyleBackColor = true;
-            // 
-            // checkBox5
-            // 
-            checkBox5.Appearance = Appearance.Button;
-            checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(721, 432);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(110, 35);
-            checkBox5.TabIndex = 22;
-            checkBox5.Text = "Учащиеся";
-            checkBox5.UseVisualStyleBackColor = true;
-            checkBox5.CheckedChanged += checkBox5_CheckedChanged;
-            // 
-            // buttonUpdateHonor
-            // 
-            buttonUpdateHonor.Location = new Point(708, 506);
-            buttonUpdateHonor.Name = "buttonUpdateHonor";
-            buttonUpdateHonor.Size = new Size(478, 23);
-            buttonUpdateHonor.TabIndex = 16;
-            buttonUpdateHonor.Text = "Изменить";
-            buttonUpdateHonor.UseVisualStyleBackColor = true;
-            buttonUpdateHonor.Click += buttonUpdateHonor_Click;
-            // 
-            // buttonDeleteHonor
-            // 
-            buttonDeleteHonor.Location = new Point(709, 473);
-            buttonDeleteHonor.Name = "buttonDeleteHonor";
-            buttonDeleteHonor.Size = new Size(200, 30);
-            buttonDeleteHonor.TabIndex = 15;
-            buttonDeleteHonor.Text = "Удалить";
-            buttonDeleteHonor.UseVisualStyleBackColor = true;
-            buttonDeleteHonor.Click += buttonDeleteHonor_Click;
-            // 
-            // buttonAddHonor
-            // 
-            buttonAddHonor.Location = new Point(988, 473);
-            buttonAddHonor.Name = "buttonAddHonor";
-            buttonAddHonor.Size = new Size(200, 30);
-            buttonAddHonor.TabIndex = 14;
-            buttonAddHonor.Text = "Добавить олимпиаду";
-            buttonAddHonor.UseVisualStyleBackColor = true;
-            buttonAddHonor.Click += buttonAddHonor_Click;
-            // 
-            // listViewHonor
-            // 
-            listViewHonor.Location = new Point(276, 76);
-            listViewHonor.Name = "listViewHonor";
-            listViewHonor.Size = new Size(459, 331);
-            listViewHonor.TabIndex = 0;
-            listViewHonor.UseCompatibleStateImageBehavior = false;
-            listViewHonor.MouseClick += listViewHonor_MouseClick;
-            // 
-            // tabPageMainReport
-            // 
-            tabPageMainReport.Controls.Add(panelRightReport);
-            tabPageMainReport.Controls.Add(panelLeftReport);
-            tabPageMainReport.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            tabPageMainReport.Location = new Point(4, 34);
-            tabPageMainReport.Name = "tabPageMainReport";
-            tabPageMainReport.Padding = new Padding(3);
-            tabPageMainReport.Size = new Size(1896, 1003);
-            tabPageMainReport.TabIndex = 2;
-            tabPageMainReport.Text = "Отчёт";
-            tabPageMainReport.UseVisualStyleBackColor = true;
-            // 
-            // panelRightReport
-            // 
-            panelRightReport.Controls.Add(reportViewer1);
-            panelRightReport.Dock = DockStyle.Left;
-            panelRightReport.Location = new Point(3, 3);
-            panelRightReport.Name = "panelRightReport";
-            panelRightReport.Size = new Size(1585, 997);
-            panelRightReport.TabIndex = 12;
-            // 
-            // reportViewer1
-            // 
-            reportViewer1.Dock = DockStyle.Fill;
-            reportViewer1.Location = new Point(0, 0);
-            reportViewer1.Name = "ReportViewer";
-            reportViewer1.ServerReport.BearerToken = null;
-            reportViewer1.Size = new Size(1585, 997);
-            reportViewer1.TabIndex = 0;
-            // 
-            // panelLeftReport
-            // 
-            panelLeftReport.Controls.Add(checkedListBoxCriteriaExcel);
-            panelLeftReport.Controls.Add(excel);
-            panelLeftReport.Controls.Add(label20);
-            panelLeftReport.Controls.Add(label19);
-            panelLeftReport.Controls.Add(numericUpDown2);
-            panelLeftReport.Controls.Add(numericUpDown1);
-            panelLeftReport.Dock = DockStyle.Right;
-            panelLeftReport.Location = new Point(1593, 3);
-            panelLeftReport.Name = "panelLeftReport";
-            panelLeftReport.Size = new Size(300, 997);
-            panelLeftReport.TabIndex = 11;
-            // 
-            // checkedListBoxCriteriaExcel
-            // 
-            checkedListBoxCriteriaExcel.CheckOnClick = true;
-            checkedListBoxCriteriaExcel.ColumnWidth = 280;
-            checkedListBoxCriteriaExcel.FormattingEnabled = true;
-            checkedListBoxCriteriaExcel.Items.AddRange(new object[] { "Правоведение", "Коммерческая деятельность", "Банковское дело", "Бухгалтерский учет, анализ и контроль", "Операционная логистика", "Экономика и организация производства", "Программное обеспечение информационных технологий" });
-            checkedListBoxCriteriaExcel.Location = new Point(3, 3);
-            checkedListBoxCriteriaExcel.MultiColumn = true;
-            checkedListBoxCriteriaExcel.Name = "checkedListBoxCriteriaExcel";
-            checkedListBoxCriteriaExcel.Size = new Size(292, 193);
-            checkedListBoxCriteriaExcel.TabIndex = 10;
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(145, 199);
-            label20.Name = "label20";
-            label20.Size = new Size(39, 30);
-            label20.TabIndex = 9;
-            label20.Text = "по";
-            // 
-            // label19
-            // 
-            label19.AutoSize = true;
-            label19.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label19.Location = new Point(3, 199);
-            label19.Name = "label19";
-            label19.Size = new Size(23, 30);
-            label19.TabIndex = 9;
-            label19.Text = "с";
-            // 
-            // numericUpDown2
-            // 
-            numericUpDown2.Location = new Point(202, 199);
-            numericUpDown2.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(93, 32);
-            numericUpDown2.TabIndex = 8;
-            numericUpDown2.Value = new decimal(new int[] { 2023, 0, 0, 0 });
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(46, 199);
-            numericUpDown1.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(93, 32);
-            numericUpDown1.TabIndex = 8;
-            numericUpDown1.Value = new decimal(new int[] { 2022, 0, 0, 0 });
-            // 
-            // reportViewer2
-            // 
-            reportViewer2.Location = new Point(0, 0);
-            reportViewer2.Name = "ReportViewer";
-            reportViewer2.ServerReport.BearerToken = null;
-            reportViewer2.Size = new Size(396, 246);
-            reportViewer2.TabIndex = 0;
-            // 
-            // labelCourseEW
-            // 
-            labelCourseEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelCourseEW.Location = new Point(1401, 413);
-            labelCourseEW.Name = "labelCourseEW";
-            labelCourseEW.Size = new Size(317, 28);
-            labelCourseEW.TabIndex = 23;
-            // 
-            // labellabelph3Ew
-            // 
-            labellabelph3Ew.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labellabelph3Ew.Location = new Point(1401, 294);
-            labellabelph3Ew.Name = "labellabelph3Ew";
-            labellabelph3Ew.Size = new Size(317, 28);
-            labellabelph3Ew.TabIndex = 44;
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label24.Location = new Point(1238, 348);
-            label24.Name = "label24";
-            label24.Size = new Size(139, 21);
-            label24.TabIndex = 43;
-            label24.Text = "Дата поступления";
-            // 
-            // labelDoBEW
-            // 
-            labelDoBEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDoBEW.Location = new Point(1401, 143);
-            labelDoBEW.Name = "labelDoBEW";
-            labelDoBEW.Size = new Size(317, 28);
-            labelDoBEW.TabIndex = 42;
-            // 
-            // labelspEW
-            // 
-            labelspEW.AutoEllipsis = true;
-            labelspEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelspEW.Location = new Point(1383, 441);
-            labelspEW.Name = "labelspEW";
-            labelspEW.Size = new Size(336, 33);
-            labelspEW.TabIndex = 41;
-            // 
-            // labelDoEEW
-            // 
-            labelDoEEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDoEEW.Location = new Point(1401, 383);
-            labelDoEEW.Name = "labelDoEEW";
-            labelDoEEW.Size = new Size(317, 28);
-            labelDoEEW.TabIndex = 40;
-            // 
-            // label28
-            // 
-            label28.AutoSize = true;
-            label28.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label28.Location = new Point(1268, 228);
-            label28.Name = "label28";
-            label28.Size = new Size(109, 21);
-            label28.TabIndex = 39;
-            label28.Text = "Мобильный 1";
-            // 
-            // labellabelph2EW
-            // 
-            labellabelph2EW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labellabelph2EW.Location = new Point(1401, 263);
-            labellabelph2EW.Name = "labellabelph2EW";
-            labellabelph2EW.Size = new Size(317, 28);
-            labellabelph2EW.TabIndex = 38;
-            // 
-            // labelfioEW
-            // 
-            labelfioEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelfioEW.Location = new Point(1401, 113);
-            labelfioEW.Name = "labelfioEW";
-            labelfioEW.Size = new Size(317, 28);
-            labelfioEW.TabIndex = 37;
-            // 
-            // labelDoAEW
-            // 
-            labelDoAEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDoAEW.Location = new Point(1401, 353);
-            labelDoAEW.Name = "labelDoAEW";
-            labelDoAEW.Size = new Size(317, 28);
-            labelDoAEW.TabIndex = 36;
-            // 
-            // label32
-            // 
-            label32.AutoSize = true;
-            label32.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label32.Location = new Point(1237, 318);
-            label32.Name = "label32";
-            label32.Size = new Size(61, 21);
-            label32.TabIndex = 35;
-            label32.Text = "Группа";
-            // 
-            // labellabelph1EW
-            // 
-            labellabelph1EW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labellabelph1EW.Location = new Point(1401, 233);
-            labellabelph1EW.Name = "labellabelph1EW";
-            labellabelph1EW.Size = new Size(317, 28);
-            labellabelph1EW.TabIndex = 34;
-            // 
-            // label34
-            // 
-            label34.AutoSize = true;
-            label34.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label34.Location = new Point(1238, 198);
-            label34.Name = "label34";
-            label34.Size = new Size(130, 21);
-            label34.TabIndex = 33;
-            label34.Text = "Номер телефона";
-            // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label35.Location = new Point(1238, 438);
-            label35.Name = "label35";
-            label35.Size = new Size(123, 21);
-            label35.TabIndex = 32;
-            label35.Text = "Специализация";
-            // 
-            // labelGroupEW
-            // 
-            labelGroupEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelGroupEW.Location = new Point(1401, 323);
-            labelGroupEW.Name = "labelGroupEW";
-            labelGroupEW.Size = new Size(317, 28);
-            labelGroupEW.TabIndex = 31;
-            // 
-            // label37
-            // 
-            label37.AutoSize = true;
-            label37.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label37.Location = new Point(1268, 288);
-            label37.Name = "label37";
-            label37.Size = new Size(89, 21);
-            label37.TabIndex = 30;
-            label37.Text = "Домашний";
-            // 
-            // labeladressEW
-            // 
-            labeladressEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labeladressEW.Location = new Point(1401, 173);
-            labeladressEW.Name = "labeladressEW";
-            labeladressEW.Size = new Size(317, 28);
-            labeladressEW.TabIndex = 29;
-            // 
-            // label39
-            // 
-            label39.AutoSize = true;
-            label39.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label39.Location = new Point(1239, 168);
-            label39.Name = "label39";
-            label39.Size = new Size(53, 21);
-            label39.TabIndex = 28;
-            label39.Text = "Адрес";
-            // 
-            // label40
-            // 
-            label40.AutoSize = true;
-            label40.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label40.Location = new Point(1238, 408);
-            label40.Name = "label40";
-            label40.Size = new Size(43, 21);
-            label40.TabIndex = 27;
-            label40.Text = "Курс";
-            // 
-            // label41
-            // 
-            label41.AutoSize = true;
-            label41.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label41.Location = new Point(1268, 258);
-            label41.Name = "label41";
-            label41.Size = new Size(109, 21);
-            label41.TabIndex = 26;
-            label41.Text = "Мобильный 2";
-            // 
-            // label42
-            // 
-            label42.AutoSize = true;
-            label42.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label42.Location = new Point(1238, 378);
-            label42.Name = "label42";
-            label42.Size = new Size(107, 21);
-            label42.TabIndex = 25;
-            label42.Text = "Дата выпуска";
-            // 
-            // label43
-            // 
-            label43.AutoSize = true;
-            label43.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label43.Location = new Point(1239, 138);
-            label43.Name = "label43";
-            label43.Size = new Size(121, 21);
-            label43.TabIndex = 24;
-            label43.Text = "Дата рождения";
-            // 
-            // label44
-            // 
-            label44.AutoSize = true;
-            label44.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label44.Location = new Point(1237, 88);
-            label44.Name = "label44";
-            label44.Size = new Size(204, 21);
-            label44.TabIndex = 45;
-            label44.Text = "Информация об учащемся";
-            // 
-            // label45
-            // 
-            label45.AutoSize = true;
-            label45.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label45.Location = new Point(1238, 113);
-            label45.Name = "label45";
-            label45.Size = new Size(46, 21);
-            label45.TabIndex = 46;
-            label45.Text = "ФИО";
             // 
             // labelCourseH
             // 
@@ -1837,6 +1775,161 @@
             label58.TabIndex = 70;
             label58.Text = "ФИО";
             // 
+            // checkBox5
+            // 
+            checkBox5.Appearance = Appearance.Button;
+            checkBox5.AutoSize = true;
+            checkBox5.Location = new Point(1419, 443);
+            checkBox5.Name = "checkBox5";
+            checkBox5.Size = new Size(110, 35);
+            checkBox5.TabIndex = 22;
+            checkBox5.Text = "Учащиеся";
+            checkBox5.UseVisualStyleBackColor = true;
+            checkBox5.CheckedChanged += checkBox5_CheckedChanged;
+            // 
+            // buttonUpdateHonor
+            // 
+            buttonUpdateHonor.Location = new Point(1406, 517);
+            buttonUpdateHonor.Name = "buttonUpdateHonor";
+            buttonUpdateHonor.Size = new Size(478, 23);
+            buttonUpdateHonor.TabIndex = 16;
+            buttonUpdateHonor.Text = "Изменить";
+            buttonUpdateHonor.UseVisualStyleBackColor = true;
+            buttonUpdateHonor.Click += buttonUpdateHonor_Click;
+            // 
+            // buttonDeleteHonor
+            // 
+            buttonDeleteHonor.Location = new Point(1407, 484);
+            buttonDeleteHonor.Name = "buttonDeleteHonor";
+            buttonDeleteHonor.Size = new Size(200, 30);
+            buttonDeleteHonor.TabIndex = 15;
+            buttonDeleteHonor.Text = "Удалить";
+            buttonDeleteHonor.UseVisualStyleBackColor = true;
+            buttonDeleteHonor.Click += buttonDeleteHonor_Click;
+            // 
+            // buttonAddHonor
+            // 
+            buttonAddHonor.Location = new Point(1686, 484);
+            buttonAddHonor.Name = "buttonAddHonor";
+            buttonAddHonor.Size = new Size(200, 30);
+            buttonAddHonor.TabIndex = 14;
+            buttonAddHonor.Text = "Добавить олимпиаду";
+            buttonAddHonor.UseVisualStyleBackColor = true;
+            buttonAddHonor.Click += buttonAddHonor_Click;
+            // 
+            // listViewHonor
+            // 
+            listViewHonor.Dock = DockStyle.Left;
+            listViewHonor.Location = new Point(3, 3);
+            listViewHonor.Name = "listViewHonor";
+            listViewHonor.Size = new Size(1400, 997);
+            listViewHonor.TabIndex = 0;
+            listViewHonor.UseCompatibleStateImageBehavior = false;
+            listViewHonor.MouseClick += listViewHonor_MouseClick;
+            // 
+            // tabPageMainReport
+            // 
+            tabPageMainReport.Controls.Add(panelRightReport);
+            tabPageMainReport.Controls.Add(panelLeftReport);
+            tabPageMainReport.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            tabPageMainReport.Location = new Point(4, 34);
+            tabPageMainReport.Name = "tabPageMainReport";
+            tabPageMainReport.Padding = new Padding(3);
+            tabPageMainReport.Size = new Size(1896, 1003);
+            tabPageMainReport.TabIndex = 2;
+            tabPageMainReport.Text = "Отчёт";
+            tabPageMainReport.UseVisualStyleBackColor = true;
+            // 
+            // panelRightReport
+            // 
+            panelRightReport.Controls.Add(reportViewer1);
+            panelRightReport.Dock = DockStyle.Left;
+            panelRightReport.Location = new Point(3, 3);
+            panelRightReport.Name = "panelRightReport";
+            panelRightReport.Size = new Size(1585, 997);
+            panelRightReport.TabIndex = 12;
+            // 
+            // reportViewer1
+            // 
+            reportViewer1.Dock = DockStyle.Fill;
+            reportViewer1.Location = new Point(0, 0);
+            reportViewer1.Name = "ReportViewer";
+            reportViewer1.ServerReport.BearerToken = null;
+            reportViewer1.Size = new Size(1585, 997);
+            reportViewer1.TabIndex = 0;
+            // 
+            // panelLeftReport
+            // 
+            panelLeftReport.Controls.Add(checkedListBoxCriteriaExcel);
+            panelLeftReport.Controls.Add(excel);
+            panelLeftReport.Controls.Add(label20);
+            panelLeftReport.Controls.Add(label19);
+            panelLeftReport.Controls.Add(numericUpDown2);
+            panelLeftReport.Controls.Add(numericUpDown1);
+            panelLeftReport.Dock = DockStyle.Right;
+            panelLeftReport.Location = new Point(1593, 3);
+            panelLeftReport.Name = "panelLeftReport";
+            panelLeftReport.Size = new Size(300, 997);
+            panelLeftReport.TabIndex = 11;
+            // 
+            // checkedListBoxCriteriaExcel
+            // 
+            checkedListBoxCriteriaExcel.CheckOnClick = true;
+            checkedListBoxCriteriaExcel.ColumnWidth = 280;
+            checkedListBoxCriteriaExcel.FormattingEnabled = true;
+            checkedListBoxCriteriaExcel.Items.AddRange(new object[] { "Правоведение", "Коммерческая деятельность", "Банковское дело", "Бухгалтерский учет, анализ и контроль", "Операционная логистика", "Экономика и организация производства", "Программное обеспечение информационных технологий" });
+            checkedListBoxCriteriaExcel.Location = new Point(3, 3);
+            checkedListBoxCriteriaExcel.MultiColumn = true;
+            checkedListBoxCriteriaExcel.Name = "checkedListBoxCriteriaExcel";
+            checkedListBoxCriteriaExcel.Size = new Size(292, 193);
+            checkedListBoxCriteriaExcel.TabIndex = 10;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label20.Location = new Point(145, 199);
+            label20.Name = "label20";
+            label20.Size = new Size(39, 30);
+            label20.TabIndex = 9;
+            label20.Text = "по";
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            label19.Location = new Point(3, 199);
+            label19.Name = "label19";
+            label19.Size = new Size(23, 30);
+            label19.TabIndex = 9;
+            label19.Text = "с";
+            // 
+            // numericUpDown2
+            // 
+            numericUpDown2.Location = new Point(202, 199);
+            numericUpDown2.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            numericUpDown2.Name = "numericUpDown2";
+            numericUpDown2.Size = new Size(93, 32);
+            numericUpDown2.TabIndex = 8;
+            numericUpDown2.Value = new decimal(new int[] { 2023, 0, 0, 0 });
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(46, 199);
+            numericUpDown1.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(93, 32);
+            numericUpDown1.TabIndex = 8;
+            numericUpDown1.Value = new decimal(new int[] { 2022, 0, 0, 0 });
+            // 
+            // reportViewer2
+            // 
+            reportViewer2.Location = new Point(0, 0);
+            reportViewer2.Name = "ReportViewer";
+            reportViewer2.ServerReport.BearerToken = null;
+            reportViewer2.Size = new Size(396, 246);
+            reportViewer2.TabIndex = 0;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1867,10 +1960,18 @@
             tabPageEducationGroup.ResumeLayout(false);
             tabPageStudentEW.ResumeLayout(false);
             tabPageStudentEW.PerformLayout();
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
+            splitContainer2.ResumeLayout(false);
             tabPageEducationWork.ResumeLayout(false);
             tabPageEducationWork.PerformLayout();
             tabPageStudentHonor.ResumeLayout(false);
             tabPageStudentHonor.PerformLayout();
+            splitContainer3.Panel1.ResumeLayout(false);
+            splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
+            splitContainer3.ResumeLayout(false);
             tabPageHonor.ResumeLayout(false);
             tabPageHonor.PerformLayout();
             tabPageMainReport.ResumeLayout(false);
@@ -2037,5 +2138,11 @@
         private Label label56;
         private Label label57;
         private Label label58;
+        private SplitContainer splitContainer2;
+        private SplitContainer splitContainer3;
+        private Panel upPanelEW;
+        private Panel bottomPanelEW;
+        private Panel upPanelH;
+        private Panel bottomPanelH;
     }
 }

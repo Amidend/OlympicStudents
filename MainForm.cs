@@ -151,7 +151,7 @@ namespace OlympicStudents
                 int index = listViewStudent.SelectedIndices[0];
                 int id = int.Parse(listViewStudent.Items[index].SubItems[0].Text);
                 Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
-                Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id);
+                Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id, "olympiad_id", "result", "student_id", "olympiad");
             }
             catch (ArgumentOutOfRangeException ex) { }
         }
@@ -629,15 +629,7 @@ namespace OlympicStudents
             }
         }
 
-        private void listViewEWStudent_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void listViewStudentsH_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonAddEWG_Click(object sender, EventArgs e)
         {
@@ -756,10 +748,7 @@ namespace OlympicStudents
 
         }
 
-        private void listViewEWStudent_MouseClick(object sender, MouseEventArgs e)
-        {
 
-        }
 
         private void listViewEducationWork_MouseClick(object sender, MouseEventArgs e)
         {
@@ -774,10 +763,7 @@ namespace OlympicStudents
             catch (Exception ex) { }
         }
 
-        private void listViewStudentsH_MouseClick(object sender, MouseEventArgs e)
-        {
 
-        }
 
         private void listViewHonor_MouseClick(object sender, MouseEventArgs e)
         {
@@ -792,8 +778,28 @@ namespace OlympicStudents
             catch (Exception ex) { }
         }
 
-
-
+        private void listViewEWStudent_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                int index = listViewEWStudent.SelectedIndices[0];
+                int id = int.Parse(listViewEWStudent.Items[index].SubItems[0].Text);
+                Adapter.InitializeEW(listViewEWByStudent);
+                Adapter.FillStudentOlympiadsAsync(listViewEWByStudent, id, "education_work_id", "education_works", "student_id", "education_work");
+            }
+            catch (ArgumentOutOfRangeException ex) { }
+        }
+        private void listViewStudentsH_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                int index = listViewStudentsH.SelectedIndices[0];
+                int id = int.Parse(listViewStudentsH.Items[index].SubItems[0].Text);
+                Adapter.InitializeHonor(listViewHonorByS);
+                Adapter.FillStudentOlympiadsAsync(listViewHonorByS, id, "honor_id", "honors", "student_id", "honor");
+            }
+            catch (ArgumentOutOfRangeException ex) { }
+        }
 
         /*
 private void listViewStudents_MouseOneClick(object sender, MouseEventArgs e)

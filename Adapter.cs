@@ -187,9 +187,9 @@ namespace OlympicStudents
                 listViewStudent.Items.Add(item);
             }
         }
-        public static async Task FillStudentOlympiadsAsync(ListView listViewStudent, int id)
+        public static async Task FillStudentOlympiadsAsync(ListView listViewStudent, int id, string what, string from, string whatid, string whattable)
         {
-            var items = await DataBase.GetAllOlympiadsByStudentIdAsync(id);
+            var items = await DataBase.GetAllOlympiadsByStudentIdAsync(id, what, from, whatid, whattable);
             foreach (var item in items)
             {
                 listViewStudent.Items.Add(item);

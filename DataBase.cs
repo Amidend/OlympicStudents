@@ -90,11 +90,11 @@ namespace OlympicStudents
             }
             return items;
         }
-        public static async Task<List<ListViewItem>> GetAllOlympiadsByStudentIdAsync(int id)
+        public static async Task<List<ListViewItem>> GetAllOlympiadsByStudentIdAsync(int id,string what,string from,string whatid,string whattable)
         {
             List<ListViewItem> items = new List<ListViewItem>();
             List<String> arr = new List<string>();
-            string sqlExpressionmain = $"SELECT olympiad_id FROM result WHERE student_id='{id.ToString()}'";
+            string sqlExpressionmain = $"SELECT {what} FROM {from} WHERE {whatid} ='{id.ToString()}'";
 
             List<int> l = new List<int>();
             using (var connection = new SqliteConnection("Data Source=data.db"))
@@ -110,7 +110,7 @@ namespace OlympicStudents
                         int i = 0;
                         while (reader.Read())
                         {
-                            if (!reader.IsDBNull(reader.GetOrdinal("olympiad_id")))
+                            if (!reader.IsDBNull(reader.GetOrdinal($"{what}")))
                             {
                                 l.Add(reader.GetInt32(i));
                             }
@@ -120,7 +120,7 @@ namespace OlympicStudents
                 }
                 commandmain.Cancel();
                 commandmain.Connection = connection;
-                string sqlExpression = "SELECT * FROM olympiad";
+                string sqlExpression = $"SELECT * FROM {whattable}";
                 SqliteCommand command = new SqliteCommand(sqlExpression, connection);
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
