@@ -3,6 +3,7 @@ using Microsoft.Reporting.WinForms;
 using System;
 using System.Data;
 using System.Globalization;
+using System.Text;
 
 namespace OlympicStudents
 {
@@ -942,5 +943,23 @@ namespace OlympicStudents
             listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
             UpdateDAta();
         }
+        private void AddListViewDoubleClickHandler(ListView listView)
+        {
+                if (listView.SelectedItems.Count > 0)
+                {
+                    ListViewItem item = listView.SelectedItems[0];
+                    StringBuilder info = new StringBuilder();
+
+                    // Получаем всю информацию из всех столбцов выбранного элемента ListView
+                    for (int i = 1; i < item.SubItems.Count; i++)
+                    {
+                        info.AppendLine(listView.Columns[i].Text + ":\t" + item.SubItems[i].Text);
+                    }
+
+                    MessageBox.Show(info.ToString(), "Информация");
+                }
+            
+        }
+
     }
 }

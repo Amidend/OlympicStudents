@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OlympicStudents", "OlympicStudents.csproj", "{D8F7DCDC-384F-4662-8662-83D15D75F5EE}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupProgect", "..\SetupProgect\SetupProgect.vdproj", "{4C14A967-4272-452E-9CB6-8E1DF8D54BA9}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "..\Setup\Setup.vdproj", "{C1739374-B631-4444-99CD-86A63A983029}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,11 +17,11 @@ Global
 		{D8F7DCDC-384F-4662-8662-83D15D75F5EE}.All|Any CPU.ActiveCfg = Release|Any CPU
 		{D8F7DCDC-384F-4662-8662-83D15D75F5EE}.All|Any CPU.Build.0 = Release|Any CPU
 		{D8F7DCDC-384F-4662-8662-83D15D75F5EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8F7DCDC-384F-4662-8662-83D15D75F5EE}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8F7DCDC-384F-4662-8662-83D15D75F5EE}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{4C14A967-4272-452E-9CB6-8E1DF8D54BA9}.All|Any CPU.ActiveCfg = Debug
-		{4C14A967-4272-452E-9CB6-8E1DF8D54BA9}.Debug|Any CPU.ActiveCfg = Debug
-		{4C14A967-4272-452E-9CB6-8E1DF8D54BA9}.Release|Any CPU.ActiveCfg = Release
+		{D8F7DCDC-384F-4662-8662-83D15D75F5EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F7DCDC-384F-4662-8662-83D15D75F5EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1739374-B631-4444-99CD-86A63A983029}.All|Any CPU.ActiveCfg = Debug
+		{C1739374-B631-4444-99CD-86A63A983029}.Debug|Any CPU.ActiveCfg = Debug
+		{C1739374-B631-4444-99CD-86A63A983029}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

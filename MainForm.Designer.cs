@@ -1997,6 +1997,50 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
+
+            listViewStudent.DoubleClick += delegate (object sender, EventArgs e)
+            {
+                AddListViewDoubleClickHandler(listViewStudent);
+            };
+            listViewEducationWork.DoubleClick += delegate (object sender, EventArgs e)
+            {
+                AddListViewDoubleClickHandler(listViewEducationWork);
+            };
+            listViewEducationWorkGroup.DoubleClick += delegate (object sender, EventArgs e)
+            {
+                AddListViewDoubleClickHandler(listViewEducationWorkGroup);
+            };
+            listViewOlympiadsOfStudent.DoubleClick += delegate (object sender, EventArgs e)
+            {
+                AddListViewDoubleClickHandler(listViewOlympiadsOfStudent);
+            };
+            listViewOlimp.DoubleClick += delegate (object sender, EventArgs e)
+            {
+                AddListViewDoubleClickHandler(listViewOlimp);
+            };
+            listViewEWStudent.DoubleClick += delegate (object sender, EventArgs e)
+            {
+                AddListViewDoubleClickHandler(listViewEWStudent);
+            }; 
+            listViewEWByStudent.DoubleClick += delegate (object sender, EventArgs e)
+            {
+                AddListViewDoubleClickHandler(listViewEWByStudent);
+            }; 
+            listViewHonor.DoubleClick += delegate (object sender, EventArgs e)
+            {
+                AddListViewDoubleClickHandler(listViewHonor);
+            };
+            listViewHonorByS.DoubleClick += delegate (object sender, EventArgs e)
+            {
+                AddListViewDoubleClickHandler(listViewHonorByS);
+            };
+            listViewStudentsH.DoubleClick += delegate (object sender, EventArgs e)
+            {
+                AddListViewDoubleClickHandler(listViewStudentsH);
+            };
+
+
+
         }
 
 

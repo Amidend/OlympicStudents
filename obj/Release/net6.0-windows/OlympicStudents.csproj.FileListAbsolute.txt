@@ -98,3 +98,6 @@ C:\github\OlympicStudents\bin\Release\net6.0-windows\runtimes\win\lib\net6.0\Sys
 C:\github\OlympicStudents\bin\Release\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\github\OlympicStudents\bin\Release\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\github\OlympicStudents\bin\Release\net6.0-windows\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
+C:\github\OlympicStudents\obj\Release\net6.0-windows\OlympicStudents.NewEWForm.resources
+C:\github\OlympicStudents\obj\Release\net6.0-windows\OlympicStudents.NewEWGroupForm.resources
+C:\github\OlympicStudents\obj\Release\net6.0-windows\OlympicStudents.NewHonorForm.resources
