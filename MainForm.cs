@@ -667,28 +667,6 @@ namespace OlympicStudents
             UpdateDAta();
         }
 
-
-        private void HideTabPage(TabPage tabPage)
-        {
-            if (tabMain.TabPages.Contains(tabPage))
-            {
-                int index = tabPageIndexes[tabPage];
-                tabMain.TabPages.Remove(tabPage);
-                tabPageIndexes.Remove(tabPage);
-                // save any objects associated with the TabPage here
-            }
-        }
-
-        private void ShowTabPage(TabPage tabPage)
-        {
-            if (!tabMain.TabPages.Contains(tabPage))
-            {
-                int index = tabPageIndexes[tabPage];
-                tabMain.TabPages.Insert(index, tabPage);
-                tabPageIndexes.Add(tabPage, index);
-                // restore any objects associated with the TabPage here
-            }
-        }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (tabMain.SelectedIndex == 0)
@@ -801,31 +779,168 @@ namespace OlympicStudents
             catch (ArgumentOutOfRangeException ex) { }
         }
 
-        /*
-private void listViewStudents_MouseOneClick(object sender, MouseEventArgs e)
-{
-   try
-   {
-       int index = listViewStudent.SelectedIndices[0];
-       int id = int.Parse(listViewStudent.Items[index].SubItems[0].Text);
-       Adapter.InitializeListViewOlimpiads(listViewOlympiadsOfStudent);
-       Adapter.FillStudentOlympiadsAsync(listViewOlympiadsOfStudent, id);
-   }
-   catch (ArgumentOutOfRangeException ex) { }
-}
-private void listViewOlimp_MouseOneClick(object sender, MouseEventArgs e)
-{
-   try
-   {
-       int index = listViewOlimp.SelectedIndices[0];
-       string studentId = (listViewOlimp.Items[index].SubItems[0].Text);
-       int id = DataBase.FindStudentByOlimpyad(studentId);
-       List<Label> labels = new List<Label>() { labelfio, labeldob, labeladd, labelph1, labelph2, labelph3, labelgro, labelyap, labelyor, labelcou, labelspe };
-       Adapter.FillStudentInformationAsync(id, labels);
-   }
-   catch (Exception ex) { }
-}
-*/
+        private void buttonUpdateEWS_Click(object sender, EventArgs e)
+        {
 
+            if ((listViewStudent.SelectedItems.Count > 0) && !(listViewOlympiadsOfStudent.SelectedItems.Count > 0))
+            {
+                int.TryParse(listViewStudent.Items[listViewStudent.SelectedIndices[0]].SubItems[0].Text, out int studentId);
+                using (NewStudentForm ns = new NewStudentForm(studentId))
+                {
+                    ns.ShowDialog();
+                }
+
+                updateDataStudent();
+                updateDataOlimpiads();
+            }
+            if ((listViewOlympiadsOfStudent.SelectedItems.Count > 0))
+            {
+                int.TryParse(listViewOlympiadsOfStudent.Items[listViewOlympiadsOfStudent.SelectedIndices[0]].SubItems[0].Text, out int olimpiadId);
+                using (NewOlympiadForm ns = new NewOlympiadForm(olimpiadId))
+                {
+                    ns.ShowDialog();
+                }
+                updateDataStudent();
+                updateDataOlimpiads();
+            }
+           
+        }
+
+        private void buttonAddEWS_Click(object sender, EventArgs e)
+        {
+            buttonAddStudent_Click(sender, e);
+        }
+
+        private void buttonDeleteEWS_Click(object sender, EventArgs e)
+        {
+            if ((listViewEWStudent.SelectedItems.Count > 0) && !(listViewEWByStudent.SelectedItems.Count > 0))
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент?", "Внимание", MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+
+
+                    List<int?> res = new List<int?>();
+                    using (var connection = new SqliteConnection("Data Source=data.db"))
+                    {
+                        connection.Open();
+                        int k = 9;
+
+                        SqliteCommand command = new SqliteCommand($"SELECT education_work_id FROM education_works WHERE student_id='{listViewEWStudent.Items[listViewEWStudent.SelectedIndices[0]].SubItems[0].Text.ToString()}'", connection);
+                        using (SqliteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    if (reader.IsDBNull(0)) continue;
+                                    else res?.Add(reader?.GetInt32(0));
+                                }
+                            }
+                        }
+                        command.Cancel(); command.Cancel();
+                    }
+                    for (int i = 0; i < res.Count; i++)
+                    {
+                        DataBase.Delete("education_work", "", "id", res[i].ToString());
+
+                        DataBase.Delete("education_works", "", "student_id", listViewEWStudent.Items[listViewEWStudent.SelectedIndices[0]].SubItems[0].Text.ToString());
+                    }
+                    DataBase.Delete("student", "", "id", listViewEWStudent.Items[listViewEWStudent.SelectedIndices[0]].SubItems[0].Text.ToString());
+                }
+            }
+            if ((listViewEWStudent.SelectedItems.Count > 0) && (listViewEWByStudent.SelectedItems.Count > 0))
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент?", "Внимание", MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                    DataBase.Delete("education_work", "", "id", $"{listViewEWByStudent.Items[listViewEWByStudent.SelectedIndices[0]].SubItems[0].Text.ToString()}");
+                    DataBase.Delete("education_works", "", "education_work_id", $"{listViewEWByStudent.Items[listViewEWByStudent.SelectedIndices[0]].SubItems[0].Text.ToString()}");
+                }
+            }
+            listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
+            UpdateDAta();
+        }
+
+        private void buttonAddHS_Click(object sender, EventArgs e)
+        {
+            buttonAddStudent_Click(sender, e);
+        }
+
+        private void buttonUpdateHS_Click(object sender, EventArgs e)
+        {
+            if ((listViewStudentsH.SelectedItems.Count > 0) && !(listViewHonorByS.SelectedItems.Count > 0))
+            {
+                int.TryParse(listViewStudentsH.Items[listViewStudentsH.SelectedIndices[0]].SubItems[0].Text, out int studentId);
+                using (NewStudentForm ns = new NewStudentForm(studentId))
+                {
+                    ns.ShowDialog();
+                }
+
+                UpdateDAta();
+            }
+            if ((listViewHonorByS.SelectedItems.Count > 0))
+            {
+                int.TryParse(listViewHonorByS.Items[listViewHonorByS.SelectedIndices[0]].SubItems[0].Text, out int olimpiadId);
+                using (NewOlympiadForm ns = new NewOlympiadForm(olimpiadId))
+                {
+                    ns.ShowDialog();
+                }
+                UpdateDAta();
+            }
+        }
+
+        private void buttonDeleteHS_Click(object sender, EventArgs e)
+        {
+            if ((listViewStudentsH.SelectedItems.Count > 0) && !(listViewHonorByS.SelectedItems.Count > 0))
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент?", "Внимание", MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+
+
+                    List<int?> res = new List<int?>();
+                    using (var connection = new SqliteConnection("Data Source=data.db"))
+                    {
+                        connection.Open();
+                        int k = 9;
+
+                        SqliteCommand command = new SqliteCommand($"SELECT honor_id FROM honors WHERE student_id='{listViewStudentsH.Items[listViewStudentsH.SelectedIndices[0]].SubItems[0].Text.ToString()}'", connection);
+                        using (SqliteDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                while (reader.Read())
+                                {
+                                    if (reader.IsDBNull(0)) continue;
+                                    else res?.Add(reader?.GetInt32(0));
+                                }
+                            }
+                        }
+                        command.Cancel(); command.Cancel();
+                    }
+                    for (int i = 0; i < res.Count; i++)
+                    {
+                        DataBase.Delete("honor", "", "id", res[i].ToString());
+
+                        DataBase.Delete("honors", "", "student_id", listViewStudentsH.Items[listViewStudentsH.SelectedIndices[0]].SubItems[0].Text.ToString());
+                    }
+                    DataBase.Delete("student", "", "id", listViewStudentsH.Items[listViewStudentsH.SelectedIndices[0]].SubItems[0].Text.ToString());
+                }
+            }
+            if ((listViewStudentsH.SelectedItems.Count > 0) && (listViewHonorByS.SelectedItems.Count > 0))
+            {
+                if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент?", "Внимание", MessageBoxButtons.YesNo,
+                 MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                    DataBase.Delete("honor", "", "id", $"{listViewHonorByS.Items[listViewHonorByS.SelectedIndices[0]].SubItems[0].Text.ToString()}");
+                    DataBase.Delete("honors", "", "honor_id", $"{listViewHonorByS.Items[listViewHonorByS.SelectedIndices[0]].SubItems[0].Text.ToString()}");
+                }
+            }
+            listViewStudents_MouseOneClick(sender, (MouseEventArgs)e);
+            UpdateDAta();
+        }
     }
 }

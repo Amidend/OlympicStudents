@@ -102,13 +102,13 @@
             tabPageStudentEW = new TabPage();
             splitContainer2 = new SplitContainer();
             upPanelEW = new Panel();
-            listViewEWStudent = new ListView();
             bottomPanelEW = new Panel();
-            listViewEWByStudent = new ListView();
             checkBox2 = new CheckBox();
             buttonUpdateEWS = new Button();
             buttonDeleteEWS = new Button();
             buttonAddEWS = new Button();
+            listViewEWByStudent = new ListView();
+            listViewEWStudent = new ListView();
             tabPageEducationWork = new TabPage();
             labelCourseEW = new Label();
             labellabelph3Ew = new Label();
@@ -142,13 +142,13 @@
             tabPageStudentHonor = new TabPage();
             splitContainer3 = new SplitContainer();
             upPanelH = new Panel();
-            listViewStudentsH = new ListView();
             bottomPanelH = new Panel();
-            listViewHonorByS = new ListView();
             checkBox4 = new CheckBox();
             buttonUpdateHS = new Button();
             buttonDeleteHS = new Button();
             buttonAddHS = new Button();
+            listViewHonorByS = new ListView();
+            listViewStudentsH = new ListView();
             tabPageHonor = new TabPage();
             labelCourseH = new Label();
             labelph3H = new Label();
@@ -555,9 +555,9 @@
             // 
             // buttonUpdateOlimpiad
             // 
-            buttonUpdateOlimpiad.Location = new Point(1408, 912);
+            buttonUpdateOlimpiad.Location = new Point(1565, 940);
             buttonUpdateOlimpiad.Name = "buttonUpdateOlimpiad";
-            buttonUpdateOlimpiad.Size = new Size(478, 23);
+            buttonUpdateOlimpiad.Size = new Size(150, 30);
             buttonUpdateOlimpiad.TabIndex = 10;
             buttonUpdateOlimpiad.Text = "Изменить";
             buttonUpdateOlimpiad.UseVisualStyleBackColor = true;
@@ -917,7 +917,7 @@
             // 
             DeleteOlimp.Location = new Point(1409, 940);
             DeleteOlimp.Name = "DeleteOlimp";
-            DeleteOlimp.Size = new Size(200, 30);
+            DeleteOlimp.Size = new Size(150, 30);
             DeleteOlimp.TabIndex = 4;
             DeleteOlimp.Text = "Удалить";
             DeleteOlimp.UseVisualStyleBackColor = true;
@@ -925,9 +925,9 @@
             // 
             // button1
             // 
-            button1.Location = new Point(1688, 940);
+            button1.Location = new Point(1721, 940);
             button1.Name = "button1";
-            button1.Size = new Size(200, 30);
+            button1.Size = new Size(150, 30);
             button1.TabIndex = 3;
             button1.Text = "Добавить олимпиаду";
             button1.UseVisualStyleBackColor = true;
@@ -949,9 +949,9 @@
             // 
             // buttonUpdateEWG
             // 
-            buttonUpdateEWG.Location = new Point(1408, 82);
+            buttonUpdateEWG.Location = new Point(1565, 940);
             buttonUpdateEWG.Name = "buttonUpdateEWG";
-            buttonUpdateEWG.Size = new Size(478, 23);
+            buttonUpdateEWG.Size = new Size(150, 30);
             buttonUpdateEWG.TabIndex = 16;
             buttonUpdateEWG.Text = "Изменить";
             buttonUpdateEWG.UseVisualStyleBackColor = true;
@@ -959,9 +959,9 @@
             // 
             // buttonDeleteEWG
             // 
-            buttonDeleteEWG.Location = new Point(1409, 49);
+            buttonDeleteEWG.Location = new Point(1409, 940);
             buttonDeleteEWG.Name = "buttonDeleteEWG";
-            buttonDeleteEWG.Size = new Size(200, 30);
+            buttonDeleteEWG.Size = new Size(150, 30);
             buttonDeleteEWG.TabIndex = 15;
             buttonDeleteEWG.Text = "Удалить";
             buttonDeleteEWG.UseVisualStyleBackColor = true;
@@ -969,9 +969,9 @@
             // 
             // buttonAddEWG
             // 
-            buttonAddEWG.Location = new Point(1688, 49);
+            buttonAddEWG.Location = new Point(1721, 940);
             buttonAddEWG.Name = "buttonAddEWG";
-            buttonAddEWG.Size = new Size(200, 30);
+            buttonAddEWG.Size = new Size(150, 30);
             buttonAddEWG.TabIndex = 14;
             buttonAddEWG.Text = "Добавить олимпиаду";
             buttonAddEWG.UseVisualStyleBackColor = true;
@@ -1030,16 +1030,6 @@
             upPanelEW.TabIndex = 0;
             upPanelEW.Controls.Add(listViewEWStudent);
             // 
-            // listViewEWStudent
-            // 
-            listViewEWStudent.Dock = DockStyle.Fill;
-            listViewEWStudent.Location = new Point(0, 0);
-            listViewEWStudent.Name = "listViewEWStudent";
-            listViewEWStudent.Size = new Size(1896, 1003);
-            listViewEWStudent.TabIndex = 17;
-            listViewEWStudent.UseCompatibleStateImageBehavior = false;
-            listViewEWStudent.MouseClick += listViewEWStudent_MouseClick;
-            // 
             // bottomPanelEW
             // 
             bottomPanelEW.Dock = DockStyle.Fill;
@@ -1048,6 +1038,48 @@
             bottomPanelEW.Size = new Size(1400, 498);
             bottomPanelEW.TabIndex = 0;
             bottomPanelEW.Controls.Add(listViewEWByStudent);
+            // 
+            // checkBox2
+            // 
+            checkBox2.Appearance = Appearance.Button;
+            checkBox2.AutoSize = true;
+            checkBox2.Location = new Point(1406, 3);
+            checkBox2.Name = "checkBox2";
+            checkBox2.Size = new Size(220, 35);
+            checkBox2.TabIndex = 22;
+            checkBox2.Text = "Воспитаельная работа";
+            checkBox2.UseVisualStyleBackColor = true;
+            checkBox2.CheckedChanged += checkBox2_CheckedChanged;
+            // 
+            // buttonUpdateEWS
+            // 
+            buttonUpdateEWS.Location = new Point(1559, 940);
+            buttonUpdateEWS.Name = "buttonUpdateEWS";
+            buttonUpdateEWS.Size = new Size(150, 30);
+            buttonUpdateEWS.TabIndex = 20;
+            buttonUpdateEWS.Text = "Изменить";
+            buttonUpdateEWS.UseVisualStyleBackColor = true;
+            buttonUpdateEWS.Click += buttonUpdateEWS_Click;
+            // 
+            // buttonDeleteEWS
+            // 
+            buttonDeleteEWS.Location = new Point(1403, 940);
+            buttonDeleteEWS.Name = "buttonDeleteEWS";
+            buttonDeleteEWS.Size = new Size(150, 30);
+            buttonDeleteEWS.TabIndex = 19;
+            buttonDeleteEWS.Text = "Удалить";
+            buttonDeleteEWS.UseVisualStyleBackColor = true;
+            buttonDeleteEWS.Click += buttonDeleteEWS_Click;
+            // 
+            // buttonAddEWS
+            // 
+            buttonAddEWS.Location = new Point(1715, 940);
+            buttonAddEWS.Name = "buttonAddEWS";
+            buttonAddEWS.Size = new Size(150, 30);
+            buttonAddEWS.TabIndex = 18;
+            buttonAddEWS.Text = "Добавить олимпиаду";
+            buttonAddEWS.UseVisualStyleBackColor = true;
+            buttonAddEWS.Click += buttonAddEWS_Click;
             // 
             // listViewEWByStudent
             // 
@@ -1058,44 +1090,15 @@
             listViewEWByStudent.TabIndex = 17;
             listViewEWByStudent.UseCompatibleStateImageBehavior = false;
             // 
-            // checkBox2
+            // listViewEWStudent
             // 
-            checkBox2.Appearance = Appearance.Button;
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(1403, 857);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(220, 35);
-            checkBox2.TabIndex = 22;
-            checkBox2.Text = "Воспитаельная работа";
-            checkBox2.UseVisualStyleBackColor = true;
-            checkBox2.CheckedChanged += checkBox2_CheckedChanged;
-            // 
-            // buttonUpdateEWS
-            // 
-            buttonUpdateEWS.Location = new Point(1402, 946);
-            buttonUpdateEWS.Name = "buttonUpdateEWS";
-            buttonUpdateEWS.Size = new Size(478, 23);
-            buttonUpdateEWS.TabIndex = 20;
-            buttonUpdateEWS.Text = "Изменить";
-            buttonUpdateEWS.UseVisualStyleBackColor = true;
-            // 
-            // buttonDeleteEWS
-            // 
-            buttonDeleteEWS.Location = new Point(1403, 913);
-            buttonDeleteEWS.Name = "buttonDeleteEWS";
-            buttonDeleteEWS.Size = new Size(200, 30);
-            buttonDeleteEWS.TabIndex = 19;
-            buttonDeleteEWS.Text = "Удалить";
-            buttonDeleteEWS.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddEWS
-            // 
-            buttonAddEWS.Location = new Point(1682, 913);
-            buttonAddEWS.Name = "buttonAddEWS";
-            buttonAddEWS.Size = new Size(200, 30);
-            buttonAddEWS.TabIndex = 18;
-            buttonAddEWS.Text = "Добавить олимпиаду";
-            buttonAddEWS.UseVisualStyleBackColor = true;
+            listViewEWStudent.Dock = DockStyle.Fill;
+            listViewEWStudent.Location = new Point(0, 0);
+            listViewEWStudent.Name = "listViewEWStudent";
+            listViewEWStudent.Size = new Size(1896, 1003);
+            listViewEWStudent.TabIndex = 17;
+            listViewEWStudent.UseCompatibleStateImageBehavior = false;
+            listViewEWStudent.MouseClick += listViewEWStudent_MouseClick;
             // 
             // tabPageEducationWork
             // 
@@ -1139,7 +1142,7 @@
             // labelCourseEW
             // 
             labelCourseEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelCourseEW.Location = new Point(1569, 331);
+            labelCourseEW.Location = new Point(1570, 370);
             labelCourseEW.Name = "labelCourseEW";
             labelCourseEW.Size = new Size(317, 28);
             labelCourseEW.TabIndex = 23;
@@ -1147,7 +1150,7 @@
             // labellabelph3Ew
             // 
             labellabelph3Ew.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labellabelph3Ew.Location = new Point(1569, 212);
+            labellabelph3Ew.Location = new Point(1570, 251);
             labellabelph3Ew.Name = "labellabelph3Ew";
             labellabelph3Ew.Size = new Size(317, 28);
             labellabelph3Ew.TabIndex = 44;
@@ -1156,7 +1159,7 @@
             // 
             label24.AutoSize = true;
             label24.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label24.Location = new Point(1406, 266);
+            label24.Location = new Point(1407, 305);
             label24.Name = "label24";
             label24.Size = new Size(139, 21);
             label24.TabIndex = 43;
@@ -1165,7 +1168,7 @@
             // labelDoBEW
             // 
             labelDoBEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDoBEW.Location = new Point(1569, 61);
+            labelDoBEW.Location = new Point(1570, 100);
             labelDoBEW.Name = "labelDoBEW";
             labelDoBEW.Size = new Size(317, 28);
             labelDoBEW.TabIndex = 42;
@@ -1174,7 +1177,7 @@
             // 
             labelspEW.AutoEllipsis = true;
             labelspEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelspEW.Location = new Point(1551, 359);
+            labelspEW.Location = new Point(1552, 398);
             labelspEW.Name = "labelspEW";
             labelspEW.Size = new Size(336, 33);
             labelspEW.TabIndex = 41;
@@ -1182,7 +1185,7 @@
             // labelDoEEW
             // 
             labelDoEEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDoEEW.Location = new Point(1569, 301);
+            labelDoEEW.Location = new Point(1570, 340);
             labelDoEEW.Name = "labelDoEEW";
             labelDoEEW.Size = new Size(317, 28);
             labelDoEEW.TabIndex = 40;
@@ -1191,7 +1194,7 @@
             // 
             label28.AutoSize = true;
             label28.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label28.Location = new Point(1436, 146);
+            label28.Location = new Point(1437, 185);
             label28.Name = "label28";
             label28.Size = new Size(109, 21);
             label28.TabIndex = 39;
@@ -1200,7 +1203,7 @@
             // labellabelph2EW
             // 
             labellabelph2EW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labellabelph2EW.Location = new Point(1569, 181);
+            labellabelph2EW.Location = new Point(1570, 220);
             labellabelph2EW.Name = "labellabelph2EW";
             labellabelph2EW.Size = new Size(317, 28);
             labellabelph2EW.TabIndex = 38;
@@ -1208,7 +1211,7 @@
             // labelfioEW
             // 
             labelfioEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelfioEW.Location = new Point(1569, 31);
+            labelfioEW.Location = new Point(1570, 70);
             labelfioEW.Name = "labelfioEW";
             labelfioEW.Size = new Size(317, 28);
             labelfioEW.TabIndex = 37;
@@ -1216,7 +1219,7 @@
             // labelDoAEW
             // 
             labelDoAEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDoAEW.Location = new Point(1569, 271);
+            labelDoAEW.Location = new Point(1570, 310);
             labelDoAEW.Name = "labelDoAEW";
             labelDoAEW.Size = new Size(317, 28);
             labelDoAEW.TabIndex = 36;
@@ -1225,7 +1228,7 @@
             // 
             label32.AutoSize = true;
             label32.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label32.Location = new Point(1405, 236);
+            label32.Location = new Point(1406, 275);
             label32.Name = "label32";
             label32.Size = new Size(61, 21);
             label32.TabIndex = 35;
@@ -1234,7 +1237,7 @@
             // labellabelph1EW
             // 
             labellabelph1EW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labellabelph1EW.Location = new Point(1569, 151);
+            labellabelph1EW.Location = new Point(1570, 190);
             labellabelph1EW.Name = "labellabelph1EW";
             labellabelph1EW.Size = new Size(317, 28);
             labellabelph1EW.TabIndex = 34;
@@ -1243,7 +1246,7 @@
             // 
             label34.AutoSize = true;
             label34.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label34.Location = new Point(1406, 116);
+            label34.Location = new Point(1407, 155);
             label34.Name = "label34";
             label34.Size = new Size(130, 21);
             label34.TabIndex = 33;
@@ -1253,7 +1256,7 @@
             // 
             label35.AutoSize = true;
             label35.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label35.Location = new Point(1406, 356);
+            label35.Location = new Point(1407, 395);
             label35.Name = "label35";
             label35.Size = new Size(123, 21);
             label35.TabIndex = 32;
@@ -1262,7 +1265,7 @@
             // labelGroupEW
             // 
             labelGroupEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelGroupEW.Location = new Point(1569, 241);
+            labelGroupEW.Location = new Point(1570, 280);
             labelGroupEW.Name = "labelGroupEW";
             labelGroupEW.Size = new Size(317, 28);
             labelGroupEW.TabIndex = 31;
@@ -1271,7 +1274,7 @@
             // 
             label37.AutoSize = true;
             label37.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label37.Location = new Point(1436, 206);
+            label37.Location = new Point(1437, 245);
             label37.Name = "label37";
             label37.Size = new Size(89, 21);
             label37.TabIndex = 30;
@@ -1280,7 +1283,7 @@
             // labeladressEW
             // 
             labeladressEW.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labeladressEW.Location = new Point(1569, 91);
+            labeladressEW.Location = new Point(1570, 130);
             labeladressEW.Name = "labeladressEW";
             labeladressEW.Size = new Size(317, 28);
             labeladressEW.TabIndex = 29;
@@ -1289,7 +1292,7 @@
             // 
             label39.AutoSize = true;
             label39.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label39.Location = new Point(1407, 86);
+            label39.Location = new Point(1408, 125);
             label39.Name = "label39";
             label39.Size = new Size(53, 21);
             label39.TabIndex = 28;
@@ -1299,7 +1302,7 @@
             // 
             label40.AutoSize = true;
             label40.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label40.Location = new Point(1406, 326);
+            label40.Location = new Point(1407, 365);
             label40.Name = "label40";
             label40.Size = new Size(43, 21);
             label40.TabIndex = 27;
@@ -1309,7 +1312,7 @@
             // 
             label41.AutoSize = true;
             label41.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label41.Location = new Point(1436, 176);
+            label41.Location = new Point(1437, 215);
             label41.Name = "label41";
             label41.Size = new Size(109, 21);
             label41.TabIndex = 26;
@@ -1319,7 +1322,7 @@
             // 
             label42.AutoSize = true;
             label42.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label42.Location = new Point(1406, 296);
+            label42.Location = new Point(1407, 335);
             label42.Name = "label42";
             label42.Size = new Size(107, 21);
             label42.TabIndex = 25;
@@ -1329,7 +1332,7 @@
             // 
             label43.AutoSize = true;
             label43.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label43.Location = new Point(1407, 56);
+            label43.Location = new Point(1408, 95);
             label43.Name = "label43";
             label43.Size = new Size(121, 21);
             label43.TabIndex = 24;
@@ -1339,7 +1342,7 @@
             // 
             label44.AutoSize = true;
             label44.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label44.Location = new Point(1405, 6);
+            label44.Location = new Point(1406, 45);
             label44.Name = "label44";
             label44.Size = new Size(204, 21);
             label44.TabIndex = 45;
@@ -1349,7 +1352,7 @@
             // 
             label45.AutoSize = true;
             label45.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label45.Location = new Point(1406, 31);
+            label45.Location = new Point(1407, 70);
             label45.Name = "label45";
             label45.Size = new Size(46, 21);
             label45.TabIndex = 46;
@@ -1359,7 +1362,7 @@
             // 
             checkBox3.Appearance = Appearance.Button;
             checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(1409, 392);
+            checkBox3.Location = new Point(1409, 7);
             checkBox3.Name = "checkBox3";
             checkBox3.Size = new Size(110, 35);
             checkBox3.TabIndex = 22;
@@ -1369,9 +1372,9 @@
             // 
             // buttonUpdateEW
             // 
-            buttonUpdateEW.Location = new Point(1412, 751);
+            buttonUpdateEW.Location = new Point(1561, 940);
             buttonUpdateEW.Name = "buttonUpdateEW";
-            buttonUpdateEW.Size = new Size(478, 23);
+            buttonUpdateEW.Size = new Size(150, 30);
             buttonUpdateEW.TabIndex = 13;
             buttonUpdateEW.Text = "Изменить";
             buttonUpdateEW.UseVisualStyleBackColor = true;
@@ -1379,9 +1382,9 @@
             // 
             // buttonDeleteEW
             // 
-            buttonDeleteEW.Location = new Point(1405, 804);
+            buttonDeleteEW.Location = new Point(1405, 940);
             buttonDeleteEW.Name = "buttonDeleteEW";
-            buttonDeleteEW.Size = new Size(200, 30);
+            buttonDeleteEW.Size = new Size(150, 30);
             buttonDeleteEW.TabIndex = 12;
             buttonDeleteEW.Text = "Удалить";
             buttonDeleteEW.UseVisualStyleBackColor = true;
@@ -1389,9 +1392,9 @@
             // 
             // buttonAddEW
             // 
-            buttonAddEW.Location = new Point(1687, 804);
+            buttonAddEW.Location = new Point(1717, 940);
             buttonAddEW.Name = "buttonAddEW";
-            buttonAddEW.Size = new Size(200, 30);
+            buttonAddEW.Size = new Size(150, 30);
             buttonAddEW.TabIndex = 11;
             buttonAddEW.Text = "Добавить олимпиаду";
             buttonAddEW.UseVisualStyleBackColor = true;
@@ -1469,20 +1472,11 @@
             bottomPanelH.TabIndex = 0;
             bottomPanelH.Controls.Add(listViewHonorByS);
             // 
-            // listViewHonorByS
-            // 
-            listViewHonorByS.Dock = DockStyle.Fill;
-            listViewHonorByS.Location = new Point(0, 0);
-            listViewHonorByS.Name = "listViewHonorByS";
-            listViewHonorByS.Size = new Size(1896, 1003);
-            listViewHonorByS.TabIndex = 21;
-            listViewHonorByS.UseCompatibleStateImageBehavior = false;
-            // 
             // checkBox4
             // 
             checkBox4.Appearance = Appearance.Button;
             checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(1405, 887);
+            checkBox4.Location = new Point(1404, 3);
             checkBox4.Name = "checkBox4";
             checkBox4.Size = new Size(140, 35);
             checkBox4.TabIndex = 26;
@@ -1492,30 +1486,52 @@
             // 
             // buttonUpdateHS
             // 
-            buttonUpdateHS.Location = new Point(1404, 961);
+            buttonUpdateHS.Location = new Point(1561, 940);
             buttonUpdateHS.Name = "buttonUpdateHS";
-            buttonUpdateHS.Size = new Size(478, 23);
+            buttonUpdateHS.Size = new Size(150, 30);
             buttonUpdateHS.TabIndex = 25;
             buttonUpdateHS.Text = "Изменить";
             buttonUpdateHS.UseVisualStyleBackColor = true;
+            buttonUpdateHS.Click += buttonUpdateHS_Click;
             // 
             // buttonDeleteHS
             // 
-            buttonDeleteHS.Location = new Point(1405, 928);
+            buttonDeleteHS.Location = new Point(1405, 940);
             buttonDeleteHS.Name = "buttonDeleteHS";
-            buttonDeleteHS.Size = new Size(200, 30);
+            buttonDeleteHS.Size = new Size(150, 30);
             buttonDeleteHS.TabIndex = 24;
             buttonDeleteHS.Text = "Удалить";
             buttonDeleteHS.UseVisualStyleBackColor = true;
+            buttonDeleteHS.Click += buttonDeleteHS_Click;
             // 
             // buttonAddHS
             // 
-            buttonAddHS.Location = new Point(1684, 928);
+            buttonAddHS.Location = new Point(1717, 940);
             buttonAddHS.Name = "buttonAddHS";
-            buttonAddHS.Size = new Size(200, 30);
+            buttonAddHS.Size = new Size(150, 30);
             buttonAddHS.TabIndex = 23;
             buttonAddHS.Text = "Добавить олимпиаду";
             buttonAddHS.UseVisualStyleBackColor = true;
+            buttonAddHS.Click += buttonAddHS_Click;
+            // 
+            // listViewHonorByS
+            // 
+            listViewHonorByS.Dock = DockStyle.Fill;
+            listViewHonorByS.Location = new Point(0, 0);
+            listViewHonorByS.Name = "listViewHonorByS";
+            listViewHonorByS.Size = new Size(1896, 1003);
+            listViewHonorByS.TabIndex = 21;
+            listViewHonorByS.UseCompatibleStateImageBehavior = false;
+            // 
+            // listViewStudentsH
+            // 
+            listViewStudentsH.Dock = DockStyle.Fill;
+            listViewStudentsH.Location = new Point(0, 0);
+            listViewStudentsH.Name = "listViewStudentsH";
+            listViewStudentsH.Size = new Size(1896, 1003);
+            listViewStudentsH.TabIndex = 22;
+            listViewStudentsH.UseCompatibleStateImageBehavior = false;
+            listViewStudentsH.MouseClick += listViewStudentsH_MouseClick;
             // 
             // tabPageHonor
             // 
@@ -1559,7 +1575,7 @@
             // labelCourseH
             // 
             labelCourseH.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelCourseH.Location = new Point(1569, 337);
+            labelCourseH.Location = new Point(1570, 371);
             labelCourseH.Name = "labelCourseH";
             labelCourseH.Size = new Size(317, 28);
             labelCourseH.TabIndex = 47;
@@ -1567,7 +1583,7 @@
             // labelph3H
             // 
             labelph3H.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelph3H.Location = new Point(1569, 218);
+            labelph3H.Location = new Point(1570, 252);
             labelph3H.Name = "labelph3H";
             labelph3H.Size = new Size(317, 28);
             labelph3H.TabIndex = 68;
@@ -1576,7 +1592,7 @@
             // 
             label25.AutoSize = true;
             label25.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label25.Location = new Point(1406, 272);
+            label25.Location = new Point(1407, 306);
             label25.Name = "label25";
             label25.Size = new Size(139, 21);
             label25.TabIndex = 67;
@@ -1585,7 +1601,7 @@
             // labelDoBH
             // 
             labelDoBH.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDoBH.Location = new Point(1569, 67);
+            labelDoBH.Location = new Point(1570, 101);
             labelDoBH.Name = "labelDoBH";
             labelDoBH.Size = new Size(317, 28);
             labelDoBH.TabIndex = 66;
@@ -1594,7 +1610,7 @@
             // 
             labelspH.AutoEllipsis = true;
             labelspH.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelspH.Location = new Point(1551, 365);
+            labelspH.Location = new Point(1552, 399);
             labelspH.Name = "labelspH";
             labelspH.Size = new Size(336, 33);
             labelspH.TabIndex = 65;
@@ -1602,7 +1618,7 @@
             // labelDoEH
             // 
             labelDoEH.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDoEH.Location = new Point(1569, 307);
+            labelDoEH.Location = new Point(1570, 341);
             labelDoEH.Name = "labelDoEH";
             labelDoEH.Size = new Size(317, 28);
             labelDoEH.TabIndex = 64;
@@ -1611,7 +1627,7 @@
             // 
             label30.AutoSize = true;
             label30.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label30.Location = new Point(1436, 152);
+            label30.Location = new Point(1437, 186);
             label30.Name = "label30";
             label30.Size = new Size(109, 21);
             label30.TabIndex = 63;
@@ -1620,7 +1636,7 @@
             // labelph2H
             // 
             labelph2H.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelph2H.Location = new Point(1569, 187);
+            labelph2H.Location = new Point(1570, 221);
             labelph2H.Name = "labelph2H";
             labelph2H.Size = new Size(317, 28);
             labelph2H.TabIndex = 62;
@@ -1628,7 +1644,7 @@
             // labelfioH
             // 
             labelfioH.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelfioH.Location = new Point(1569, 37);
+            labelfioH.Location = new Point(1570, 71);
             labelfioH.Name = "labelfioH";
             labelfioH.Size = new Size(317, 28);
             labelfioH.TabIndex = 61;
@@ -1636,7 +1652,7 @@
             // labelDoAH
             // 
             labelDoAH.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelDoAH.Location = new Point(1569, 277);
+            labelDoAH.Location = new Point(1570, 311);
             labelDoAH.Name = "labelDoAH";
             labelDoAH.Size = new Size(317, 28);
             labelDoAH.TabIndex = 60;
@@ -1645,7 +1661,7 @@
             // 
             label38.AutoSize = true;
             label38.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label38.Location = new Point(1405, 242);
+            label38.Location = new Point(1406, 276);
             label38.Name = "label38";
             label38.Size = new Size(61, 21);
             label38.TabIndex = 59;
@@ -1654,7 +1670,7 @@
             // labelph1H
             // 
             labelph1H.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelph1H.Location = new Point(1569, 157);
+            labelph1H.Location = new Point(1570, 191);
             labelph1H.Name = "labelph1H";
             labelph1H.Size = new Size(317, 28);
             labelph1H.TabIndex = 58;
@@ -1663,7 +1679,7 @@
             // 
             label47.AutoSize = true;
             label47.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label47.Location = new Point(1406, 122);
+            label47.Location = new Point(1407, 156);
             label47.Name = "label47";
             label47.Size = new Size(130, 21);
             label47.TabIndex = 57;
@@ -1673,7 +1689,7 @@
             // 
             label48.AutoSize = true;
             label48.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label48.Location = new Point(1406, 362);
+            label48.Location = new Point(1407, 396);
             label48.Name = "label48";
             label48.Size = new Size(123, 21);
             label48.TabIndex = 56;
@@ -1682,7 +1698,7 @@
             // labelGroupH
             // 
             labelGroupH.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labelGroupH.Location = new Point(1569, 247);
+            labelGroupH.Location = new Point(1570, 281);
             labelGroupH.Name = "labelGroupH";
             labelGroupH.Size = new Size(317, 28);
             labelGroupH.TabIndex = 55;
@@ -1691,7 +1707,7 @@
             // 
             label50.AutoSize = true;
             label50.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label50.Location = new Point(1436, 212);
+            label50.Location = new Point(1437, 246);
             label50.Name = "label50";
             label50.Size = new Size(89, 21);
             label50.TabIndex = 54;
@@ -1700,7 +1716,7 @@
             // labeladressH
             // 
             labeladressH.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            labeladressH.Location = new Point(1569, 97);
+            labeladressH.Location = new Point(1570, 131);
             labeladressH.Name = "labeladressH";
             labeladressH.Size = new Size(317, 28);
             labeladressH.TabIndex = 53;
@@ -1709,7 +1725,7 @@
             // 
             label52.AutoSize = true;
             label52.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label52.Location = new Point(1407, 92);
+            label52.Location = new Point(1408, 126);
             label52.Name = "label52";
             label52.Size = new Size(53, 21);
             label52.TabIndex = 52;
@@ -1719,7 +1735,7 @@
             // 
             label53.AutoSize = true;
             label53.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label53.Location = new Point(1406, 332);
+            label53.Location = new Point(1407, 366);
             label53.Name = "label53";
             label53.Size = new Size(43, 21);
             label53.TabIndex = 51;
@@ -1729,7 +1745,7 @@
             // 
             label54.AutoSize = true;
             label54.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label54.Location = new Point(1436, 182);
+            label54.Location = new Point(1437, 216);
             label54.Name = "label54";
             label54.Size = new Size(109, 21);
             label54.TabIndex = 50;
@@ -1739,7 +1755,7 @@
             // 
             label55.AutoSize = true;
             label55.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label55.Location = new Point(1406, 302);
+            label55.Location = new Point(1407, 336);
             label55.Name = "label55";
             label55.Size = new Size(107, 21);
             label55.TabIndex = 49;
@@ -1749,7 +1765,7 @@
             // 
             label56.AutoSize = true;
             label56.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label56.Location = new Point(1407, 62);
+            label56.Location = new Point(1408, 96);
             label56.Name = "label56";
             label56.Size = new Size(121, 21);
             label56.TabIndex = 48;
@@ -1759,7 +1775,7 @@
             // 
             label57.AutoSize = true;
             label57.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label57.Location = new Point(1405, 12);
+            label57.Location = new Point(1406, 46);
             label57.Name = "label57";
             label57.Size = new Size(204, 21);
             label57.TabIndex = 69;
@@ -1769,7 +1785,7 @@
             // 
             label58.AutoSize = true;
             label58.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label58.Location = new Point(1406, 37);
+            label58.Location = new Point(1407, 71);
             label58.Name = "label58";
             label58.Size = new Size(46, 21);
             label58.TabIndex = 70;
@@ -1779,7 +1795,7 @@
             // 
             checkBox5.Appearance = Appearance.Button;
             checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(1419, 443);
+            checkBox5.Location = new Point(1409, 3);
             checkBox5.Name = "checkBox5";
             checkBox5.Size = new Size(110, 35);
             checkBox5.TabIndex = 22;
@@ -1789,9 +1805,9 @@
             // 
             // buttonUpdateHonor
             // 
-            buttonUpdateHonor.Location = new Point(1406, 517);
+            buttonUpdateHonor.Location = new Point(1563, 940);
             buttonUpdateHonor.Name = "buttonUpdateHonor";
-            buttonUpdateHonor.Size = new Size(478, 23);
+            buttonUpdateHonor.Size = new Size(150, 30);
             buttonUpdateHonor.TabIndex = 16;
             buttonUpdateHonor.Text = "Изменить";
             buttonUpdateHonor.UseVisualStyleBackColor = true;
@@ -1799,9 +1815,9 @@
             // 
             // buttonDeleteHonor
             // 
-            buttonDeleteHonor.Location = new Point(1407, 484);
+            buttonDeleteHonor.Location = new Point(1407, 940);
             buttonDeleteHonor.Name = "buttonDeleteHonor";
-            buttonDeleteHonor.Size = new Size(200, 30);
+            buttonDeleteHonor.Size = new Size(150, 30);
             buttonDeleteHonor.TabIndex = 15;
             buttonDeleteHonor.Text = "Удалить";
             buttonDeleteHonor.UseVisualStyleBackColor = true;
@@ -1809,9 +1825,9 @@
             // 
             // buttonAddHonor
             // 
-            buttonAddHonor.Location = new Point(1686, 484);
+            buttonAddHonor.Location = new Point(1719, 940);
             buttonAddHonor.Name = "buttonAddHonor";
-            buttonAddHonor.Size = new Size(200, 30);
+            buttonAddHonor.Size = new Size(150, 30);
             buttonAddHonor.TabIndex = 14;
             buttonAddHonor.Text = "Добавить олимпиаду";
             buttonAddHonor.UseVisualStyleBackColor = true;
